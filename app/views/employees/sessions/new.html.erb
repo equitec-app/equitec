@@ -1,26 +1,31 @@
-<h2>Empleados</h2>
+<div class="center-container">
+  <div class="login-container">
+    <h2 class="azul-oscuro">Empleados</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.email_field :email, placeholder:'Correo', autofocus: true, class: 'mail-password-input' %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, placeholder:'Contraseña',  autocomplete: "off", class: 'mail-password-input' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Ingresar", class: 'login-button' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label "No cerrar sesión" %>
+        </div>
+      <% end -%>
+
+    <% end %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Olvidaste tu contraseña?", new_password_path(resource_name), class: 'gris-oscuro' %><br />
+    <% end -%>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "employees/shared/links" %>
+</div>
