@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     authenticated :customer do
       root :to => 'customers#show'
     end
+    authenticated :employee do
+      root :to => 'employees#show'
+    end
     unauthenticated :customer do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
