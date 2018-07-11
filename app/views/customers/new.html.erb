@@ -1,28 +1,91 @@
-<h2>Registrar ciente:</h2>
+<h2 class="form-title">Registrar ciente:</h2>
 
-<%= form_for(@customer, url: create_customers_path) do |f| %>
+<%= form_for @customer, url: create_customers_path, method: :post, html: {action: create_customers_path, class: 'customer-sign-up-form'} do |f| %>
 
-  <div class="field">
-    <%= f.label 'Correo' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="company-information-form">
+
+    <h5 class="azul-oscuro">Información de la empresa</h5>
+
+    <div class="field">
+      <%= f.text_field :username, autofocus: true, placeholder:"Nombre de la empresa", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :nit, autofocus: true, placeholder:"NIT", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.select( :agreement, Customer.agreements.keys.to_a, {include_blank: "Seleccione el tipo de contrato"}, {class:'registration-input middle-input'}) %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :cost_center, autofocus: true, placeholder:"Centro de costo", class:'registration-input middle-input' %>
+    </div>
+
+    <!-- <div class="field">
+      <%= f.text_field :cost_center, autofocus: true, placeholder:"Orden de trabajo", class:'registration-input middle-input' %>
+    </div> -->
+
+    <h5 class="azul-oscuro">Contraseña</h5>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "off", placeholder:"Contraseña", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmación contraseña", class:'registration-input middle-input' %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "Crear cliente", class: "sign-up-button" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label 'Nombre de usuario' %><br />
-    <%= f.text_field :username, autofocus: true %>
+  <div class="company-contact-information">
+
+    <h5 class="azul-oscuro">Información de contacto</h5>
+
+    <div class="field">
+      <%= f.text_field :legal_agent, autofocus: true, placeholder:"Agente legal", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :legal_agent_phone, autofocus: true, placeholder:"Teléfono del agente legal", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :legal_agent_mail, autofocus: true, placeholder:"Correo agente legal", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :mainteance_agent, autofocus: true, placeholder:"Jefe de mantenimiento", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :mainteance_phone, autofocus: true, placeholder:"Teléfono jefe de mantenimiento", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo jefe de mantenimiento", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :payments_manager, autofocus: true, placeholder:"Responsable de pagos", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :payments_phone, autofocus: true, placeholder:"Teléfono responsable de pagos", class:'registration-input middle-input' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :payments_mail, autofocus: true, placeholder:"Correo responsable de pagos", class:'registration-input middle-input' %>
+    </div>
+
+
   </div>
 
-  <div class="field">
-    <%= f.label 'Contraseña' %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Confirmación de contraseña' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
 <% end %>

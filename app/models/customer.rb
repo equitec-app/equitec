@@ -3,12 +3,24 @@
 # Table name: customers
 #
 #  id                     :bigint(8)        not null, primary key
+#  agreement              :integer
+#  cost_center            :string
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
+#  legal_agent            :string
+#  legal_agent_mail       :string
+#  legal_agent_phone      :string
+#  mainteance_agent       :string
+#  mainteance_phone       :string
+#  nit                    :string
+#  payments_mail          :string
+#  payments_manager       :string
+#  payments_phone         :string
+#  phone                  :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -27,11 +39,13 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  attr_writer :login
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          authentication_keys: [:login]
 
-  attr_writer :login
+  enum agreement: {'Tipo 1'=>1, 'Tipo 2'=>2, 'Sin contrato'=>3} 
 
   def login
     @login || self.username || self.email
