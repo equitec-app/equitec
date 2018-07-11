@@ -118,3 +118,41 @@ input:focus, textarea:focus, select:focus {
 .mail-password-input:focus {
   border-bottom: 3px solid #E37427;
 }
+
+.form-title {
+  color: #162c5d;
+  margin: 10px;
+}
+
+.registration-input  {
+  padding: 5px 10px;
+  margin: 5px 10px;
+  border-radius: 5px;
+  border: 1.5px solid #888888;
+}
+
+select.registration-input {
+  background-color: white;
+  height: 30px;
+}
+
+.sign-up-button {
+  background-color: #162c5d;
+  color: white;
+  width: 300px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.small-input {
+  width: 100px;
+}
+
+.middle-input {
+  width: 300px;
+}
+
+.large-input {
+  width: 500px;
+}

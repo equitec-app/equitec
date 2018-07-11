@@ -26,10 +26,12 @@ class EmployeesController < ApplicationController
   private
 
   def authorize_admin
-    return unless !current_employee.admin?
-    puts "Validacion de administrador"
-    puts root_path
-    redirect_to new_customer_session_path, alert: 'Solo administradores'
+    if employee_signed_in?
+      return unless !current_employee.admin?
+      redirect_to new_customer_session_path, alert: 'Solo administradores'
+    else
+      redirect_to new_customer_session_path, alert: 'Solo administradores'
+    end
   end
 
   def employee_params
