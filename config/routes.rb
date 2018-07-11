@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :customers
 
   devise_for :employees
-  resources :employees
+  resources :employees, except: :create
+
+  # Name it however you want
+  post 'create_employees' => 'employees#create', as: :create_employees 
 
 
   # authenticated :customer do

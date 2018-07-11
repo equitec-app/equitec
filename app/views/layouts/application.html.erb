@@ -21,6 +21,12 @@
           </div>
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
+            <li class="nav-item">
+              <%=link_to "Crear nuevo empleado", new_employee_path, class: 'nav-link'%>
+            </li>
+
+
+
             <%if not(customer_signed_in? || employee_signed_in?)%>
               <li class="nav-item">
                 <%=link_to "Empleados", new_employee_session_path, class: 'nav-link'%>
@@ -31,9 +37,17 @@
               </li>
             <%elsif customer_signed_in?%>
               <li class="nav-item">
+                <%=link_to "Mi perfil", customer_path, class: 'nav-link'%>
+              </li>
+
+              <li class="nav-item">
                 <%=link_to "Cerrar sesión cliente", destroy_customer_session_path, method: :delete, class: 'nav-link'%>
               </li>
             <%elsif employee_signed_in?%>
+              <li class="nav-item">
+                <%=link_to "Mi perfil", employee_path(current_employee), class: 'nav-link'%>
+              </li>
+
               <li class="nav-item">
                 <%=link_to "cerrar sesión empleado", destroy_employee_session_path, method: :delete, class: 'nav-link'%>
               </li>

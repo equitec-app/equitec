@@ -13,7 +13,9 @@ Devise.setup do |config|
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
-
+  config.authentication_keys = [ :login ]
+  config.reset_password_keys = [ :username ]
+  config.confirmation_keys = [ :username ]
   config.scoped_views = true
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
