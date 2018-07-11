@@ -62,8 +62,11 @@
         </div>
       </nav>
       <div class="franja"></div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+
+      <div class="notices-alerts">
+        <%= render 'layouts/notices-alerts'%>
+      </div>
+
       <div class="container">
         <%= yield %>
       </div>
