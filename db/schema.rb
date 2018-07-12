@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_190135) do
+ActiveRecord::Schema.define(version: 2018_07_12_161624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agreements", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.integer "type"
+    t.date "beginning_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_agreements_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,7 +49,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_190135) do
     t.string "payments_manager"
     t.string "payments_phone"
     t.string "payments_mail"
-    t.integer "agreement"
     t.string "cost_center"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
@@ -67,4 +76,5 @@ ActiveRecord::Schema.define(version: 2018_07_11_190135) do
     t.index ["username"], name: "index_employees_on_username", unique: true
   end
 
+  add_foreign_key "agreements", "customers"
 end

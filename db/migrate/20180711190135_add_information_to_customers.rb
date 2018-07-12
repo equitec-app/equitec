@@ -13,7 +13,6 @@ class AddInformationToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :payments_phone, :string
     add_column :customers, :payments_mail, :string
 
-    add_column :customers, :agreement, :integer
     add_column :customers, :cost_center, :string
   end
 end

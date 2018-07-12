@@ -10,3 +10,23 @@
 .company-information-form, .company-contact-information {
   padding: 20px;
 }
+
+.employee-information {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.employee-info-wrapper {
+  display: flex;
+}
+
+.employee-image-container {
+  border: 1px solid green;
+  width: 40%;
+}
+
+.employee-summary-container {
+  border: 1px solid blue;
+  width: 60%;
+}

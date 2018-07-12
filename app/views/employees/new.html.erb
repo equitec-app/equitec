@@ -1,34 +1,36 @@
-<h2 class="form-title">Registrar empleado:</h2>
+<div class="container">
+  <h2 class="form-title">Registrar empleado:</h2>
 
-<%= form_for(@employee, url: create_employees_path) do |f| %>
+  <%= form_for(@employee, url: create_employees_path) do |f| %>
 
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo", class:'registration-input middle-input' %>
-  </div>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo", class:'registration-input middle-input' %>
+    </div>
 
-  <div class="field">
-    <%= f.text_field :username, autofocus: true, placeholder:"Nombre de usuario", class:'registration-input middle-input' %>
-  </div>
+    <div class="field">
+      <%= f.text_field :username, autofocus: true, placeholder:"Nombre de usuario", class:'registration-input middle-input' %>
+    </div>
 
-  <div class="field">
-    <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
-  </div>
+    <div class="field">
+      <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
+    </div>
 
-  <div class="field">
-    <%= f.select( :role, Employee.roles.keys.to_a, {include_blank: "Selecciona el rol"}, {class:'registration-input middle-input'}) %>
-  </div>
+    <div class="field">
+      <%= f.select( :role, Employee.roles.keys.to_a, {include_blank: "Selecciona el rol"}, {class:'registration-input middle-input'}) %>
+    </div>
 
 
 
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "off", placeholder:"Contraseña", class:'registration-input middle-input' %>
-  </div>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "off", placeholder:"Contraseña", class:'registration-input middle-input' %>
+    </div>
 
-  <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmación contraseña", class:'registration-input middle-input' %>
-  </div>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmación contraseña", class:'registration-input middle-input' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Crear empleado", class: "sign-up-button" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Crear empleado", class: "sign-up-button" %>
+    </div>
+  <% end %>
+</div>

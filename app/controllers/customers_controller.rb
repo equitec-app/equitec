@@ -1,11 +1,11 @@
 class CustomersController < ApplicationController
-  efore_action :authorize_admin, only: :new
+  before_action :authorize_admin, only: :new
   def new
     @customer = Customer.new
   end
 
   def show
-
+    params[:id] ? @customer = Customer.find(params[:id]) : @customer = Customer.find(current_customer.id)
   end
 
   def create
@@ -25,6 +25,6 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:agreement, :cost_center, :email, :legal_agent, :legal_agent_mail, :legal_agent_phone, :mainteance_agent, :mainteance_phone, :nit, :payments_mail, :payments_manager, :payments_phone, :phone, :username)
+    params.require(:customer).permit(:cost_center, :email, :legal_agent, :legal_agent_mail, :legal_agent_phone, :mainteance_agent, :mainteance_phone, :nit, :payments_mail, :payments_manager, :payments_phone, :phone, :username)
   end
 end

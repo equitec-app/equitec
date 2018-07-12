@@ -3,7 +3,6 @@
 # Table name: customers
 #
 #  id                     :bigint(8)        not null, primary key
-#  agreement              :integer
 #  cost_center            :string
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet

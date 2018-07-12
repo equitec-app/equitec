@@ -18,6 +18,12 @@
       <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
     </div>
 
+    <h5 class="azul-oscuro">Información del contrato</h5>
+
+    <div class="field">
+      <%= date_field("customer", :beginning_date, class:'registration-input middle-input') %>
+    </div>
+
     <div class="field">
       <%= f.select( :agreement, Customer.agreements.keys.to_a, {include_blank: "Seleccione el tipo de contrato"}, {class:'registration-input middle-input'}) %>
     </div>
@@ -25,10 +31,6 @@
     <div class="field">
       <%= f.text_field :cost_center, autofocus: true, placeholder:"Centro de costo", class:'registration-input middle-input' %>
     </div>
-
-    <!-- <div class="field">
-      <%= f.text_field :cost_center, autofocus: true, placeholder:"Orden de trabajo", class:'registration-input middle-input' %>
-    </div> -->
 
     <h5 class="azul-oscuro">Contraseña</h5>
 
@@ -39,7 +41,7 @@
     <div class="field">
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmación contraseña", class:'registration-input middle-input' %>
     </div>
-    
+
     <div class="actions">
       <%= f.submit "Crear cliente", class: "sign-up-button" %>
     </div>
