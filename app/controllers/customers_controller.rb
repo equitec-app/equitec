@@ -1,5 +1,9 @@
 class CustomersController < ApplicationController
   before_action :authorize_admin, only: :new
+
+  def index
+    @customers = Customer.all
+  end
   def new
     @customer = Customer.new
   end

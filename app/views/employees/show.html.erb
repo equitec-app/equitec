@@ -1,17 +1,112 @@
 <div class="employee-information">
   <div class="container employee-info-wrapper">
     <div class="employee-image-container">
-      <%=image_tag 'https://www.expertsglobal.com/wp-content/uploads/2013/12/no-profile-img.png' %>
+      <%=image_tag 'https://www.expertsglobal.com/wp-content/uploads/2013/12/no-profile-img.png', class: 'profile-img' %>
     </div>
     <div class="employee-summary-container">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h2 class="color-blanco"><%=role_spanish_name(@employee.role)%> </h4>
+      <h5 class="color-blanco">Nombre: <span class="gris-claro"><%=@employee.username%></span> </h5>
+      <h5 class="color-blanco">Telefono: <span class="gris-claro"><%=@employee.phone%></span> </h5>
+      <h5 class="color-blanco">Correo: <span class="gris-claro"><%=@employee.email%></span> </h5>
     </div>
   </div>
 </div>
+
 <div class="container">
-  <h1>Perfil empleado</h1>
+  <h3 class="azul-oscuro section-title">Clientes existentes: <%=link_to "Ver más", customers_path, class: 'details-table azul-oscuro'%></h3>
 
-  <h3>Rol:<%=@employee.role%></h3>
+  <div class="summary-table">
 
-  <h5>Hola empleado de id <%=@employee.id%> y nombre de usuario <%=@employee.username%></h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><span class="azul-oscuro">Nombre</span></th>
+          <th scope="col"><span class="azul-oscuro">N sedes</span></th>
+          <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+          <th scope="col"><span class="azul-oscuro">Telefono</span></th>
+          <th scope="col"><span class="azul-oscuro">Correo</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@customers.each do |customer|%>
+          <tr>
+            <th scope="row"><%=customer.username%></th>
+            <td><%=customer.id%></td>
+            <td><%=customer.id%></td>
+            <td><%=customer.phone%></td>
+            <td><%=customer.email%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="azul-oscuro section-title">Visitas asignadas:</h3>
+
+  <div class="summary-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><span class="azul-oscuro">Fecha</span></th>
+          <th scope="col"><span class="azul-oscuro">Para</span></th>
+          <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
+          <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+          <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <%@customers.each do |customer|%>
+          <tr>
+            <th scope="row"><%=customer.username%></th>
+            <td><%=customer.id%></td>
+            <td><%=customer.id%></td>
+            <td><%=customer.phone%></td>
+            <td><%=customer.email%></td>
+          </tr>
+        <%end%> -->
+        <tr>
+          <th scope="row">12/09/18 08:00</th>
+          <td>Bancolombia sede Suba</td>
+          <td>Brayan Fernandez, Nicolás Maduro</td>
+          <td>3</td>
+          <td>Mantenimiento preventivo</td>
+        </tr>
+
+        <tr>
+          <th scope="row">16/09/18 08:00</th>
+          <td>Bodytech Boyacá</td>
+          <td>Pedro Picapiedra</td>
+          <td>1</td>
+          <td>Mantenimiento correctivo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="azul-oscuro section-title">Empleados existentes:</h3>
+
+  <div class="summary-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@employees.each do |employee|%>
+          <tr>
+            <th scope="row"><%=employee.username%></th>
+            <td><%=role_spanish_name(employee.role)%></td>
+            <td><%=employee.phone%></td>
+            <td><%=employee.email%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+
 </div>

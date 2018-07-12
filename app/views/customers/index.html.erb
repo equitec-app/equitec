@@ -1,0 +1,27 @@
+<div class="container">
+  <h3 class="azul-oscuro section-title">Clientes existentes: </h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Nombre</span></th>
+        <th scope="col"><span class="azul-oscuro">N sedes</span></th>
+        <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+        <th scope="col"><span class="azul-oscuro">Telefono</span></th>
+        <th scope="col"><span class="azul-oscuro">Correo</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@customers.each do |customer|%>
+        <tr>
+          <th scope="row"><%=customer.username%></th>
+          <td><%=customer.id%></td>
+          <td><%=customer.id%></td>
+          <td><%=customer.phone%></td>
+          <td><%=customer.email%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+</div>

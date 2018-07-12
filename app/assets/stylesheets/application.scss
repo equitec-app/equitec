@@ -16,6 +16,10 @@
 
  @import "bootstrap";
 
+ .color-blanco {
+   color: white;
+ }
+
  .azul-oscuro {
    color: #162c5d;
  }
@@ -156,4 +160,10 @@ select.registration-input {
 
 .large-input {
   width: 500px;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 150px;
+  margin: 20px;
 }

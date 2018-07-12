@@ -19,14 +19,35 @@
 
 .employee-info-wrapper {
   display: flex;
+  background-color: #162c5d;
+  border: 4px solid #162c5d;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+
 }
 
 .employee-image-container {
-  border: 1px solid green;
-  width: 40%;
+
 }
 
 .employee-summary-container {
-  border: 1px solid blue;
-  width: 60%;
+ margin: 20px;
+}
+
+.section-title {
+  margin-top: 50px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+  margin-bottom: 27px;
+}
+
+.summary-table {
+  max-height: 225px;
+  overflow: scroll;
+  margin-bottom: 50px;
+}
+
+.details-table {
+  float: right;
+  font-size: 20px;
 }
