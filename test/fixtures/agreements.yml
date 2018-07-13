@@ -3,9 +3,9 @@
 # Table name: agreements
 #
 #  id             :bigint(8)        not null, primary key
+#  agreement_type :integer
 #  beginning_date :date
 #  end_date       :date
-#  type           :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  customer_id    :bigint(8)
@@ -22,13 +22,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  end_date: 2018-07-13
+  beginning_date: 2018-07-13
+  agreement_type: 1
   customer: one
-  type: 1
-  beginning_date: 2018-07-12
-  end_date: 2018-07-12
 
 two:
+  end_date: 2018-07-13
+  beginning_date: 2018-07-13
+  agreement_type: 1
   customer: two
-  type: 1
-  beginning_date: 2018-07-12
-  end_date: 2018-07-12

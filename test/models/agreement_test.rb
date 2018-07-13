@@ -3,9 +3,9 @@
 # Table name: agreements
 #
 #  id             :bigint(8)        not null, primary key
+#  agreement_type :integer
 #  beginning_date :date
 #  end_date       :date
-#  type           :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  customer_id    :bigint(8)

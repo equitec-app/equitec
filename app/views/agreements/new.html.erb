@@ -4,7 +4,7 @@
   <%= form_for @agreement, url: customer_agreements_path do |f|%>
     <div class="field center-label-input-field">
       <div class="label-center-container"><%=f.label 'Tipo de contrato'%></div>
-      <div class="input-center-container"><%= f.select( :type, Agreement.types.keys.to_a, {include_blank: "Seleccione el tipo de contrato"}, {class:'registration-input middle-input'}) %></div>
+      <div class="input-center-container"><%= f.select( :agreement_type, Agreement.agreement_types.keys.to_a, {include_blank: "Seleccione el tipo de contrato"}, {class:'registration-input middle-input'}) %></div>
     </div>
 
     <div class="field center-label-input-field">

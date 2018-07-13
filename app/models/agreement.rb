@@ -3,9 +3,9 @@
 # Table name: agreements
 #
 #  id             :bigint(8)        not null, primary key
+#  agreement_type :integer
 #  beginning_date :date
 #  end_date       :date
-#  type           :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  customer_id    :bigint(8)
@@ -22,5 +22,10 @@
 class Agreement < ApplicationRecord
   belongs_to :customer
 
-  enum types:{'Tipo 1'=>1, 'Tipo 2'=>2, 'Sin contrato'=>3}
+  # validates :end_date, presence:true
+  # validates :beginning_date, presence: true
+  # validates :agreement_type, presence: true
+
+
+  enum agreement_type:{tipo1:1, tipo2:2}
 end
