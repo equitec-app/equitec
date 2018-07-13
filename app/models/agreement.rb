@@ -21,4 +21,6 @@
 
 class Agreement < ApplicationRecord
   belongs_to :customer
+
+  enum types:{'Tipo 1'=>1, 'Tipo 2'=>2, 'Sin contrato'=>3}
 end

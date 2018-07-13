@@ -23,17 +23,17 @@
           <th scope="col"><span class="azul-oscuro">Nombre</span></th>
           <th scope="col"><span class="azul-oscuro">N sedes</span></th>
           <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-          <th scope="col"><span class="azul-oscuro">Telefono</span></th>
+          <th scope="col"><span class="azul-oscuro">Crear contrato</span></th>
           <th scope="col"><span class="azul-oscuro">Correo</span></th>
         </tr>
       </thead>
       <tbody>
         <%@customers.each do |customer|%>
           <tr>
-            <th scope="row"><%=customer.username%></th>
+            <th scope="row"><%=link_to customer.username, customer_path(customer)%></th>
             <td><%=customer.id%></td>
             <td><%=customer.id%></td>
-            <td><%=customer.phone%></td>
+            <td><%=link_to '+', new_customer_agreement_path(customer)%></td>
             <td><%=customer.email%></td>
           </tr>
         <%end%>
@@ -98,7 +98,7 @@
       <tbody>
         <%@employees.each do |employee|%>
           <tr>
-            <th scope="row"><%=employee.username%></th>
+            <th scope="row"><%=link_to employee.username, employee_path(employee)%></th>
             <td><%=role_spanish_name(employee.role)%></td>
             <td><%=employee.phone%></td>
             <td><%=employee.email%></td>

@@ -120,6 +120,10 @@ input:focus, textarea:focus, select:focus {
   outline: none;
 }
 
+.main-contain {
+  margin-top: 40px;
+}
+
 .mail-password-input:focus {
   border-bottom: 3px solid #E37427;
 }
@@ -147,6 +151,15 @@ select.registration-input {
   width: 300px;
   padding: 10px;
   margin: 10px;
+  border-radius: 10px;
+}
+
+.create-agreement-button {
+  background-color: #162c5d;
+  color: white;
+  width: 400px;
+  padding: 10px;
+  margin: 30px;
   border-radius: 10px;
 }
 

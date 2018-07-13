@@ -1,0 +1,25 @@
+<div class="container main-contain">
+  <h1 class="azul-oscuro">Crear contrato</h1>
+
+  <%= form_for @agreement, url: customer_agreements_path do |f|%>
+    <div class="field center-label-input-field">
+      <div class="label-center-container"><%=f.label 'Tipo de contrato'%></div>
+      <div class="input-center-container"><%= f.select( :type, Agreement.types.keys.to_a, {include_blank: "Seleccione el tipo de contrato"}, {class:'registration-input middle-input'}) %></div>
+    </div>
+
+    <div class="field center-label-input-field">
+      <div class="label-center-container"><%=f.label 'Fecha de inicio'%></div>
+      <div class="input-center-container"><%= f.date_field( :beginning_date, class:'registration-input middle-input') %></div>
+    </div>
+
+    <div class="field center-label-input-field">
+      <div class="label-center-container"><%=f.label 'Fecha de finalización'%></div>
+      <div class="input-center-container"><%= f.date_field( :end_date, class:'registration-input middle-input') %></div>
+    </div>
+
+    <div class="actions center-label-input-field">
+      <%= f.submit "Guardar y pasar a asignar equipos y sedes", class: "create-agreement-button" %>
+    </div>
+  <%end%>
+
+</div>
