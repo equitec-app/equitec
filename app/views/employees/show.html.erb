@@ -108,5 +108,30 @@
     </table>
   </div>
 
+  <h3 class="azul-oscuro section-title">Contratos existentes:</h3>
+
+  <div class="summary-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Empresa y sede</th>
+          <th scope="col">Periodo</th>
+          <th scope="col">N equipos</th>
+          <th scope="col">Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@agreements.each do |agreement|%>
+          <tr>
+            <td><%=agreement.customer.username%></td>
+            <td><%=agreement.beginning_date%> a <%=agreement.end_date%></td>
+            <td><%=agreement.id%></td>
+            <td><%=link_to 'Detalles', customer_agreement_path(agreement.customer.id, agreement.id)%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
 
 </div>

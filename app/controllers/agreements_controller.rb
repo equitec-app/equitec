@@ -13,6 +13,10 @@ class AgreementsController < ApplicationController
     end
   end
 
+  def show
+    @agreement = Agreement.find(params[:id])
+  end
+
   private
 
   def agreement_params

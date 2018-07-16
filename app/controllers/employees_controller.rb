@@ -9,6 +9,7 @@ class EmployeesController < ApplicationController
     params[:id] ? @employee = Employee.find(params[:id]) : @employee = Employee.find(current_employee.id)
     @customers = Customer.all
     @employees = Employee.all
+    @agreements = Agreement.all
   end
 
   def create

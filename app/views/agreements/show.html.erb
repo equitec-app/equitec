@@ -1,1 +1,86 @@
-<h1>Detalles de contrato</h1>
+<div class="container main-contain">
+  <h3 class="azul-oscuro section-title">Detalles del contrato</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Empresa</span></th>
+        <th scope="col"><span class="azul-oscuro">Fecha de inicio</span></th>
+        <th scope="col"><span class="azul-oscuro">Fecha finalización</span></th>
+        <th scope="col"><span class="azul-oscuro">Tipo de contrato</span></th>
+        <th scope="col"><span class="azul-oscuro">Días de vigencia</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%=@agreement.customer.username%></td>
+        <td><%=@agreement.beginning_date%></td>
+        <td><%=@agreement.end_date%></td>
+        <td><%=@agreement.agreement_type%></td>
+        <td><%=(@agreement.end_date - Date.today).to_i%></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">Sedes y equipos</h3>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Sede</span></th>
+        <th scope="col"><span class="azul-oscuro">Tipo de equipo</span></th>
+        <th scope="col"><span class="azul-oscuro">Perioricidad</span></th>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">Precios por planta</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Cotización por todo</span></th>
+        <th scope="col"><span class="azul-oscuro">Filtros aceite</span></th>
+        <th scope="col"><span class="azul-oscuro">Filtros combustible</span></th>
+        <th scope="col"><span class="azul-oscuro">Filtros aire</span></th>
+        <th scope="col"><span class="azul-oscuro">Filtros agua</span></th>
+        <th scope="col"><span class="azul-oscuro">Aceite</span></th>
+        <th scope="col"><span class="azul-oscuro">Refrigerante</span></th>
+        <th scope="col"><span class="azul-oscuro">Baterías</span></th>
+        <th scope="col"><span class="azul-oscuro">ACPM</span></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">Precios por UPS</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Sede</span></th>
+        <th scope="col"><span class="azul-oscuro">Tipo de equipo</span></th>
+        <th scope="col"><span class="azul-oscuro">Perioricidad</span></th>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+
+</div>

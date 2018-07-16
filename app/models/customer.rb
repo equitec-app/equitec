@@ -40,7 +40,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_writer :login
 
-  has_many :agreements
+  has_many :agreements, dependent: :delete_all
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

@@ -6,6 +6,7 @@ namespace :delete do
 
   desc "TODO"
   task customers: :environment do
+    Agreement.all.delete_all
     Customer.all.delete_all
   end
 
