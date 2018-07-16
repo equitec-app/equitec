@@ -27,7 +27,8 @@ namespace :create do
       payments_mail: Faker::Internet.email,
       payments_manager: Faker::DragonBall.character,
       payments_phone: Faker::PhoneNumber.cell_phone,
-      phone: Faker::PhoneNumber.cell_phone)
+      phone: Faker::PhoneNumber.cell_phone,
+      principal_direction: Faker::Address.full_address)
 
       puts c.errors.full_messages
     end

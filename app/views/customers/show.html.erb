@@ -1,3 +1,47 @@
-<div class="container">
-  <h1>Perfil cliente</h1>
+<div class="container customer-profile-container">
+  <div class="customer-info-panel">
+    <h2 class="azul-oscuro center"><strong><%=@customer.username%></strong> </h2>
+    <%=image_tag 'https://www.iahorro.com/img/frontend/other/3d-buildings.svg', class: 'customer-profile-img'%>
+    <div class="customer-info">
+      <h6><span class="azul-oscuro"> <strong>Nit:</strong></span> <%=@customer.nit%></h6>
+      <h6><span class="azul-oscuro"> <strong>Centro de costo:</strong></span> 38-3454</h6>
+      <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.phone%></h6>
+      <h6><span class="azul-oscuro"> <strong>Dirección principal:</strong></span> <%=@customer.principal_direction%></h6>
+    </div>
+
+
+  </div>
+
+  <div class="customer-main-profile-contain">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sedes</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Equipos</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contacto</a>
+      </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <h4>Sedes</h4>
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <h4>Equipos</h4>
+      </div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <h6><span class="azul-oscuro"><strong>Representante legal:</strong></span> <%=@customer.legal_agent%></h6>
+        <h6><span class="azul-oscuro"><strong>Telefono representante legal:</strong></span> <%=@customer.legal_agent_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo representante legal:</strong></span> <%=@customer.legal_agent_mail%></h6>
+        <h6><span class="azul-oscuro"><strong>Jefe de mantenimiento:</strong></span> <%=@customer.mainteance_agent%></h6>
+        <h6><span class="azul-oscuro"><strong>Teléfono jefe de mantenimiento:</strong></span> <%=@customer.mainteance_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo jefe de mantenimiento:</strong></span> <%=@customer.email%></h6>
+        <h6><span class="azul-oscuro"><strong>Responsable de pagos:</strong></span> <%=@customer.payments_manager%></h6>
+        <h6><span class="azul-oscuro"><strong>Teléfono responsable de pagos:</strong></span> <%=@customer.payments_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo responsable de pagos:</strong></span> <%=@customer.payments_mail%></h6>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>

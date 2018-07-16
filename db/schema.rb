@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_174305) do
     t.string "username"
     t.string "nit"
     t.string "phone"
+    t.string "principal_direction"
     t.string "legal_agent"
     t.string "legal_agent_phone"
     t.string "legal_agent_mail"

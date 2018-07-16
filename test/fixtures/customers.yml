@@ -20,6 +20,7 @@
 #  payments_manager       :string
 #  payments_phone         :string
 #  phone                  :string
+#  principal_direction    :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

@@ -1,3 +1,34 @@
 // Place all the styles related to the Customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.customer-profile-img {
+  width: 250px;
+}
+
+.customer-profile-container {
+  display: flex;
+}
+
+.customer-info-panel {
+  width: 300px;
+  padding-top: 25px;
+  margin-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-color: #ededed;
+  border-radius: 20px;
+}
+
+.customer-info {
+  background-color: #ededed;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.customer-main-profile-contain {
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 20px;
+}
