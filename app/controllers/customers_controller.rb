@@ -26,6 +26,11 @@ class CustomersController < ApplicationController
     end
   end
 
+  def update
+    puts "Entró al metodo update"
+    redirect_to request.referer
+  end
+
   private
 
   def customer_params
