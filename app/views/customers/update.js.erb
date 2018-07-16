@@ -1,8 +1,12 @@
 $('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
-$('#nav-tab a:first-child').removeClass( "active" );
-$('#nav-tab a:last-child').addClass( "active" );
+<%if @customer.errors.any?%>
+console.log("tiene errores");
+  console.log(<%@customer.errors.full_messages%>);
+  $('#nav-tab a:first-child').removeClass( "active" );
+  $('#nav-tab a:last-child').addClass( "active" );
 
-$('#nav-tabContent div:first-child').removeClass( "active show" );
-$('#nav-tabContent div:last-child').addClass( "active show" );
-window.scrollTo(0, 0);
+  $('#nav-tabContent div:first-child').removeClass( "active show" );
+  $('#nav-tabContent div:last-child').addClass( "active show" );
+  window.scrollTo(0, 0);
+<%end%>
 console.log("Entro al update.js");

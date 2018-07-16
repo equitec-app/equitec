@@ -28,12 +28,14 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+
     puts "Entró al metodo update"
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:cost_center, :email, :legal_agent, :legal_agent_mail, :legal_agent_phone, :mainteance_agent, :mainteance_phone, :nit, :payments_mail, :payments_manager, :payments_phone, :phone, :username)
+    params.require(:customer).permit(:cost_center, :email, :legal_agent, :legal_agent_mail, :legal_agent_phone, :mainteance_agent, :mainteance_phone, :nit, :payments_mail, :payments_manager, :payments_phone, :phone, :username, :password, :password_confirmation)
   end
 end
