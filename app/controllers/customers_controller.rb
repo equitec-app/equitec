@@ -27,8 +27,8 @@ class CustomersController < ApplicationController
   end
 
   def update
+    @customer = Customer.find(params[:id])
     puts "Entró al metodo update"
-    redirect_to request.referer
   end
 
   private

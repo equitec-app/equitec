@@ -1,0 +1,263 @@
+
+<div class="customer-info-panel">
+  <h2 class="azul-oscuro center"><strong><%=@customer.username%></strong> </h2>
+  <%=image_tag 'https://www.iahorro.com/img/frontend/other/3d-buildings.svg', class: 'customer-profile-img'%>
+  <div class="customer-info">
+    <h6><span class="azul-oscuro"> <strong>Nit:</strong></span> <%=@customer.nit%></h6>
+    <h6><span class="azul-oscuro"> <strong>Centro de costo:</strong></span> 38-3454</h6>
+    <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.phone%></h6>
+    <h6><span class="azul-oscuro"> <strong>Dirección principal:</strong></span> <%=@customer.principal_direction%></h6>
+    <h5 class="azul-oscuro section-title"><strong>Encargado de mantenimiento:</strong></h5>
+    <h6><span class="azul-oscuro"> <strong>Nombre:</strong></span> <%=@customer.mainteance_agent%></h6>
+    <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.mainteance_phone%></h6>
+    <h6><span class="azul-oscuro"> <strong>Email:</strong></span> <%=@customer.email%></h6>
+  </div>
+
+
+</div>
+
+<div class="customer-main-profile-contain">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sedes</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Equipos</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contacto</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="false">Editar información</a>
+
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <h4 class="azul-oscuro section-title">Sedes <%=link_to "Agregar sede", customers_path, class: 'function-link-table azul-oscuro'%></h4>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"><span class="azul-oscuro">Ciudad</span></th>
+            <th scope="col"><span class="azul-oscuro">Dirección</span></th>
+            <th scope="col"><span class="azul-oscuro">Última visita</span></th>
+            <th scope="col"><span class="azul-oscuro">Solicitar visita</span></th>
+            <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+            <th scope="col"><span class="azul-oscuro">Editar</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bogotá</td>
+            <td>Calle 34 34-21</td>
+            <td>12/03/18</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+          <tr>
+            <td>Bogotá</td>
+            <td>Carrera 1a #23-532</td>
+            <td>3/06/17</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+          <tr>
+            <td>Tunja</td>
+            <td>Circular 43 23-124</td>
+            <td>11/11/15</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <h4 class="azul-oscuro section-title">Plantas</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"><span class="azul-oscuro">Ciudad</span></th>
+            <th scope="col"><span class="azul-oscuro">Sede</span></th>
+            <th scope="col"><span class="azul-oscuro">Última visita</span></th>
+            <th scope="col"><span class="azul-oscuro">Marca</span></th>
+            <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+            <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bogotá</td>
+            <td>Calle 34 34-21</td>
+            <td>12/03/18</td>
+            <td>SDMO</td>
+            <td>J233</td>
+            <td>Ver</td>
+          </tr>
+          <tr>
+            <td>Bogotá</td>
+            <td>Carrera 1a #23-532</td>
+            <td>3/06/17</td>
+            <td>Caterpillar</td>
+            <td>J132</td>
+            <td>Ver</td>
+          </tr>
+          <tr>
+            <td>Tunja</td>
+            <td>Carrera 1a #23-532</td>
+            <td>3/06/17</td>
+            <td>Caterpillar</td>
+            <td>ZM222</td>
+            <td>Ver</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="azul-oscuro section-title">UPS</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"><span class="azul-oscuro">Ciudad</span></th>
+            <th scope="col"><span class="azul-oscuro">Sede</span></th>
+            <th scope="col"><span class="azul-oscuro">Última visita</span></th>
+            <th scope="col"><span class="azul-oscuro">Marca</span></th>
+            <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+            <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bogotá</td>
+            <td>Calle 34 34-21</td>
+            <td>12/03/18</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+          <tr>
+            <td>Bogotá</td>
+            <td>Carrera 1a #23-532</td>
+            <td>3/06/17</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+          <tr>
+            <td>Tunja</td>
+            <td>Circular 43 23-124</td>
+            <td>11/11/15</td>
+            <td>Solicitar</td>
+            <td>Ver</td>
+            <td>Editar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <h5 class="azul-oscuro section-title">Representante legal</h5>
+      <div class="contact-information">
+        <h6><span class="azul-oscuro"><strong>Nombre:</strong></span> <%=@customer.legal_agent%></h6>
+        <h6><span class="azul-oscuro"><strong>Telefono:</strong></span> <%=@customer.legal_agent_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo:</strong></span> <%=@customer.legal_agent_mail%></h6>
+      </div>
+
+      <h5 class="azul-oscuro section-title">Encargado de mantenimiento</h5>
+      <div class="contact-information">
+        <h6><span class="azul-oscuro"><strong>Nombre:</strong></span> <%=@customer.mainteance_agent%></h6>
+        <h6><span class="azul-oscuro"><strong>Teléfono:</strong></span> <%=@customer.mainteance_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo:</strong></span> <%=@customer.email%></h6>
+      </div>
+
+      <h5 class="azul-oscuro section-title">Responsable de pagos</h5>
+      <div class="contact-information">
+        <h6><span class="azul-oscuro"><strong>Nombre:</strong></span> <%=@customer.payments_manager%></h6>
+        <h6><span class="azul-oscuro"><strong>Teléfono:</strong></span> <%=@customer.payments_phone%></h6>
+        <h6><span class="azul-oscuro"><strong>Correo:</strong></span> <%=@customer.payments_mail%></h6>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <h4 class="azul-oscuro section-title"><strong>Editar información</strong></h4>
+      <%= form_for @customer, url: customer_path(@customer), method: :put, remote: true do |f| %>
+
+          <div class="edit-customer-section">
+            <h5 class="azul-oscuro">Información de la empresa</h5>
+
+            <div class="field edit-group ">
+              <%= f.label :username, "Nombre de la empresa"%>
+              <%= f.text_field :username, autofocus: true, placeholder:"Nombre de la empresa", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :nit, "Nit"%>
+              <%= f.text_field :nit, autofocus: true, placeholder:"NIT", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :phone, "Telefono principal"%>
+              <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
+            </div>
+          </div>
+
+          <div class="edit-customer-section">
+            <h5 class="azul-oscuro">Cambiar contraseña</h5>
+
+            <div class="field edit-group">
+              <%= f.label :phone, "Nueva contraseña"%>
+              <%= f.password_field :password, autocomplete: "off", placeholder:"Nueva contraseña", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :phone, "Confirmar nueva contraseña"%>
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmar nueva contraseña", class:'registration-input middle-input' %>
+            </div>
+          </div>
+
+
+          <div class="edit-customer-section">
+            <h5 class="azul-oscuro">Representante legal</h5>
+
+            <div class="field edit-group">
+              <%= f.label :legal_agent, "Nombre"%>
+              <%= f.text_field :legal_agent, autofocus: true, placeholder:"Nombre", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :legal_agent_phone, "Telefono"%>
+              <%= f.text_field :legal_agent_phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :legal_agent_mail, "Correo electrónico"%>
+              <%= f.email_field :legal_agent_mail, autofocus: true, placeholder:"Correo", class:'registration-input middle-input' %>
+            </div>
+          </div>
+
+          <div class="edit-customer-section">
+            <h5 class="azul-oscuro">Encargado de mantenimiento</h5>
+
+            <div class="field edit-group">
+              <%= f.label :mainteance_agent, "Nombre"%>
+              <%= f.text_field :mainteance_agent, autofocus: true, placeholder:"Jefe de mantenimiento", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :mainteance_phone, "Teléfono"%>
+              <%= f.text_field :mainteance_phone, autofocus: true, placeholder:"Teléfono jefe de mantenimiento", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :email, "Correo electrónico"%>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo jefe de mantenimiento", class:'registration-input middle-input' %>
+            </div>
+          </div>
+
+          <div class="edit-customer-section">
+            <h5 class="azul-oscuro">Responsable de pagos</h5>
+
+            <div class="field edit-group">
+              <%= f.label :payments_manager, "Nombre"%>
+              <%= f.text_field :payments_manager, autofocus: true, placeholder:"Responsable de pagos", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :payments_phone, "Teléfono"%>
+              <%= f.text_field :payments_phone, autofocus: true, placeholder:"Teléfono responsable de pagos", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :payments_mail, "Correo"%>
+              <%= f.text_field :payments_mail, autofocus: true, placeholder:"Correo responsable de pagos", class:'registration-input middle-input' %> <br>
+            </div>
+          </div>
+
+
+          <div class="actions">
+            <%= f.submit "Editar información", class: "sign-up-button" %>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

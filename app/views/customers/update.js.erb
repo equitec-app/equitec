@@ -1,0 +1,8 @@
+$('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
+$('#nav-tab a:first-child').removeClass( "active" );
+$('#nav-tab a:last-child').addClass( "active" );
+
+$('#nav-tabContent div:first-child').removeClass( "active show" );
+$('#nav-tabContent div:last-child').addClass( "active show" );
+window.scrollTo(0, 0);
+console.log("Entro al update.js");
