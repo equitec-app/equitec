@@ -1,5 +1,7 @@
 <%if @headquarter.errors.any?%>
   console.log("tiene errores");
+  $('.modals').html("<%= escape_javascript render(:partial => 'customers/new_headquarter_form') %>");
+  $('#exampleModal').modal('show')
 <%else%>
   console.log("no tiene errores");
   $('.modals').empty();

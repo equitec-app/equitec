@@ -9,6 +9,15 @@
       </div>
       <%=form_for @headquarter, url: customer_headquarters_path(@customer), remote:true do |f|%>
         <div class="modal-body">
+
+          <%if @headquarter.errors.any?%>
+            <div class="form-error-container">
+              <%@headquarter.errors.each do |attribute, message|%>
+                <p><%=message%></p>
+              <%end%>
+            </div>
+          <%end%>
+          
           <div class="modal-new-form">
             <%= f.label :city, "Ciudad*"%>
             <%= f.text_field :city, autofocus: true, placeholder:"Ciudad", class:'registration-input middle-input' %> <br>

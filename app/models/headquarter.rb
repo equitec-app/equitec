@@ -27,4 +27,11 @@
 
 class Headquarter < ApplicationRecord
   belongs_to :customer
+
+  validates :direction, presence: {message: 'Dirección no puede estar vacío'}
+  validates :admin_email, presence: {message: 'Dirección no puede estar vacío'}
+  validates :admin_phone, presence: {message: 'Teléfono fijo del administrador no puede estar vacío'}
+  validates :admin, presence: {message: 'Nombre del administrador no puede estar vacío'}
+  validates :admin_celphone, presence: {message: 'Teléfono celular del administrador no puede estar vacío'}
+  validates :city, presence: {message: 'Ciudad no puede estar vacío'}
 end

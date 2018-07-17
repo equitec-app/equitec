@@ -165,11 +165,11 @@
       <h4 class="azul-oscuro section-title"><strong>Editar información</strong></h4>
 
       <%if @customer.errors.any?%>
-      <div class="form-error-container">
-        <%@customer.errors.each do |attribute, message|%>
-          <p><%=message%></p>
-        <%end%>
-      </div>
+        <div class="form-error-container">
+          <%@customer.errors.each do |attribute, message|%>
+            <p><%=message%></p>
+          <%end%>
+        </div>
       <%end%>
 
       <%= form_for @customer, url: customer_path(@customer), method: :put, remote: true do |f| %>
