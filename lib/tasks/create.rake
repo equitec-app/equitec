@@ -34,6 +34,15 @@ namespace :create do
     end
   end
 
+  desc "TODO"
+  task headquarters: :environment do
+    Customer.all.each do |customer|
+      5.times do |i|
+        customer.headquarters.create(city:"Bogotá", direction: Faker::Address.full_address, phone:Faker::PhoneNumber.cell_phone)
+      end
+    end
+  end
+
 end
 
 #  cost_center            :string
