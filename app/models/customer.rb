@@ -50,6 +50,7 @@ class Customer < ApplicationRecord
   enum agreement: {'Tipo 1'=>1, 'Tipo 2'=>2, 'Sin contrato'=>3}
   validates :mainteance_agent, presence: {message: "Encargado de mantenimiento no puede estar vacío" }
   validates :mainteance_phone, presence: {message: "Teléfono del encargado de mantenimiento no puede estar vacío" }
+  validates :email, presence: {message: "Correo del encargado de mantenimiento no puede estar vacío" }
   validates :username, presence: {message: "Nombre de empresa no puede estar vacío" }
   validates :username, uniqueness: {message: "Nombre de empresa no válido" }
   validates :nit, presence: {message: "Nit no puede estar vacío" }
@@ -73,8 +74,8 @@ end
 class Customer::ParameterSanitizer < Devise::ParameterSanitizer
   def initialize(*)
     super
-    permit(:sign_up, keys: [:username, :email, :password, :password_confirmation, :remember_me])
+    permit(:sign_up, keys: [])
     permit(:sign_in, keys: [:username, :email, :password, :password_confirmation, :remember_me])
-    permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :remember_me])
+    permit(:account_update, keys: [])
   end
 end
