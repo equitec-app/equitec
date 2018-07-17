@@ -186,3 +186,12 @@ select.registration-input {
   width: 150px;
   margin: 20px;
 }
+
+.form-error-container {
+  background-color: #ffc2c3;
+  color: #8a0100;
+  border: 1px solid #8a0100;
+  padding: 15px 10px 0px 10px;
+  margin: 20px;
+  border-radius: 10px;
+}

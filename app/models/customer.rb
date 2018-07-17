@@ -48,6 +48,13 @@ class Customer < ApplicationRecord
          authentication_keys: [:login]
 
   enum agreement: {'Tipo 1'=>1, 'Tipo 2'=>2, 'Sin contrato'=>3}
+  validates :mainteance_agent, presence: {message: "Encargado de mantenimiento no puede estar vacío" }
+  validates :mainteance_phone, presence: {message: "Teléfono del encargado de mantenimiento no puede estar vacío" }
+  validates :username, presence: {message: "Nombre de empresa no puede estar vacío" }
+  validates :username, uniqueness: {message: "Nombre de empresa no válido" }
+  validates :nit, presence: {message: "Nit no puede estar vacío" }
+  validates :principal_direction, presence: {message: "Dirección principal no puede estar vacío" }
+  validates :phone, presence: {message: "Teléfono principal no puede estar vacío" }
 
   def login
     @login || self.username || self.email

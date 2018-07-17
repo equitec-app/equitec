@@ -177,20 +177,32 @@
 
     <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-contact-tab">
       <h4 class="azul-oscuro section-title"><strong>Editar información</strong></h4>
+
+      <%if @customer.errors.any?%>
+      <div class="form-error-container">
+        <%@customer.errors.each do |attribute, message|%>
+          <p><%=message%></p>
+        <%end%>
+      </div>
+      <%end%>
+
       <%= form_for @customer, url: customer_path(@customer), method: :put, remote: true do |f| %>
 
           <div class="edit-customer-section">
             <h5 class="azul-oscuro">Información de la empresa</h5>
 
             <div class="field edit-group ">
-              <%= f.label :username, "Nombre de la empresa"%>
+              <%= f.label :username, "Nombre de la empresa*"%>
               <%= f.text_field :username, autofocus: true, placeholder:"Nombre de la empresa", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :nit, "Nit"%>
+              <%= f.label :nit, "Nit*"%>
               <%= f.text_field :nit, autofocus: true, placeholder:"NIT", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :phone, "Telefono principal"%>
+              <%= f.label :phone, "Telefono principal*"%>
               <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
+
+              <%= f.label :principal_direction, "Dirección principal*"%>
+              <%= f.text_field :principal_direction, autofocus: true, placeholder:"Dirección", class:'registration-input middle-input' %>
             </div>
           </div>
 
@@ -198,10 +210,13 @@
             <h5 class="azul-oscuro">Cambiar contraseña</h5>
 
             <div class="field edit-group">
-              <%= f.label :phone, "Nueva contraseña"%>
+              <%= label_tag :current_password, "Contraseña actual"%>
+              <%= password_field_tag :current_password, "", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :password, "Nueva contraseña"%>
               <%= f.password_field :password, autocomplete: "off", placeholder:"Nueva contraseña", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :phone, "Confirmar nueva contraseña"%>
+              <%= f.label :password_confirmation, "Confirmar nueva contraseña"%>
               <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmar nueva contraseña", class:'registration-input middle-input' %>
             </div>
           </div>
@@ -226,13 +241,13 @@
             <h5 class="azul-oscuro">Encargado de mantenimiento</h5>
 
             <div class="field edit-group">
-              <%= f.label :mainteance_agent, "Nombre"%>
+              <%= f.label :mainteance_agent, "Nombre*"%>
               <%= f.text_field :mainteance_agent, autofocus: true, placeholder:"Jefe de mantenimiento", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :mainteance_phone, "Teléfono"%>
+              <%= f.label :mainteance_phone, "Teléfono*"%>
               <%= f.text_field :mainteance_phone, autofocus: true, placeholder:"Teléfono jefe de mantenimiento", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :email, "Correo electrónico"%>
+              <%= f.label :email, "Correo electrónico*"%>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo jefe de mantenimiento", class:'registration-input middle-input' %>
             </div>
           </div>
