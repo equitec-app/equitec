@@ -42,6 +42,7 @@ class Customer < ApplicationRecord
   attr_writer :login
 
   has_many :agreements, dependent: :delete_all
+  has_many :headquarters, dependent: :delete_all
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

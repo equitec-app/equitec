@@ -29,7 +29,7 @@
 
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <h4 class="azul-oscuro section-title">Sedes <%=link_to "Agregar sede", customers_path, class: 'function-link-table azul-oscuro'%></h4>
+      <h4 class="azul-oscuro section-title">Sedes <%=link_to "Agregar sede", new_customer_headquarter_path(@customer), remote: true, class: 'function-link-table azul-oscuro'%></h4>
 
       <table class="table table-hover">
         <thead>
@@ -43,30 +43,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bogotá</td>
-            <td>Calle 34 34-21</td>
-            <td>12/03/18</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
-          <tr>
-            <td>Bogotá</td>
-            <td>Carrera 1a #23-532</td>
-            <td>3/06/17</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
-          <tr>
-            <td>Tunja</td>
-            <td>Circular 43 23-124</td>
-            <td>11/11/15</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
+          <%@customer.headquarters.each do |headquarter|%>
+            <tr>
+              <td><%=headquarter.city%></td>
+              <td><%=headquarter.direction%></td>
+              <td>12/03/18</td>
+              <td>Solicitar</td>
+              <td>Ver</td>
+              <td><%=link_to "Editar", edit_customer_headquarter_path(@customer.id,headquarter.id), remote: true%></td>
+            </tr>
+          <%end%>
         </tbody>
       </table>
     </div>
@@ -275,4 +261,8 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="modals">
+
 </div>

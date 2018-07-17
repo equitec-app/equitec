@@ -1,0 +1,40 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title azul-oscuro" id="exampleModalLabel">Agregar nueva sede</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%=form_for @headquarter, url: customer_headquarters_path(@customer), remote:true do |f|%>
+        <div class="modal-body">
+          <div class="modal-new-form">
+            <%= f.label :city, "Ciudad*"%>
+            <%= f.text_field :city, autofocus: true, placeholder:"Ciudad", class:'registration-input middle-input' %> <br>
+
+            <%= f.label :direction, "Dirección*"%>
+            <%= f.text_field :direction, autofocus: true, placeholder:"Dirección", class:'registration-input middle-input' %> <br>
+
+            <%= f.label :phone, "Teléfono fijo*"%>
+            <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %> <br>
+
+            <%= f.label :admin, "Administrador*"%>
+            <%= f.text_field :admin, autofocus: true, placeholder:"Administrador", class:'registration-input middle-input' %> <br>
+
+            <%= f.label :admin_phone, "Telefono celular*"%>
+            <%= f.text_field :admin_phone, autofocus: true, placeholder:"Celular", class:'registration-input middle-input' %> <br>
+
+            <%= f.label :admin_email, "Correo electrónico*"%>
+            <%= f.text_field :admin_email, autofocus: true, placeholder:"Email", class:'registration-input middle-input' %> <br>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <%= f.submit "Guardar sede", class: "sign-up-button" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

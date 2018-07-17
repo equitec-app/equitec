@@ -1,0 +1,11 @@
+<%if @headquarter.errors.any?%>
+  console.log("tiene errores");
+<%else%>
+  console.log("no tiene errores");
+  $('.modals').empty();
+  $('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
+  $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open')
+
+<%end%>
+console.log("Entro al create.js");

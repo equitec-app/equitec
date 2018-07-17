@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
 
   def show
     params[:id] ? @customer = Customer.find(params[:id]) : @customer = Customer.find(current_customer.id)
+    @headquarter = Headquarter.new
   end
 
   def create
