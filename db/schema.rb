@@ -83,8 +83,6 @@ ActiveRecord::Schema.define(version: 2018_07_17_173006) do
     t.string "admin"
     t.string "admin_phone"
     t.string "admin_email"
-    t.string "admin_celphone"
-    t.string "ica"
     t.string "city"
     t.string "code"
     t.bigint "customer_id"

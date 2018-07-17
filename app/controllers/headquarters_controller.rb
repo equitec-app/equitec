@@ -1,12 +1,26 @@
 class HeadquartersController < ApplicationController
   def new
     @customer = Customer.find(params[:customer_id])
-    @headquarter = Headquarter.new    
+    @headquarter = Headquarter.new
   end
 
   def create
     @customer = Customer.find(params[:customer_id])
     @headquarter = @customer.headquarters.create(headquarter_params)
+  end
+
+  def edit
+    @customer = Customer.find(params[:customer_id])
+    @headquarter = Headquarter.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:customer_id])
+    @headquarter = Headquarter.find(params[:id])
+
+    @headquarter.update(headquarter_params)
+
+    puts "Entró al uptade controller"
   end
 
   private
