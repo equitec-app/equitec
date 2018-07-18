@@ -1,4 +1,11 @@
 <div class="container">
+
+  <h2>Importar clientes</h2>
+  <%= form_tag import_customers_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+
   <h3 class="azul-oscuro section-title">Clientes existentes: </h3>
 
   <table class="table table-striped">

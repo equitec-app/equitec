@@ -37,6 +37,7 @@
 #
 
 class Customer < ApplicationRecord
+  require 'roo'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_writer :login
@@ -57,6 +58,20 @@ class Customer < ApplicationRecord
   validates :nit, presence: {message: "Nit no puede estar vacío" }
   validates :principal_direction, presence: {message: "Dirección principal no puede estar vacío" }
   validates :phone, presence: {message: "Teléfono principal no puede estar vacío" }
+
+  def self.import(file)
+    spreadsheet = Roo::Spreadsheet.open(file.path)
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      puts "----------------------------"
+      puts row
+
+      # product = find_by(id: row["id"]) || new
+      # product.attributes = row.to_hash
+      # product.save!
+    end
+  end
 
   def login
     @login || self.username || self.email

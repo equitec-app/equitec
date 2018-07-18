@@ -54,6 +54,12 @@ class CustomersController < ApplicationController
     puts "Entró al metodo update"
   end
 
+  def import
+    Customer.import(params[:file])
+
+    redirect_to root_url, notice: 'Products imported.'
+  end
+
   private
 
   def customer_params
