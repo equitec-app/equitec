@@ -9,6 +9,20 @@ class PowerPlantsController < ApplicationController
     @power_plant = @customer.power_plants.create(power_plant_params)
   end
 
+  def edit
+    @customer = Customer.find(params[:customer_id])
+    @power_plant = PowerPlant.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:customer_id])
+    @power_plant = PowerPlant.find(params[:id])
+
+    @power_plant.update(power_plant_params)
+
+    puts "Entró al uptade controller"
+  end
+
   private
 
   def power_plant_params

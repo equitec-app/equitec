@@ -67,6 +67,7 @@
             <th scope="col"><span class="azul-oscuro">Última visita</span></th>
             <th scope="col"><span class="azul-oscuro">Marca</span></th>
             <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+            <th scope="col"><span class="azul-oscuro">Editar</span></th>
             <th scope="col"><span class="azul-oscuro">Detalles</span></th>
           </tr>
         </thead>
@@ -78,6 +79,7 @@
               <td>12/03/18</td>
               <td><%=power_plant.trademark%></td>
               <td><%=power_plant.model%></td>
+              <td><%=link_to "Editar", edit_customer_power_plant_path(@customer.id, power_plant.id), remote:true%></td>
               <td>Ver</td>
             </tr>
           <%end%>
