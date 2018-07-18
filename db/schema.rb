@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_173006) do
+ActiveRecord::Schema.define(version: 2018_07_18_165925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,29 @@ ActiveRecord::Schema.define(version: 2018_07_17_173006) do
     t.index ["customer_id"], name: "index_headquarters_on_customer_id"
   end
 
+  create_table "power_plants", force: :cascade do |t|
+    t.string "trademark"
+    t.string "model"
+    t.string "capacity"
+    t.string "serial"
+    t.string "engine_trademark"
+    t.string "generator_trademark"
+    t.string "engine_model"
+    t.string "generator_model"
+    t.string "engine_serial"
+    t.string "generator_serial"
+    t.string "plate"
+    t.float "fuel_tank_capacity"
+    t.bigint "headquarter_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_power_plants_on_customer_id"
+    t.index ["headquarter_id"], name: "index_power_plants_on_headquarter_id"
+  end
+
   add_foreign_key "agreements", "customers"
   add_foreign_key "headquarters", "customers"
+  add_foreign_key "power_plants", "customers"
+  add_foreign_key "power_plants", "headquarters"
 end

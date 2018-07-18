@@ -1,0 +1,71 @@
+<div class="modal fade" id="newPowerPlantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title azul-oscuro" id="exampleModalLabel">Agregar nueva planta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%=form_for @power_plant, url: customer_power_plants_path(@customer), remote:true do |f|%>
+        <div class="modal-body">
+
+          <%if @power_plant.errors.any?%>
+            <div class="form-error-container">
+              <%@power_plant.errors.each do |attribute, message|%>
+                <p><%=message%></p>
+              <%end%>
+            </div>
+          <%end%>
+
+          <div class="modal-new-form">
+            <%=f.label 'Sede'%>
+            <%= f.select( :headquarter_id, headquarters_array(@customer), {include_blank: "Seleccione la sedes"}, {class:'registration-input middle-input'}) %> <br>
+
+            <%= f.label :plate, "Placa"%>
+            <%= f.text_field :plate, autofocus: true, placeholder:"Placa del la planta", class:'registration-input small-input' %> <br>
+
+            <%= f.label :trademark, "Marca*"%>
+            <%= f.text_field :trademark, autofocus: true, placeholder:"Marca", class:'registration-input small-input' %> <br>
+
+            <%= f.label :model, "Modelo*"%>
+            <%= f.text_field :model, autofocus: true, placeholder:"Modelo", class:'registration-input small-input' %> <br>
+
+            <%= f.label :seria, "Serial*"%>
+            <%= f.text_field :serial, autofocus: true, placeholder:"Serial", class:'registration-input small-input' %> <br>
+
+            <%= f.label :capacity, "Potencia (KVA)*"%>
+            <%= f.text_field :capacity, autofocus: true, placeholder:"Potencia", class:'registration-input small-input' %> <br>
+
+            <%= f.label :fuel_tank_capacity, "Volumen tanque (L)*"%>
+            <%= f.number_field :fuel_tank_capacity, autofocus: true, placeholder:"Capacidad del tanque de combustible", class:'registration-input small-input' %> <br>
+
+            <%= f.label :engine_trademark, "Marca motor*"%>
+            <%= f.text_field :engine_trademark, autofocus: true, placeholder:"Marca del motor", class:'registration-input small-input' %> <br>
+
+            <%= f.label :engine_model, "Modelo del motor*"%>
+            <%= f.text_field :engine_model, autofocus: true, placeholder:"Modelo del motor", class:'registration-input small-input' %> <br>
+
+            <%= f.label :engine_serial, "Serial motor*"%>
+            <%= f.text_field :engine_serial, autofocus: true, placeholder:"Serial", class:'registration-input small-input' %> <br>
+
+            <%= f.label :generator_trademark, "Marca generador*"%>
+            <%= f.text_field :generator_trademark, autofocus: true, placeholder:"Marca del generador", class:'registration-input small-input' %> <br>
+
+            <%= f.label :generator_model, "Modelo del generador*"%>
+            <%= f.text_field :generator_model, autofocus: true, placeholder:"Modelo del generador", class:'registration-input small-input' %> <br>
+
+            <%= f.label :generator_serial, "Serial generador*"%>
+            <%= f.text_field :generator_serial, autofocus: true, placeholder:"Serial del generador", class:'registration-input small-input' %> <br>
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <%= f.submit "Guardar sede", class: "sign-up-button" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

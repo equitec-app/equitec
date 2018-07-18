@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
     resources :agreements
     resources :headquarters
+    resources :power_plants
+
   end
 
   devise_for :employees

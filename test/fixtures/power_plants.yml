@@ -1,0 +1,62 @@
+# == Schema Information
+#
+# Table name: power_plants
+#
+#  id                  :bigint(8)        not null, primary key
+#  capacity            :string
+#  engine_model        :string
+#  engine_serial       :string
+#  engine_trademark    :string
+#  fuel_tank_capacity  :float
+#  generator_model     :string
+#  generator_serial    :string
+#  generator_trademark :string
+#  model               :string
+#  plate               :string
+#  serial              :string
+#  trademark           :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  customer_id         :bigint(8)
+#  headquarter_id      :bigint(8)
+#
+# Indexes
+#
+#  index_power_plants_on_customer_id     (customer_id)
+#  index_power_plants_on_headquarter_id  (headquarter_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (customer_id => customers.id)
+#  fk_rails_...  (headquarter_id => headquarters.id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trademark: MyString
+  model: MyString
+  capacity: MyString
+  serial: MyString
+  engine_trademark: MyString
+  generator_trademark: MyString
+  engine_model: MyString
+  generator_model: MyString
+  engine_serial: MyString
+  generator_serial: MyString
+  plate: MyString
+  fuel_tank_capacity: 1.5
+
+two:
+  trademark: MyString
+  model: MyString
+  capacity: MyString
+  serial: MyString
+  engine_trademark: MyString
+  generator_trademark: MyString
+  engine_model: MyString
+  generator_model: MyString
+  engine_serial: MyString
+  generator_serial: MyString
+  plate: MyString
+  fuel_tank_capacity: 1.5
