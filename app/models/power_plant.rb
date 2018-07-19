@@ -34,4 +34,9 @@
 class PowerPlant < ApplicationRecord
   belongs_to :customer
   belongs_to :headquarter
+
+  validates :headquarter_id, presence: {message: "Sede no puede estar vacío"}
+  validates :trademark, presence: {message: "Marca no puede estar vacío"}
+  validates :model, presence: {message: "Modelo no puede estar vacío"}
+  validates :capacity, presence: {message: "Potencia no puede estar vacío"}
 end

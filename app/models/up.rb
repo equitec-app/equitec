@@ -30,4 +30,9 @@ class Up < ApplicationRecord
   belongs_to :headquarter
 
   enum type_of_batteries: [ '5 aperios', ' 12 amperios', '15 amperios']
+
+  validates :headquarter_id, presence: {message: "Sede no puede estar vacío"}
+  validates :trademark, presence: {message: "Marca no puede estar vacío"}
+  validates :model, presence: {message: "Modelo no puede estar vacío"}
+  validates :power, presence: {message: "Potencia no puede estar vacío"}
 end
