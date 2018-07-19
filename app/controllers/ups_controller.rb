@@ -9,6 +9,20 @@ class UpsController < ApplicationController
     @ups = @customer.ups.create(ups_params)
   end
 
+  def edit
+    @customer = Customer.find(params[:customer_id])
+    @ups = Up.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:customer_id])
+    @ups = Up.find(params[:id])
+
+    @ups.update(ups_params)
+
+    puts "Entró al uptade controller"
+  end
+
   private
 
   def ups_params

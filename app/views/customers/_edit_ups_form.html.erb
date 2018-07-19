@@ -1,0 +1,52 @@
+<div class="modal fade" id="editUpsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title azul-oscuro" id="exampleModalLabel">Agregar nueva UPS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%=form_for @ups, url: customer_up_path(@customer.id, @ups.id), remote:true do |f|%>
+        <div class="modal-body">
+
+          <%if @ups.errors.any?%>
+            <div class="form-error-container">
+              <%@ups.errors.each do |attribute, message|%>
+                <p><%=message%></p>
+              <%end%>
+            </div>
+          <%end%>
+
+          <div class="modal-new-form">
+            <%=f.label 'Sede'%>
+            <%= f.select( :headquarter_id, headquarters_array(@customer), {include_blank: "Seleccione la sedes"}, {class:'registration-input middle-input'}) %> <br>
+
+            <%= f.label :trademark, "Marca*"%>
+            <%= f.text_field :trademark, autofocus: true, placeholder:"Marca", class:'registration-input small-input' %> <br>
+
+            <%= f.label :model, "Modelo*"%>
+            <%= f.text_field :model, autofocus: true, placeholder:"Modelo", class:'registration-input small-input' %> <br>
+
+            <%= f.label :serial, "Serial*"%>
+            <%= f.text_field :serial, autofocus: true, placeholder:"Serial", class:'registration-input small-input' %> <br>
+
+            <%= f.label :power, "Potencia (KVA)*"%>
+            <%= f.number_field :power, autofocus: true, placeholder:"Potencia", class:'registration-input small-input' %> <br>
+
+            <%= f.label :number_of_batteries, "Número de baterías*"%>
+            <%= f.number_field :number_of_batteries, autofocus: true, placeholder:"Número de baterías", class:'registration-input small-input' %> <br>
+
+            <%=f.label 'Tipo de batería'%>
+            <%= f.select( :type_of_batteries, Up.type_of_batteries.keys.to_a, {include_blank: "Seleccione"}, {class:'registration-input small-input'}) %> <br>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <%= f.submit "Guardar sede", class: "sign-up-button" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

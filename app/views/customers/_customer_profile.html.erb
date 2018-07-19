@@ -94,6 +94,7 @@
             <th scope="col"><span class="azul-oscuro">Última visita</span></th>
             <th scope="col"><span class="azul-oscuro">Marca</span></th>
             <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+            <th scope="col"><span class="azul-oscuro">Editar</span></th>
             <th scope="col"><span class="azul-oscuro">Detalles</span></th>
           </tr>
         </thead>
@@ -105,6 +106,7 @@
               <td>12/03/18</td>
               <td><%=ups.trademark%></td>
               <td><%=ups.model%></td>
+              <td><%=link_to 'Editar', edit_customer_up_path(@customer.id,ups.id), remote: true%></td>
               <td>Ver</td>
             </tr>
           <%end%>
