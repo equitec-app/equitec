@@ -6,6 +6,7 @@ class CreateUps < ActiveRecord::Migration[5.2]
       t.string :serial
       t.float :power
       t.integer :number_of_batteries
+      t.integer :type_of_batteries
       t.references :headquarter, foreign_key: true, index:true
       t.references :customer, foreign_key: true, index:true
 

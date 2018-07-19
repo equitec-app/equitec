@@ -8,6 +8,7 @@
 #  power               :float
 #  serial              :string
 #  trademark           :string
+#  type_of_batteries   :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  customer_id         :bigint(8)
@@ -27,4 +28,6 @@
 class Up < ApplicationRecord
   belongs_to :customer
   belongs_to :headquarter
+
+  enum type_of_batteries: [ '5 aperios', ' 12 amperios', '15 amperios']
 end

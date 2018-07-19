@@ -8,6 +8,7 @@
 #  power               :float
 #  serial              :string
 #  trademark           :string
+#  type_of_batteries   :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  customer_id         :bigint(8)

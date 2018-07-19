@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_222130) do
     t.string "serial"
     t.float "power"
     t.integer "number_of_batteries"
+    t.integer "type_of_batteries"
     t.bigint "headquarter_id"
     t.bigint "customer_id"
     t.datetime "created_at", null: false

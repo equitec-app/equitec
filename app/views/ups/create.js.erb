@@ -1,0 +1,18 @@
+<%if @ups.errors.any?%>
+  console.log("tiene errores");
+  $('.modals').html("<%= escape_javascript render(:partial => 'customers/new_ups_form') %>");
+  $('#newUpsModal').modal('show')
+<%else%>
+  console.log("no tiene errores");
+  $('.modals').empty();
+  $('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
+  $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open')
+  $('#nav-tab a:first-child').removeClass( "active" );
+  $('#nav-tab a:nth-child(2)').addClass( "active" );
+
+  $('#nav-tabContent div:first-child').removeClass( "active show" );
+  $('#nav-tabContent div:nth-child(2)').addClass( "active show" );
+
+<%end%>
+console.log("Entro al create.js");
