@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :customers
   resources :customers, except: :create do
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     resources :agreements
     resources :headquarters
     resources :power_plants
-
+    resources :ups
   end
 
   devise_for :employees

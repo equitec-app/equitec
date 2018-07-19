@@ -45,6 +45,7 @@ class Customer < ApplicationRecord
   has_many :agreements, dependent: :delete_all
   has_many :headquarters, dependent: :delete_all
   has_many :power_plants, dependent: :delete_all
+  has_many :ups, dependent: :delete_all
 
 
   devise :database_authenticatable, :registerable,

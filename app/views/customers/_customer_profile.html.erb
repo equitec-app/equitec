@@ -85,7 +85,7 @@
           <%end%>
         </tbody>
       </table>
-      <h4 class="azul-oscuro section-title">UPS</h4>
+      <h4 class="azul-oscuro section-title">UPS <%=link_to "Agregar UPS", new_customer_up_path(@customer.id), remote: true, class: 'function-link-table azul-oscuro'%></h4>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -98,30 +98,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bogotá</td>
-            <td>Calle 34 34-21</td>
-            <td>12/03/18</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
-          <tr>
-            <td>Bogotá</td>
-            <td>Carrera 1a #23-532</td>
-            <td>3/06/17</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
-          <tr>
-            <td>Tunja</td>
-            <td>Circular 43 23-124</td>
-            <td>11/11/15</td>
-            <td>Solicitar</td>
-            <td>Ver</td>
-            <td>Editar</td>
-          </tr>
+          <%@customer.ups.each do |ups|%>
+            <tr>
+              <td><%=ups.headquarter.city%></td>
+              <td><%=ups.headquarter.direction%></td>
+              <td>12/03/18</td>
+              <td><%=ups.trademark%></td>
+              <td><%=ups.model%></td>
+              <td>Ver</td>
+            </tr>
+          <%end%>
         </tbody>
       </table>
     </div>

@@ -26,6 +26,7 @@
 class Headquarter < ApplicationRecord
   belongs_to :customer
   has_many :power_plants, dependent: :delete_all
+  has_many :ups, dependent: :delete_all
 
   validates :direction, presence: {message: 'Dirección no puede estar vacío'}
   validates :phone, presence: {message: 'Teléfono fijo de la sede no puede estar vacío'}
