@@ -13,21 +13,305 @@
       <tr>
         <th scope="col"><span class="azul-oscuro">Nombre</span></th>
         <th scope="col"><span class="azul-oscuro">N sedes</span></th>
-        <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+        <th scope="col"><span class="azul-oscuro">N plantas</span></th>
+        <th scope="col"><span class="azul-oscuro">N UPSs</span></th>
         <th scope="col"><span class="azul-oscuro">Telefono</span></th>
         <th scope="col"><span class="azul-oscuro">Correo</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
       </tr>
     </thead>
     <tbody>
       <%@customers.each do |customer|%>
         <tr>
           <th scope="row"><%=customer.username%></th>
-          <td><%=customer.id%></td>
-          <td><%=customer.id%></td>
+          <td><%=customer.headquarters.size%></td>
+          <td><%=customer.power_plants.size%></td>
+          <td><%=customer.ups.size%></td>
           <td><%=customer.phone%></td>
           <td><%=customer.email%></td>
+          <td><%=link_to "ver", customer_path(customer)%></td>
         </tr>
       <%end%>
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Clente</span></th>
+        <th scope="col"><span class="azul-oscuro">Sede</span></th>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Potencia</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@customers.each do |customer|%>
+
+
+        <tr>
+          <th rowspan="<%=number_of_rowspan_power_plant(customer)%>"><%=customer.username%></th>
+
+          <%customer.headquarters.each do |headquarter|%>
+            <td rowspan="<%=headquarter.power_plants.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+            <tr>
+              <%headquarter.power_plants.each do |power_plant|%>
+                <tr>
+                  <td><%=power_plant.trademark%></td>
+                  <td><%=power_plant.model%></td>
+                  <td><%=power_plant.capacity%></td>
+                  <td><%=link_to "Ver", customer_power_plant_path(customer.id, power_plant.id) %></td>
+                </tr>
+              <%end%>
+            </tr>
+          <%end%>
+        </tr>
+      <%end%>
+
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">UPSs por clientes: </h3>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Clente</span></th>
+        <th scope="col"><span class="azul-oscuro">Sede</span></th>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Potencia</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@customers.each do |customer|%>
+
+
+        <tr>
+          <th rowspan="<%=number_of_rowspan_ups(customer)%>"><%=customer.username%></th>
+
+          <%customer.headquarters.each do |headquarter|%>
+            <td rowspan="<%=headquarter.ups.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+            <tr>
+              <%headquarter.ups.each do |ups|%>
+                <tr>
+                  <td><%=ups.trademark%></td>
+                  <td><%=ups.model%></td>
+                  <td><%=ups.power%></td>
+                  <td><%=link_to "Ver", customer_up_path(customer.id, ups.id) %></td>
+                </tr>
+              <%end%>
+            </tr>
+          <%end%>
+        </tr>
+      <%end%>
+
+    </tbody>
+  </table>
+
+  <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Clente</span></th>
+        <th scope="col"><span class="azul-oscuro">Sede</span></th>
+        <th scope="col"><span class="azul-oscuro">Marca</span></th>
+        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th rowspan="8">Bancolombia 8</th>
+
+        <td rowspan="4">Medellín 4</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+        <td rowspan="4">Medellín 4</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+      </tr>
+      <tr>
+        <th rowspan="5">Bancolombia 5</th>
+
+        <td rowspan="5">Medellín 5</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+      </tr>
+
+      <tr>
+        <th rowspan="3">Bancolombia 3</th>
+
+        <td rowspan="3">Medellín 3</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+      </tr>
+      <tr>
+        <th rowspan="8">Bancolombia 8</th>
+
+        <td rowspan="4">Medellín 4</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+        <td rowspan="4">Medellín 4</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+      </tr>
+      <tr>
+        <th rowspan="18">Bancolombia 18</th>
+
+        <td rowspan="3">Medellín 3</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+        <td rowspan="4">Medellín 4</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+        <td rowspan="5">Medellín 5</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+        <td rowspan="6">Medellín 6</td>
+        <tr>
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+
+          <tr>
+            <td>Caterpilla</td>
+            <td>js300</td>
+            <td>dddd></td>
+          </tr>
+        </tr>
+
+      </tr>
+
+
+
+
+
+
     </tbody>
   </table>
 

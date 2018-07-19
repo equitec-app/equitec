@@ -19,7 +19,7 @@
           <%end%>
 
           <div class="modal-new-form">
-            <%=f.label 'Sede'%>
+            <%=f.label 'Sede*'%>
             <%= f.select( :headquarter_id, headquarters_array(@customer), {include_blank: "Seleccione la sedes"}, {class:'registration-input middle-input'}) %> <br>
 
             <%= f.label :trademark, "Marca*"%>
@@ -28,13 +28,13 @@
             <%= f.label :model, "Modelo*"%>
             <%= f.text_field :model, autofocus: true, placeholder:"Modelo", class:'registration-input small-input' %> <br>
 
-            <%= f.label :serial, "Serial*"%>
+            <%= f.label :serial, "Serial"%>
             <%= f.text_field :serial, autofocus: true, placeholder:"Serial", class:'registration-input small-input' %> <br>
 
             <%= f.label :power, "Potencia (KVA)*"%>
             <%= f.number_field :power, autofocus: true, placeholder:"Potencia", class:'registration-input small-input' %> <br>
 
-            <%= f.label :number_of_batteries, "Número de baterías*"%>
+            <%= f.label :number_of_batteries, "Número de baterías"%>
             <%= f.number_field :number_of_batteries, autofocus: true, placeholder:"Número de baterías", class:'registration-input small-input' %> <br>
 
             <%=f.label 'Tipo de batería'%>
