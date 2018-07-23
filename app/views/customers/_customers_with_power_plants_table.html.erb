@@ -1,0 +1,42 @@
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col"><span class="azul-oscuro">Clente</span></th>
+      <th scope="col"><span class="azul-oscuro">Sede</span></th>
+      <th scope="col"><span class="azul-oscuro">Marca</span></th>
+      <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+      <th scope="col"><span class="azul-oscuro">Potencia</span></th>
+      <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%customers_with_power_plants = get_customers_with_power_plants(@power_plants)%>
+
+    <%customers_with_power_plants.each do |customer|%>
+
+
+      <tr>
+        <th rowspan="<%=number_of_rowspan_power_plant(customer, @power_plants)%>"><%=customer.username%></th>
+
+        <%customer.headquarters.each do |headquarter|%>
+          <%if get_headquarters_with_power_plants(@power_plants).include?(headquarter)%>
+            <td rowspan="<%=headquarter.power_plants.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+            <tr>
+              <%headquarter.power_plants.each do |power_plant|%>
+                <%if @power_plants.include?(power_plant)%>
+                  <tr>
+                    <td><%=power_plant.trademark%></td>
+                    <td><%=power_plant.model%></td>
+                    <td><%=power_plant.capacity%></td>
+                    <td><%=link_to "Ver", customer_power_plant_path(customer.id, power_plant.id) %></td>
+                  </tr>
+                <%end%>
+              <%end%>
+            </tr>
+          <%end%>
+        <%end%>
+      </tr>
+    <%end%>
+
+  </tbody>
+</table>

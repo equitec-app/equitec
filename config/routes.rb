@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  post 'searchs/customers', to: 'searchs#customers', as: 'search_customers'
+  post 'searchs/power_plants', to: 'searchs#power_plants', as: 'search_power_plants'
+  post 'searchs/ups', to: 'searchs#ups', as: 'search_ups'
+
   devise_for :customers
   resources :customers, except: :create do
     collection do
@@ -16,7 +20,6 @@ Rails.application.routes.draw do
   devise_for :employees
   resources :employees, except: :create
 
-  # Name it however you want
   post 'create_employees' => 'employees#create', as: :create_employees
   post 'create_customers' => 'customers#create', as: :create_customers
 

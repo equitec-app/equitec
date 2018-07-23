@@ -139,6 +139,10 @@ input:focus, textarea:focus, select:focus {
   margin: 10px;
 }
 
+.search-form-container {
+  margin: 20px 0px;
+}
+
 .registration-input  {
   padding: 5px 10px;
   margin: 5px 10px;
@@ -167,6 +171,15 @@ select.registration-input {
   padding: 10px;
   margin: 30px;
   border-radius: 10px;
+}
+
+.search-button {
+  background-color: #888888;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0px 20px;
 }
 
 .small-input {

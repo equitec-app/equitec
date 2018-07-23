@@ -7,74 +7,30 @@
   <% end %>
 
   <h3 class="azul-oscuro section-title">Clientes existentes: </h3>
+  <%= form_tag(search_customers_path, remote: true) do %>
+    <div class="search-form-container">
+      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Nombre de la empresa' )%>
+      <%= submit_tag 'Buscar', class: 'search-button'  %>
+    </div>
+  <% end %>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col"><span class="azul-oscuro">Nombre</span></th>
-        <th scope="col"><span class="azul-oscuro">N sedes</span></th>
-        <th scope="col"><span class="azul-oscuro">N plantas</span></th>
-        <th scope="col"><span class="azul-oscuro">N UPSs</span></th>
-        <th scope="col"><span class="azul-oscuro">Telefono</span></th>
-        <th scope="col"><span class="azul-oscuro">Correo</span></th>
-        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%@customers.each do |customer|%>
-        <tr>
-          <th scope="row"><%=customer.username%></th>
-          <td><%=customer.headquarters.size%></td>
-          <td><%=customer.power_plants.size%></td>
-          <td><%=customer.ups.size%></td>
-          <td><%=customer.phone%></td>
-          <td><%=customer.email%></td>
-          <td><%=link_to "ver", customer_path(customer)%></td>
-        </tr>
-      <%end%>
-    </tbody>
-  </table>
+  <div class="customer_table_container">
+    <%=render 'customers/customers_table'%>
+  </div>
 
   <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
 
-  <table class="table ">
-    <thead>
-      <tr>
-        <th scope="col"><span class="azul-oscuro">Clente</span></th>
-        <th scope="col"><span class="azul-oscuro">Sede</span></th>
-        <th scope="col"><span class="azul-oscuro">Marca</span></th>
-        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
-        <th scope="col"><span class="azul-oscuro">Potencia</span></th>
-        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%@customers_with_power_plants.each do |customer|%>
+  <%= form_tag(search_power_plants_path, remote: true) do %>
+    <div class="search-form-container">
+      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
+      <%= submit_tag 'Buscar', class: 'search-button'  %>
+    </div>
+  <% end %>
 
+  <div class="customers_with_power_plants_table_container">
+    <%=render 'customers/customers_with_power_plants_table'%>
+  </div>
 
-        <tr>
-          <th rowspan="<%=number_of_rowspan_power_plant(customer)%>"><%=customer.username%></th>
-
-          <%customer.headquarters.each do |headquarter|%>
-            <%if headquarter.power_plants.size > 0%>
-              <td rowspan="<%=headquarter.power_plants.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
-              <tr>
-                <%headquarter.power_plants.each do |power_plant|%>
-                  <tr>
-                    <td><%=power_plant.trademark%></td>
-                    <td><%=power_plant.model%></td>
-                    <td><%=power_plant.capacity%></td>
-                    <td><%=link_to "Ver", customer_power_plant_path(customer.id, power_plant.id) %></td>
-                  </tr>
-                <%end%>
-              </tr>
-            <%end%>
-          <%end%>
-        </tr>
-      <%end%>
-
-    </tbody>
-  </table>
 
   <h3 class="azul-oscuro section-title">UPSs por clientes: </h3>
 
@@ -310,12 +266,6 @@
         </tr>
 
       </tr>
-
-
-
-
-
-
     </tbody>
   </table> -->
 
