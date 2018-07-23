@@ -9,6 +9,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def customers_with_ups()
+    customers = []
+    Customer.all.each do |customer|
+      if customer.ups.size > 0 then customers.push(customer) end
+    end
+    return customers
+  end
+
+  def customers_with_power_plants()
+    customers = []
+    Customer.all.each do |customer|
+      if customer.power_plants.size > 0 then customers.push(customer) end
+    end
+    return customers
+  end
+
   protected
 
   def devise_parameter_sanitizer

@@ -3,6 +3,9 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
+    @customers_with_power_plants = customers_with_power_plants()
+    @customers_with_ups = customers_with_ups()
+
   end
   def new
     @customer = Customer.new

@@ -14,10 +14,20 @@ module ApplicationHelper
   end
 
   def number_of_rowspan_power_plant(customer)
-    customer.power_plants.size + (customer.headquarters.length * 2)
+    headquarters = []
+    customer.headquarters.each do |headquarter|
+      if headquarter.power_plants.size > 0 then headquarters.push(headquarter) end
+    end
+
+    customer.power_plants.size + (headquarters.length * 2)
   end
 
   def number_of_rowspan_ups(customer)
-    customer.ups.size + (customer.headquarters.length * 2)
+    headquarters = []
+    customer.headquarters.each do |headquarter|
+      if headquarter.ups.size > 0 then headquarters.push(headquarter) end
+    end
+
+    customer.ups.size + (headquarters.length * 2)
   end
 end
