@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   def index
     @customers = Customer.all
     @power_plants = PowerPlant.all
-    @customers_with_ups = customers_with_ups()
+    @upss = Up.all
 
   end
   def new

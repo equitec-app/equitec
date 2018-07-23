@@ -1,0 +1,43 @@
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col"><span class="azul-oscuro">Cliente</span></th>
+      <th scope="col"><span class="azul-oscuro">Sede</span></th>
+      <th scope="col"><span class="azul-oscuro">Marca</span></th>
+      <th scope="col"><span class="azul-oscuro">Modelo</span></th>
+      <th scope="col"><span class="azul-oscuro">Potencia</span></th>
+      <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%customers_with_ups = get_customers_with_ups(@upss)%>
+
+    <%customers_with_ups.each do |customer|%>
+
+
+      <tr>
+        <th rowspan="<%=number_of_rowspan_ups(customer, @upss)%>"><%=customer.username%></th>
+
+        <%customer.headquarters.each do |headquarter|%>
+        <%if get_headquarters_with_upss(@upss).include?(headquarter)%>
+          <td rowspan="<%=headquarter.ups.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+          <tr>
+            <%headquarter.ups.each do |ups|%>
+              <%if @upss.include?(ups)%>
+                <tr>
+                  <td><%=ups.trademark%></td>
+                  <td><%=ups.model%></td>
+                  <td><%=ups.power%></td>
+                  <td><%=link_to "Ver", customer_up_path(customer.id, ups.id) %></td>
+                </tr>
+              <%end%>
+            <%end%>
+          </tr>
+        <%end%>
+
+        <%end%>
+      </tr>
+    <%end%>
+
+  </tbody>
+</table>

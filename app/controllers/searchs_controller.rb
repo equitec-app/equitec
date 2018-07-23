@@ -28,5 +28,26 @@ class SearchsController < ApplicationController
   end
 
   def ups
+    @customers = Customer.all.where("username ILIKE ? ", "%#{params[:concept]}%")
+    @headquarters = Headquarter.all.where("city ILIKE ? OR direction ILIKE ? ", "%#{params[:concept]}%", "%#{params[:concept]}%")
+    @searched_upss = Up.all.where("trademark ILIKE ? OR model ILIKE ? ", "%#{params[:concept]}%", "%#{params[:concept]}%")
+
+
+    @upss = []
+
+    puts "CLIENTES"
+    @customers.each do |customer|
+      if customer.ups.size > 0 then @upss = @upss + customer.ups end
+    end
+    puts "SEDES"
+    @headquarters.each do |headquarter|
+      if headquarter.ups.size > 0 then @upss = @upss + headquarter.ups end
+    end
+    puts "PLANTAS"
+    puts @searched_upss
+
+    puts "TODAS LAS PLANTAS"
+    @upss = @searched_upss + @upss
+    puts @upss
   end
 end

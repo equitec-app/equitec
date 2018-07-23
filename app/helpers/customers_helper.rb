@@ -7,12 +7,28 @@ module CustomersHelper
     return customers_with_power_plants
   end
 
+  def get_customers_with_ups(upss)
+    customers_with_ups = []
+    upss.each do |ups|
+      if !customers_with_ups.include?(ups.customer) then customers_with_ups.push(ups.customer) end
+    end
+    return customers_with_ups
+  end
+
   def get_headquarters_with_power_plants(power_plants)
     headquarters_with_power_plants = []
     power_plants.each do |power_plant|
       if !headquarters_with_power_plants.include?(power_plant.headquarter) then headquarters_with_power_plants.push(power_plant.headquarter) end
     end
     return headquarters_with_power_plants
+  end
+
+  def get_headquarters_with_upss(upss)
+    headquarters_with_upss = []
+    upss.each do |ups|
+      if !headquarters_with_upss.include?(ups.headquarter) then headquarters_with_upss.push(ups.headquarter) end
+    end
+    return headquarters_with_upss
   end
 
   def number_of_rowspan_power_plant(customer, power_plants)
@@ -31,12 +47,19 @@ module CustomersHelper
     count + (count2 * 2)
   end
 
-  def number_of_rowspan_ups(customer)
-    headquarters = []
-    customer.headquarters.each do |headquarter|
-      if headquarter.ups.size > 0 then headquarters.push(headquarter) end
+  def number_of_rowspan_ups(customer, upss)
+    headquarters = get_headquarters_with_upss(upss)
+
+    count = 0
+    customer.ups.each do |ups|
+      if upss.include?(ups) then count = count++1 end
     end
 
-    customer.ups.size + (headquarters.length * 2)
+    count2 = 0
+    customer.headquarters.each do |customer_headquarter|
+      if headquarters.include?(customer_headquarter) then count2 = count2++1 end
+    end
+
+    count + (count2 * 2)
   end
 end

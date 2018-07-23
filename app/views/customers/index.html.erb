@@ -20,7 +20,7 @@
 
   <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
 
-  <%= form_tag(search_power_plants_path, remote: true) do %>
+  <%= form_tag(search_ups_path, remote: true) do %>
     <div class="search-form-container">
       <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
       <%= submit_tag 'Buscar', class: 'search-button'  %>
@@ -34,44 +34,18 @@
 
   <h3 class="azul-oscuro section-title">UPSs por clientes: </h3>
 
-  <table class="table ">
-    <thead>
-      <tr>
-        <th scope="col"><span class="azul-oscuro">Clente</span></th>
-        <th scope="col"><span class="azul-oscuro">Sede</span></th>
-        <th scope="col"><span class="azul-oscuro">Marca</span></th>
-        <th scope="col"><span class="azul-oscuro">Modelo</span></th>
-        <th scope="col"><span class="azul-oscuro">Potencia</span></th>
-        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%@customers_with_ups.each do |customer|%>
+  <%= form_tag(search_ups_path, remote: true) do %>
+    <div class="search-form-container">
+      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
+      <%= submit_tag 'Buscar', class: 'search-button'  %>
+    </div>
+  <% end %>
+
+  <div class="customers_with_ups_table_container">
+    <%=render 'customers/customers_with_ups_table'%>
+  </div>
 
 
-        <tr>
-          <th rowspan="<%=number_of_rowspan_ups(customer)%>"><%=customer.username%></th>
-
-          <%customer.headquarters.each do |headquarter|%>
-            <%if headquarter.ups.size > 0%>
-              <td rowspan="<%=headquarter.ups.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
-              <tr>
-                <%headquarter.ups.each do |ups|%>
-                <tr>
-                  <td><%=ups.trademark%></td>
-                  <td><%=ups.model%></td>
-                  <td><%=ups.power%></td>
-                  <td><%=link_to "Ver", customer_up_path(customer.id, ups.id) %></td>
-                </tr>
-                <%end%>
-              </tr>
-            <%end%>
-          <%end%>
-        </tr>
-      <%end%>
-
-    </tbody>
-  </table>
 
   <!-- <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
 
