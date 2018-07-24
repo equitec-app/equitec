@@ -64,15 +64,36 @@ class Customer < ApplicationRecord
 
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
-    header = spreadsheet.row(1)
-    (2..spreadsheet.last_row).each do |i|
+
+    header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
+    puts header
+
+    puts "--------------------- CLIENTES ---------------------"
+
+    (2..spreadsheet.sheet('Clientes').last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       puts "----------------------------"
       puts row
 
-      # product = find_by(id: row["id"]) || new
-      # product.attributes = row.to_hash
-      # product.save!
+      customer = find_by(username: row["username"]) || new
+      row[:password]=row["nit"]
+      row[:password_confirmation]=row["nit"]
+      customer.attributes = row
+      customer.save!
+    end
+
+    puts "--------------------- SEDES ---------------------"
+    header = ['username', 'city', 'direction', 'phone', 'code', 'admin', 'admin_phone', 'admin_email']
+
+    (2..spreadsheet.sheet('Sedes').last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      puts "----------------------------"
+      puts row
+
+      # customer = find_by(username: row["username"]) || new
+      # puts row.to_hash
+      # customer.attributes = row.to_hash
+      # customer.save!
     end
   end
 

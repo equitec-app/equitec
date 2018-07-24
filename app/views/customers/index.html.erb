@@ -1,49 +1,73 @@
 <div class="container">
 
-  <h2>Importar clientes</h2>
-  <%= form_tag import_customers_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
-  <% end %>
 
-  <h3 class="azul-oscuro section-title">Clientes existentes: </h3>
-  <%= form_tag(search_customers_path, remote: true) do %>
-    <div class="search-form-container">
-      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Nombre de la empresa' )%>
-      <%= submit_tag 'Buscar', class: 'search-button'  %>
+
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Clientes</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Plantas</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">UPSs</a>
     </div>
-  <% end %>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-  <div class="customer_table_container">
-    <%=render 'customers/customers_table'%>
+      <h5 class="azul-oscuro section-title">Importar clientes </h5>
+      <%= form_tag import_customers_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import" %>
+      <% end %>
+      
+      <h5 class="azul-oscuro section-title">Clientes existentes: </h5>
+      <%= form_tag(search_customers_path, remote: true) do %>
+        <div class="search-form-container">
+          <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Nombre de la empresa' )%>
+          <%= submit_tag 'Buscar', class: 'search-button'  %>
+        </div>
+      <% end %>
+
+      <div class="customer_table_container">
+        <%=render 'customers/customers_table'%>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <h5 class="azul-oscuro section-title">Plantas por clientes: </h5>
+
+      <%= form_tag(search_power_plants_path, remote: true) do %>
+        <div class="search-form-container">
+          <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
+          <%= submit_tag 'Buscar', class: 'search-button'  %>
+        </div>
+      <% end %>
+
+      <div class="customers_with_power_plants_table_container">
+        <%=render 'customers/customers_with_power_plants_table'%>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <h5 class="azul-oscuro section-title">UPSs por clientes: </h5>
+
+      <%= form_tag(search_ups_path, remote: true) do %>
+        <div class="search-form-container">
+          <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la UPS' )%>
+          <%= submit_tag 'Buscar', class: 'search-button'  %>
+        </div>
+      <% end %>
+
+      <div class="customers_with_ups_table_container">
+        <%=render 'customers/customers_with_ups_table'%>
+      </div>
+    </div>
   </div>
 
-  <h3 class="azul-oscuro section-title">Plantas por clientes: </h3>
-
-  <%= form_tag(search_ups_path, remote: true) do %>
-    <div class="search-form-container">
-      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
-      <%= submit_tag 'Buscar', class: 'search-button'  %>
-    </div>
-  <% end %>
-
-  <div class="customers_with_power_plants_table_container">
-    <%=render 'customers/customers_with_power_plants_table'%>
-  </div>
 
 
-  <h3 class="azul-oscuro section-title">UPSs por clientes: </h3>
 
-  <%= form_tag(search_ups_path, remote: true) do %>
-    <div class="search-form-container">
-      <%= text_field_tag( :concept, nil, class:'middle-input registration-input', placeholder: 'Información de la planta' )%>
-      <%= submit_tag 'Buscar', class: 'search-button'  %>
-    </div>
-  <% end %>
 
-  <div class="customers_with_ups_table_container">
-    <%=render 'customers/customers_with_ups_table'%>
-  </div>
+
+
 
 
 
