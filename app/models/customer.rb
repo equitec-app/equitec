@@ -65,10 +65,8 @@ class Customer < ApplicationRecord
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
 
-    header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
-    puts header
-
     puts "--------------------- CLIENTES ---------------------"
+    header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
 
     (2..spreadsheet.sheet('Clientes').last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
@@ -87,22 +85,34 @@ class Customer < ApplicationRecord
 
     (2..spreadsheet.sheet('Sedes').last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-
       puts "----------------------------"
       puts row
 
       if Customer.find_by(username: row["username"])
-        headquarter = Customer.find_by(username: row["username"]).headquarters.find_by(code: Headquarter.find_by(code: row["username"])) || Headquarter.new
-
+        headquarter = Customer.find_by(username: row["username"]).headquarters.find_by(code: row["code"]) || Headquarter.new
         row[:customer_id] = Customer.find_by(username: row["username"]).id
         headquarter.attributes = row.except("username")
-        puts "ID DE LA SEDE"
-        puts headquarter.attributes
-        puts headquarter[:customer_id]
-        puts row
         headquarter.save!
       end
     end
+
+    puts "--------------------- PLANTAS ---------------------"
+    header = ['code', 'plate', 'trademark', 'model', 'capacity', 'serial', 'fuel_tank_capacity', 'engine_trademark', 'engine_model', 'engine_serial', 'generator_trademark', 'generator_model', 'generator_serial']
+
+    (2..spreadsheet.sheet('Plantas').last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      puts "----------------------------"
+      puts row
+
+      if Headquarter.find_by(code: row["code"])
+        power_plant = Headquarter.find_by(code: row["code"]).power_plants.find_by(plate: row["plate"]) || PowerPlant.new
+        row[:headquarter_id] = Headquarter.find_by(code: row["code"]).id
+        row[:customer_id] = Headquarter.find_by(code: row["code"]).customer.id
+        power_plant.attributes = row.except("code")
+        power_plant.save!
+      end
+    end
+
   end
 
   def login
