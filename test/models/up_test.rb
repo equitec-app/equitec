@@ -5,6 +5,7 @@
 #  id                  :bigint(8)        not null, primary key
 #  model               :string
 #  number_of_batteries :integer
+#  plate               :string
 #  power               :float
 #  serial              :string
 #  trademark           :string

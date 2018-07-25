@@ -39,4 +39,7 @@ class PowerPlant < ApplicationRecord
   validates :trademark, presence: {message: "Marca no puede estar vacío"}
   validates :model, presence: {message: "Modelo no puede estar vacío"}
   validates :capacity, presence: {message: "Potencia no puede estar vacío"}
+  validates :plate, presence: {message: "Placa no puede estar vacía"}
+  validates :plate, uniqueness: {message: "Placa repetida"}
+
 end

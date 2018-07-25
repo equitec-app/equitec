@@ -5,6 +5,7 @@
 #  id                  :bigint(8)        not null, primary key
 #  model               :string
 #  number_of_batteries :integer
+#  plate               :string
 #  power               :float
 #  serial              :string
 #  trademark           :string
@@ -35,4 +36,6 @@ class Up < ApplicationRecord
   validates :trademark, presence: {message: "Marca no puede estar vacío"}
   validates :model, presence: {message: "Modelo no puede estar vacío"}
   validates :power, presence: {message: "Potencia no puede estar vacío"}
+  validates :plate, presence: {message: "Placa no puede estar vacía"}
+  validates :plate, uniqueness: {message: "Placa repetida"}
 end

@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_222130) do
 
   create_table "ups", force: :cascade do |t|
     t.string "trademark"
+    t.string "plate"
     t.string "model"
     t.string "serial"
     t.float "power"
