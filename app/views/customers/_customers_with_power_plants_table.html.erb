@@ -20,7 +20,7 @@
 
         <%customer.headquarters.each do |headquarter|%>
           <%if get_headquarters_with_power_plants(@power_plants).include?(headquarter)%>
-            <td rowspan="<%=headquarter.power_plants.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+            <td rowspan="<%=get_power_plants_in_headquarter(@power_plants, headquarter).size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
             <tr>
               <%headquarter.power_plants.each do |power_plant|%>
                 <%if @power_plants.include?(power_plant)%>

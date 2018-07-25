@@ -20,7 +20,7 @@
 
         <%customer.headquarters.each do |headquarter|%>
         <%if get_headquarters_with_upss(@upss).include?(headquarter)%>
-          <td rowspan="<%=headquarter.ups.size + 2%>"><%=headquarter.city + ", " + headquarter.direction%></td>
+          <td rowspan="<%=get_upss_in_headquarter(@upss, headquarter).size + 2%>"><%=headquarter.city + ", " + headquarter.direction%> </td>
           <tr>
             <%headquarter.ups.each do |ups|%>
               <%if @upss.include?(ups)%>
