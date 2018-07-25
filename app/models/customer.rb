@@ -143,6 +143,35 @@ class Customer < ApplicationRecord
       end
 
     end
+
+    puts "--------------------- UPSs ---------------------"
+    header = ['code', 'plate', 'trademark', 'model', 'power', 'serial', 'number_of_batteries']
+
+    (2..spreadsheet.sheet('UPSs').last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      puts "----------------------------"
+      puts row
+
+      errors = []
+      if Headquarter.find_by(code: row["code"])
+        # power_plant = Headquarter.find_by(code: row["code"]).power_plants.find_by(plate: row["plate"]) || PowerPlant.new
+        ups = Up.new
+        puts ups.attributes
+        row[:headquarter_id] = Headquarter.find_by(code: row["code"]).id
+        row[:customer_id] = Headquarter.find_by(code: row["code"]).customer.id
+        ups.attributes = row.except("code")
+
+        if !ups.save
+          ups.errors.each do |attribute, message|
+            errors.push(message)
+          end
+          ups_logs.push({row: i, errors: errors})
+        end
+      else
+        ups_logs.push({row: i, errors: ['Sede no encontrada']})
+      end
+
+    end
     puts customers_logs
     puts headquarters_logs
     puts power_plants_logs
