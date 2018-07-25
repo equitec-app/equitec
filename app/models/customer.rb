@@ -68,6 +68,7 @@ class Customer < ApplicationRecord
     customers_logs = []
     headquarters_logs = []
     power_plants_logs = []
+    ups_logs = []
 
     puts "--------------------- CLIENTES ---------------------"
     header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
@@ -145,6 +146,9 @@ class Customer < ApplicationRecord
     puts customers_logs
     puts headquarters_logs
     puts power_plants_logs
+    puts ups_logs
+
+    return [customers_logs, headquarters_logs, power_plants_logs, ups_logs]
 
   end
 

@@ -1,0 +1,48 @@
+<%if !@logs.empty?%>
+  <%if !@logs[0].empty? || !@logs[1].empty? || !@logs[2].empty? || !@logs[3].empty?%>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <div class="logs-container">
+        <%if !@logs[0].empty?%>
+        <h5>Alertas en clientes</h5>
+        <%@logs[0].each do |log|%>
+        <span><strong>Falla en fila <%=log[:row]%></strong>: <%=log[:errors].join(", ")%></span><br>
+        <%end%>
+        <%end%>
+
+        <%if !@logs[1].empty?%>
+        <br>
+        <h5>Alertas en Sedes</h5>
+        <%@logs[1].each do |log|%>
+        <span><strong>Falla en fila <%=log[:row]%></strong>: <%=log[:errors].join(", ")%></span><br>
+        <%end%>
+        <%end%>
+
+        <%if !@logs[2].empty?%>
+        <br>
+        <h5>Alertas en Plantas</h5>
+        <%@logs[2].each do |log|%>
+        <span><strong>Falla en fila <%=log[:row]%></strong>: <%=log[:errors].join(", ")%></span><br>
+        <%end%>
+        <%end%>
+
+        <%if !@logs[3].empty?%>
+        <br>
+        <h5>Alertas en UPS</h5>
+        <%@logs[3].each do |log|%>
+        <span><strong>Falla en fila <%=log[:row]%></strong>: <%=log[:errors].join(", ")%></span><br>
+        <%end%>
+        <%end%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  <%else%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      ¡Todos los clientes se crearon exitosamente!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <%end%>
+<%end%>

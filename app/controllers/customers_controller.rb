@@ -5,6 +5,7 @@ class CustomersController < ApplicationController
     @customers = Customer.all
     @power_plants = PowerPlant.all
     @upss = Up.all
+    @logs = []
 
   end
   def new
@@ -58,9 +59,10 @@ class CustomersController < ApplicationController
   end
 
   def import
-    Customer.import(params[:file])
+    @logs = Customer.import(params[:file])
+    @customers = Customer.all
 
-    redirect_to customers_url, notice: 'Products imported.'
+    # redirect_to customers_url, notice: 'Products imported.'
   end
 
   private
