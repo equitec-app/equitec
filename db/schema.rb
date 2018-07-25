@@ -128,10 +128,10 @@ ActiveRecord::Schema.define(version: 2018_07_18_222130) do
     t.index ["headquarter_id"], name: "index_ups_on_headquarter_id"
   end
 
-  add_foreign_key "agreements", "customers"
-  add_foreign_key "headquarters", "customers"
-  add_foreign_key "power_plants", "customers"
-  add_foreign_key "power_plants", "headquarters"
-  add_foreign_key "ups", "customers"
-  add_foreign_key "ups", "headquarters"
+  add_foreign_key "agreements", "customers", on_delete: :cascade
+  add_foreign_key "headquarters", "customers", on_delete: :cascade
+  add_foreign_key "power_plants", "customers", on_delete: :cascade
+  add_foreign_key "power_plants", "headquarters", on_delete: :cascade
+  add_foreign_key "ups", "customers", on_delete: :cascade
+  add_foreign_key "ups", "headquarters", on_delete: :cascade
 end

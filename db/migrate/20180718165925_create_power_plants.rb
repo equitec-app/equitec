@@ -13,8 +13,8 @@ class CreatePowerPlants < ActiveRecord::Migration[5.2]
       t.string :generator_serial
       t.string :plate
       t.float :fuel_tank_capacity
-      t.references :headquarter, foreign_key: true, index:true
-      t.references :customer, foreign_key: true, index:true
+      t.references :headquarter, foreign_key: { on_delete: :cascade }, index:true
+      t.references :customer, foreign_key: { on_delete: :cascade }, index:true
 
 
       t.timestamps

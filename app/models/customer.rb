@@ -65,6 +65,10 @@ class Customer < ApplicationRecord
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
 
+    customers_logs = []
+    headquarters_logs = []
+    power_plants_logs = []
+
     puts "--------------------- CLIENTES ---------------------"
     header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
 
@@ -73,11 +77,18 @@ class Customer < ApplicationRecord
       puts "----------------------------"
       puts row
 
-      customer = find_by(username: row["username"]) || new
+      # customer = find_by(username: row["username"]) || new
+      customer = Customer.new
       row[:password]=row["nit"]
       row[:password_confirmation]=row["nit"]
       customer.attributes = row
-      customer.save!
+      if !customer.save
+        errors = []
+        customer.errors.each do |attribute, message|
+          errors.push(message)
+        end
+        customers_logs.push({row: i, errors: errors})
+      end
     end
 
     puts "--------------------- SEDES ---------------------"
@@ -89,10 +100,17 @@ class Customer < ApplicationRecord
       puts row
 
       if Customer.find_by(username: row["username"])
-        headquarter = Customer.find_by(username: row["username"]).headquarters.find_by(code: row["code"]) || Headquarter.new
+        # headquarter = Customer.find_by(username: row["username"]).headquarters.find_by(code: row["code"]) || Headquarter.new
+        headquarter = Headquarter.new
         row[:customer_id] = Customer.find_by(username: row["username"]).id
         headquarter.attributes = row.except("username")
-        headquarter.save!
+        if !headquarter.save
+          errors = []
+          headquarter.errors.each do |attribute, message|
+            errors.push(message)
+          end
+          headquarters_logs.push({row: i, errors: errors})
+        end
       end
     end
 
@@ -104,14 +122,29 @@ class Customer < ApplicationRecord
       puts "----------------------------"
       puts row
 
+      errors = []
       if Headquarter.find_by(code: row["code"])
-        power_plant = Headquarter.find_by(code: row["code"]).power_plants.find_by(plate: row["plate"]) || PowerPlant.new
+        # power_plant = Headquarter.find_by(code: row["code"]).power_plants.find_by(plate: row["plate"]) || PowerPlant.new
+        power_plant = PowerPlant.new
+        puts power_plant.attributes
         row[:headquarter_id] = Headquarter.find_by(code: row["code"]).id
         row[:customer_id] = Headquarter.find_by(code: row["code"]).customer.id
         power_plant.attributes = row.except("code")
-        power_plant.save!
+
+        if !power_plant.save
+          power_plant.errors.each do |attribute, message|
+            errors.push(message)
+          end
+          power_plants_logs.push({row: i, errors: errors})
+        end
+      else
+        power_plants_logs.push({row: i, errors: ['Sede no encontrada']})
       end
+
     end
+    puts customers_logs
+    puts headquarters_logs
+    puts power_plants_logs
 
   end
 

@@ -31,4 +31,6 @@ class Headquarter < ApplicationRecord
   validates :direction, presence: {message: 'Dirección no puede estar vacío'}
   validates :phone, presence: {message: 'Teléfono fijo de la sede no puede estar vacío'}
   validates :city, presence: {message: 'Ciudad no puede estar vacío'}
+  validates :code, presence: {message: 'Código no puede estar vacío'}
+  validates :code, uniqueness: {message: 'Código repetido'}
 end

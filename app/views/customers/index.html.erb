@@ -17,7 +17,14 @@
         <%= file_field_tag :file %>
         <%= submit_tag "Import" %>
       <% end %>
-      
+
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
       <h5 class="azul-oscuro section-title">Clientes existentes: </h5>
       <%= form_tag(search_customers_path, remote: true) do %>
         <div class="search-form-container">

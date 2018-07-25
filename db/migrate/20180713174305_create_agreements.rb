@@ -4,7 +4,7 @@ class CreateAgreements < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.date :beginning_date
       t.integer :agreement_type
-      t.references :customer, foreign_key: true, index:true
+      t.references :customer, foreign_key: { on_delete: :cascade }, index:true
 
       t.timestamps
     end

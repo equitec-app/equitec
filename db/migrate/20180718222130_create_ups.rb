@@ -8,8 +8,8 @@ class CreateUps < ActiveRecord::Migration[5.2]
       t.float :power
       t.integer :number_of_batteries
       t.integer :type_of_batteries
-      t.references :headquarter, foreign_key: true, index:true
-      t.references :customer, foreign_key: true, index:true
+      t.references :headquarter, foreign_key: { on_delete: :cascade }, index:true
+      t.references :customer, foreign_key: { on_delete: :cascade }, index:true
 
       t.timestamps
     end

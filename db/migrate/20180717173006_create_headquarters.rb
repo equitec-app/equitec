@@ -8,7 +8,7 @@ class CreateHeadquarters < ActiveRecord::Migration[5.2]
       t.string :admin_email
       t.string :city
       t.string :code
-      t.references :customer, foreign_key: true, index:true
+      t.references :customer,foreign_key: { on_delete: :cascade }, index:true
 
       t.timestamps
     end

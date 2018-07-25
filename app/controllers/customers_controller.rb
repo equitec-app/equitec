@@ -60,7 +60,7 @@ class CustomersController < ApplicationController
   def import
     Customer.import(params[:file])
 
-    redirect_to root_url, notice: 'Products imported.'
+    redirect_to customers_url, notice: 'Products imported.'
   end
 
   private
