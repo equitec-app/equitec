@@ -83,17 +83,25 @@ class Customer < ApplicationRecord
     end
 
     puts "--------------------- SEDES ---------------------"
-    header = ['username', 'city', 'direction', 'phone', 'code', 'admin', 'admin_phone', 'admin_email']
+    header = ['username', 'code', 'city', 'direction', 'phone', 'admin', 'admin_phone', 'admin_email']
 
     (2..spreadsheet.sheet('Sedes').last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
+
       puts "----------------------------"
       puts row
 
-      # customer = find_by(username: row["username"]) || new
-      # puts row.to_hash
-      # customer.attributes = row.to_hash
-      # customer.save!
+      if Customer.find_by(username: row["username"])
+        headquarter = Customer.find_by(username: row["username"]).headquarters.find_by(code: Headquarter.find_by(code: row["username"])) || Headquarter.new
+
+        row[:customer_id] = Customer.find_by(username: row["username"]).id
+        headquarter.attributes = row.except("username")
+        puts "ID DE LA SEDE"
+        puts headquarter.attributes
+        puts headquarter[:customer_id]
+        puts row
+        headquarter.save!
+      end
     end
   end
 
