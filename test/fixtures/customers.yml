@@ -28,12 +28,18 @@
 #  username               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  employee_id            :bigint(8)
 #
 # Indexes
 #
 #  index_customers_on_email                 (email) UNIQUE
+#  index_customers_on_employee_id           (employee_id)
 #  index_customers_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_customers_on_username              (username) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (employee_id => employees.id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

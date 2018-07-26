@@ -49,7 +49,7 @@
               <td><%=headquarter.direction%></td>
               <td>12/03/18</td>
               <td>Solicitar</td>
-              <td>Ver</td>
+              <td><%=link_to "ver", customer_headquarter_path(@customer.id, headquarter.id)%></td>
               <td><%=link_to "Editar", edit_customer_headquarter_path(@customer.id,headquarter.id), remote: true%></td>
             </tr>
           <%end%>

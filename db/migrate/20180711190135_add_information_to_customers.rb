@@ -15,5 +15,7 @@ class AddInformationToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :payments_mail, :string
 
     add_column :customers, :cost_center, :string
+    add_reference :customers, :employee, foreign_key: true, index:true
+
   end
 end

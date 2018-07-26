@@ -28,12 +28,18 @@
 #  username               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  employee_id            :bigint(8)
 #
 # Indexes
 #
 #  index_customers_on_email                 (email) UNIQUE
+#  index_customers_on_employee_id           (employee_id)
 #  index_customers_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_customers_on_username              (username) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (employee_id => employees.id)
 #
 
 class Customer < ApplicationRecord
@@ -42,10 +48,13 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_writer :login
 
+  belongs_to :employee
+
   has_many :agreements, dependent: :delete_all
   has_many :headquarters, dependent: :delete_all
   has_many :power_plants, dependent: :delete_all
   has_many :ups, dependent: :delete_all
+  has_one :account
 
 
   devise :database_authenticatable, :registerable,
@@ -71,7 +80,7 @@ class Customer < ApplicationRecord
     ups_logs = []
 
     puts "--------------------- CLIENTES ---------------------"
-    header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
+    header = ['username', 'nit', 'mainteance_agent', 'mainteance_phone', 'email', 'seller', 'account_manager', 'legal_agent', 'legal_agent_mail', 'legal_agent_phone', 'payments_manager', 'payments_phone', 'payments_mail', 'phone', 'principal_direction']
 
     (2..spreadsheet.sheet('Clientes').last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
@@ -82,14 +91,18 @@ class Customer < ApplicationRecord
       customer = Customer.new
       row[:password]=row["nit"]
       row[:password_confirmation]=row["nit"]
-      customer.attributes = row
+      row[:employee_id] = Employee.find_by(email: row['seller']).id
+      customer.attributes = row.except(*['account_manager', 'seller'])
       if !customer.save
         errors = []
         customer.errors.each do |attribute, message|
           errors.push(message)
         end
         customers_logs.push({row: i, errors: errors})
+      else
+        Account.create(employee_id: Employee.find_by(email: row['account_manager']).id, customer_id: customer.id)
       end
+
     end
 
     puts "--------------------- SEDES ---------------------"
