@@ -30,7 +30,7 @@ class SearchsController < ApplicationController
   def ups
     @customers = Customer.all.where("username ILIKE ? ", "%#{params[:concept]}%")
     @headquarters = Headquarter.all.where("city ILIKE ? OR direction ILIKE ? ", "%#{params[:concept]}%", "%#{params[:concept]}%")
-    @searched_upss = Up.all.where("trademark ILIKE ? OR model ILIKE ? ", "%#{params[:concept]}%", "%#{params[:concept]}%")
+    @searched_upss = Up.all.where("trademark ILIKE ? OR model ILIKE ? OR plate ILIKE ? ", "%#{params[:concept]}%", "%#{params[:concept]}%", "%#{params[:concept]}%")
 
 
     @upss = []

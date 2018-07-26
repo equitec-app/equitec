@@ -3,6 +3,7 @@
     <tr>
       <th scope="col"><span class="azul-oscuro">Clente</span></th>
       <th scope="col"><span class="azul-oscuro">Sede</span></th>
+      <th scope="col"><span class="azul-oscuro">Placa</span></th>
       <th scope="col"><span class="azul-oscuro">Marca</span></th>
       <th scope="col"><span class="azul-oscuro">Modelo</span></th>
       <th scope="col"><span class="azul-oscuro">Potencia</span></th>
@@ -25,6 +26,7 @@
               <%headquarter.power_plants.each do |power_plant|%>
                 <%if @power_plants.include?(power_plant)%>
                   <tr>
+                    <td><%=power_plant.plate%></td>
                     <td><%=power_plant.trademark%></td>
                     <td><%=power_plant.model%></td>
                     <td><%=power_plant.capacity%></td>

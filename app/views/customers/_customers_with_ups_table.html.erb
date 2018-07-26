@@ -3,6 +3,7 @@
     <tr>
       <th scope="col"><span class="azul-oscuro">Cliente</span></th>
       <th scope="col"><span class="azul-oscuro">Sede</span></th>
+      <th scope="col"><span class="azul-oscuro">Placa</span></th>
       <th scope="col"><span class="azul-oscuro">Marca</span></th>
       <th scope="col"><span class="azul-oscuro">Modelo</span></th>
       <th scope="col"><span class="azul-oscuro">Potencia</span></th>
@@ -25,6 +26,7 @@
             <%headquarter.ups.each do |ups|%>
               <%if @upss.include?(ups)%>
                 <tr>
+                  <td><%=ups.plate%></td>
                   <td><%=ups.trademark%></td>
                   <td><%=ups.model%></td>
                   <td><%=ups.power%></td>
