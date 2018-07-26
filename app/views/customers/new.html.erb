@@ -1,6 +1,14 @@
 <div class="container main-contain">
   <h2 class="form-title">Registrar ciente:</h2>
 
+  <%if @customer.errors.any?%>
+  <div class="form-error-container">
+    <%@customer.errors.each do |attribute, message|%>
+     <%=message%> <br>
+    <%end%>
+  </div>
+  <%end%>
+
   <%= form_for @customer, url: create_customers_path, method: :post, html: {action: create_customers_path, class: 'customer-sign-up-form'} do |f| %>
 
     <div class="company-information-form">
@@ -19,20 +27,30 @@
         <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
       </div>
 
+      <div class="field">
+        <%= f.text_field :principal_direction, autofocus: true, placeholder:"Dirección principal", class:'registration-input middle-input' %>
+      </div>
+
       <h5 class="azul-oscuro">Información del contrato</h5>
+
+      <%employees_usernames = []%>
+      <%Employee.all.each do |employee|%>
+        <%employees_usernames.push(employee.username)%>
+      <%end%>
+
+      <div class="field">
+        <%= f.select( :employee_id, [ employees_usernames, Employee.all.ids.to_a].transpose, {include_blank: "Vendedor"}, {class:'registration-input middle-input'}) %>
+      </div>
+
+      <%=f.fields_for :accounts do |f|%>
+        <div class="field">
+          <%= f.select( :employee_id, [ employees_usernames, Employee.all.ids.to_a].transpose, {include_blank: "Coordinador de cuenta"}, {class:'registration-input middle-input'}) %>
+        </div>
+      <%end%>
+
 
       <div class="field">
         <%= f.text_field :cost_center, autofocus: true, placeholder:"Centro de costo", class:'registration-input middle-input' %>
-      </div>
-
-      <h5 class="azul-oscuro">Contraseña</h5>
-
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "off", placeholder:"Contraseña", class:'registration-input middle-input' %>
-      </div>
-
-      <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirmación contraseña", class:'registration-input middle-input' %>
       </div>
 
       <div class="actions">

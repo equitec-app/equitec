@@ -18,14 +18,14 @@ class CustomersController < ApplicationController
   end
 
   def create
-    puts "INGRESA AL CREATE CUSTOMER"
-    @customer = Customer.create(customer_params)
+    @customer = Customer.create(create_customers_params)
 
     if @customer.save
-      puts "CREO NUEVO EMPLEADO"
+      puts "COORDINADOR DE CUENTA: #{customer_params[:accounts][:employee_id]}"
+      @customer.account.create(employee_id: customer_params[:accounts][:employee_id])
       redirect_to employee_path(current_employee)
+
     else
-      puts "PROBLEMA CREANDO NUEVO EMPLEADO"
       puts @customer.errors.full_messages
       render :new
     end
@@ -67,7 +67,24 @@ class CustomersController < ApplicationController
 
   private
 
+  def create_customers_params
+    attributes = params.require(:customer).permit(:cost_center, :email, :legal_agent,
+       :legal_agent_mail, :legal_agent_phone, :mainteance_agent,
+       :mainteance_phone, :nit, :payments_mail, :payments_manager,
+       :payments_phone, :phone, :username,
+       :principal_direction, :employee_id)
+    attributes[:password] = attributes[:nit]
+    attributes[:password_confirmation] = attributes[:nit]
+    return attributes
+  end
+
   def customer_params
-    params.require(:customer).permit(:cost_center, :email, :legal_agent, :legal_agent_mail, :legal_agent_phone, :mainteance_agent, :mainteance_phone, :nit, :payments_mail, :payments_manager, :payments_phone, :phone, :username, :password, :password_confirmation, :principal_direction)
+    puts "------------------- CUSTOMER PARAMS------------------------"
+    puts params
+    params.require(:customer).permit(:cost_center, :email, :legal_agent,
+       :legal_agent_mail, :legal_agent_phone, :mainteance_agent,
+       :mainteance_phone, :nit, :payments_mail, :payments_manager,
+       :payments_phone, :phone, :username, :password, :password_confirmation,
+       :principal_direction, accounts: [:employee_id])
   end
 end
