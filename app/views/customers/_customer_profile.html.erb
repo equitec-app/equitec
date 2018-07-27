@@ -7,6 +7,7 @@
     <h6><span class="azul-oscuro"> <strong>Centro de costo:</strong></span> 38-3454</h6>
     <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.phone%></h6>
     <h6><span class="azul-oscuro"> <strong>Dirección principal:</strong></span> <%=@customer.principal_direction%></h6>
+    <h6><span class="azul-oscuro"> <strong>Coordinador de cuenta:</strong></span> <%=Employee.find(@customer.account.employee_id).username if !(@customer.account).nil?%></h6>
     <h5 class="azul-oscuro section-title"><strong>Encargado de mantenimiento:</strong></h5>
     <h6><span class="azul-oscuro"> <strong>Nombre:</strong></span> <%=@customer.mainteance_agent%></h6>
     <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.mainteance_phone%></h6>

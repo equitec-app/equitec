@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
 
     if @customer.save
       puts "COORDINADOR DE CUENTA: #{customer_params[:accounts][:employee_id]}"
-      @customer.account.create(employee_id: customer_params[:accounts][:employee_id])
+      Account.create(customer_id: @customer.id, employee_id: customer_params[:accounts][:employee_id])
       redirect_to employee_path(current_employee)
 
     else
