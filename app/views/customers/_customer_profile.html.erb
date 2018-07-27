@@ -162,10 +162,18 @@
               <%= f.text_field :nit, autofocus: true, placeholder:"NIT", class:'registration-input middle-input' %> <br>
 
               <%= f.label :phone, "Telefono principal*"%>
-              <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %>
+              <%= f.text_field :phone, autofocus: true, placeholder:"Teléfono", class:'registration-input middle-input' %> <br>
 
               <%= f.label :principal_direction, "Dirección principal*"%>
-              <%= f.text_field :principal_direction, autofocus: true, placeholder:"Dirección", class:'registration-input middle-input' %>
+              <%= f.text_field :principal_direction, autofocus: true, placeholder:"Dirección", class:'registration-input middle-input' %> <br>
+
+              <%= f.label :principal_direction, "Vendedor*"%>
+              <%= f.select( :employee_id, all_customer_selector(), {include_blank: "Vendedor*"}, {class:'registration-input middle-input'}) %> <br>
+
+              <%=f.fields_for :account do |f|%>
+                <%= f.label :principal_direction, "Coordinador de cuenta*"%>
+                <%= f.select( :employee_id, all_account_manager_selector(), {include_blank: "Coordinador de cuenta*"}, {class:'registration-input middle-input'}) %> <br>
+              <%end%>
             </div>
           </div>
 
