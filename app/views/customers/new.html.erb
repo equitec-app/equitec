@@ -1,7 +1,7 @@
 <div class="container main-contain">
   <h2 class="form-title">Registrar ciente:</h2>
 
-  <%if @customer.errors.any?%>
+  <%if @customer.errors.any? %>
   <div class="form-error-container">
     <%@customer.errors.each do |attribute, message|%>
      <%=message%> <br>
@@ -33,18 +33,13 @@
 
       <h5 class="azul-oscuro">Información del contrato</h5>
 
-      <%employees_usernames = []%>
-      <%Employee.all.each do |employee|%>
-        <%employees_usernames.push(employee.username)%>
-      <%end%>
-
       <div class="field">
-        <%= f.select( :employee_id, [ employees_usernames, Employee.all.ids.to_a].transpose, {include_blank: "Vendedor"}, {class:'registration-input middle-input'}) %>
+        <%= f.select( :employee_id, all_customer_selector(), {include_blank: "Vendedor"}, {class:'registration-input middle-input'}) %>
       </div>
 
       <%=f.fields_for :accounts do |f|%>
         <div class="field">
-          <%= f.select( :employee_id, [ employees_usernames, Employee.all.ids.to_a].transpose, {include_blank: "Coordinador de cuenta"}, {class:'registration-input middle-input'}) %>
+          <%= f.select( :employee_id, all_account_manager_selector(), {include_blank: "Coordinador de cuenta"}, {class:'registration-input middle-input'}) %>
         </div>
       <%end%>
 

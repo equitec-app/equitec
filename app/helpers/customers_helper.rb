@@ -1,4 +1,21 @@
 module CustomersHelper
+
+  def all_customer_selector()
+    employees_usernames = []
+    Employee.all.each do |employee|
+      employees_usernames.push(employee.username)
+    end
+    return [ employees_usernames, Employee.all.ids.to_a].transpose
+  end
+
+  def all_account_manager_selector()
+    employees_usernames = []
+    Employee.all.where(role: 'account_manager').each do |employee|
+      employees_usernames.push(employee.username)
+    end
+    return [ employees_usernames, Employee.all.where(role: 'account_manager').ids.to_a].transpose
+  end
+
   def get_customers_with_power_plants(power_plants)
     customers_with_power_plants = []
     power_plants.each do |power_plant|
