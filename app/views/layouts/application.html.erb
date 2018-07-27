@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,13 +13,13 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-color">
       <div class="container">
+        <div class="logo-container">
+          <%=image_tag "nav-bar/logo.png", class: 'logo-equitec'%>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"><%=image_tag "nav-bar/hamburguer.png"%></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <div class="logo-container">
-            <%=image_tag "nav-bar/logo.png", class: 'logo-equitec'%>
-          </div>
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
             <%if not(customer_signed_in? || employee_signed_in?)%>
