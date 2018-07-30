@@ -104,6 +104,8 @@
   box-shadow: 5px 5px 15px #888888;
   flex-direction: column;
   background-color: white;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .mail-password-input {
@@ -215,4 +217,18 @@ select.registration-input {
 
 .modal-new-form {
   text-align: right;
+}
+
+.table-container {
+  max-width: 100%;
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .login-container {
+    width: 90%;
+    margin-top: 40px;
+  }
+
 }

@@ -60,3 +60,16 @@
   background-color: #162c5d;
   border-radius: 7px;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .employee-info-wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .customer-sign-up-form {
+    flex-direction: column;
+  }
+
+}

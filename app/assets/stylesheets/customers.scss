@@ -55,3 +55,41 @@
   max-height: 165px;
   overflow: scroll;
 }
+
+@media only screen and (max-width: 768px) {
+  .customer-profile-container {
+    justify-content: center;
+    flex-direction:column;
+  }
+
+  .customer-info-panel {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .customer-info-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .customer-info {
+    padding: 40px 10px;
+  }
+
+  .customer-info .section-title {
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .customer-info-2 {
+      flex-direction: column;
+      justify-content: center;     
+    }
+  }
+
+}
