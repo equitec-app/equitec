@@ -1,26 +1,28 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col"><span class="azul-oscuro">Nombre</span></th>
-      <th scope="col"><span class="azul-oscuro">N sedes</span></th>
-      <th scope="col"><span class="azul-oscuro">N plantas</span></th>
-      <th scope="col"><span class="azul-oscuro">N UPSs</span></th>
-      <th scope="col"><span class="azul-oscuro">Telefono</span></th>
-      <th scope="col"><span class="azul-oscuro">Correo</span></th>
-      <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%@customers.each do |customer|%>
+<div class="table-container">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <th scope="row"><%=customer.username%></th>
-        <td><%=customer.headquarters.size%></td>
-        <td><%=customer.power_plants.size%></td>
-        <td><%=customer.ups.size%></td>
-        <td><%=customer.phone%></td>
-        <td><%=customer.email%></td>
-        <td><%=link_to "ver", customer_path(customer)%></td>
+        <th scope="col"><span class="azul-oscuro">Nombre</span></th>
+        <th scope="col"><span class="azul-oscuro">N sedes</span></th>
+        <th scope="col"><span class="azul-oscuro">N plantas</span></th>
+        <th scope="col"><span class="azul-oscuro">N UPSs</span></th>
+        <th scope="col"><span class="azul-oscuro">Telefono</span></th>
+        <th scope="col"><span class="azul-oscuro">Correo</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%@customers.each do |customer|%>
+        <tr>
+          <th scope="row"><%=customer.username%></th>
+          <td><%=customer.headquarters.size%></td>
+          <td><%=customer.power_plants.size%></td>
+          <td><%=customer.ups.size%></td>
+          <td><%=customer.phone%></td>
+          <td><%=customer.email%></td>
+          <td><%=link_to "ver", customer_path(customer)%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
