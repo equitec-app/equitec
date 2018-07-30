@@ -88,7 +88,24 @@
   @media only screen and (max-width: 500px) {
     .customer-info-2 {
       flex-direction: column;
-      justify-content: center;     
+      justify-content: center;
+    }
+
+    .edit-customer-section {
+      margin-left: 0px;
+    }
+
+    .edit-group {
+      text-align: left;
+      width: auto;
+    }
+
+    .modal-new-form {
+      text-align: left !important;
+    }
+
+    .modal-new-form input {
+      width: 95%;
     }
   }
 
