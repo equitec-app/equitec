@@ -7,7 +7,9 @@
     </div>
     <div class="customer-info">
       <h6><span class="azul-oscuro"> <strong>Nit:</strong></span> <%=@customer.nit%></h6>
-      <h6><span class="azul-oscuro"> <strong>Centro de costo:</strong></span> 38-3454</h6>
+      <%if employee_signed_in?%>
+        <h6><span class="azul-oscuro"> <strong>Centro de costo:</strong></span> 38-3454</h6>
+      <%end%>
       <h6><span class="azul-oscuro"> <strong>Teléfono:</strong></span> <%=@customer.phone%></h6>
       <h6><span class="azul-oscuro"> <strong>Dirección principal:</strong></span> <%=@customer.principal_direction%></h6>
       <h6><span class="azul-oscuro"> <strong>Coordinador de cuenta:</strong></span> <%=Employee.find(@customer.account.employee_id).username if !(@customer.account).nil?%></h6>
@@ -45,7 +47,9 @@
               <th scope="col"><span class="azul-oscuro">Última visita</span></th>
               <th scope="col"><span class="azul-oscuro">Solicitar visita</span></th>
               <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-              <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%if employee_signed_in?%>
+                <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%end%>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +60,9 @@
                 <td>12/03/18</td>
                 <td>Solicitar</td>
                 <td><%=link_to "ver", customer_headquarter_path(@customer.id, headquarter.id)%></td>
-                <td><%=link_to "Editar", edit_customer_headquarter_path(@customer.id,headquarter.id), remote: true%></td>
+                <%if employee_signed_in?%>
+                  <td><%=link_to "Editar", edit_customer_headquarter_path(@customer.id,headquarter.id), remote: true%></td>
+                <%end%>
               </tr>
             <%end%>
           </tbody>
@@ -76,7 +82,9 @@
               <th scope="col"><span class="azul-oscuro">Última visita</span></th>
               <th scope="col"><span class="azul-oscuro">Marca</span></th>
               <th scope="col"><span class="azul-oscuro">Modelo</span></th>
-              <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%if employee_signed_in?%>
+                <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%end%>
               <th scope="col"><span class="azul-oscuro">Detalles</span></th>
             </tr>
           </thead>
@@ -88,7 +96,9 @@
                 <td>12/03/18</td>
                 <td><%=power_plant.trademark%></td>
                 <td><%=power_plant.model%></td>
-                <td><%=link_to "Editar", edit_customer_power_plant_path(@customer.id, power_plant.id), remote:true%></td>
+                <%if employee_signed_in?%>
+                  <td><%=link_to "Editar", edit_customer_power_plant_path(@customer.id, power_plant.id), remote:true%></td>
+                <%end%>
                 <td>Ver</td>
               </tr>
             <%end%>
@@ -106,7 +116,9 @@
               <th scope="col"><span class="azul-oscuro">Última visita</span></th>
               <th scope="col"><span class="azul-oscuro">Marca</span></th>
               <th scope="col"><span class="azul-oscuro">Modelo</span></th>
-              <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%if employee_signed_in?%>
+                <th scope="col"><span class="azul-oscuro">Editar</span></th>
+              <%end%>
               <th scope="col"><span class="azul-oscuro">Detalles</span></th>
             </tr>
           </thead>
@@ -118,7 +130,9 @@
                 <td>12/03/18</td>
                 <td><%=ups.trademark%></td>
                 <td><%=ups.model%></td>
-                <td><%=link_to 'Editar', edit_customer_up_path(@customer.id,ups.id), remote: true%></td>
+                <%if employee_signed_in?%>
+                  <td><%=link_to 'Editar', edit_customer_up_path(@customer.id,ups.id), remote: true%></td>
+                <%end%>
                 <td>Ver</td>
               </tr>
             <%end%>
@@ -179,12 +193,14 @@
               <%= f.label :principal_direction, "Dirección principal*"%>
               <%= f.text_field :principal_direction, autofocus: true, placeholder:"Dirección", class:'registration-input middle-input' %> <br>
 
-              <%= f.label :principal_direction, "Vendedor*"%>
-              <%= f.select( :employee_id, all_customer_selector(), {include_blank: "Vendedor*"}, {class:'registration-input middle-input'}) %> <br>
+              <%if employee_signed_in?%>
+                <%= f.label :principal_direction, "Vendedor*"%>
+                <%= f.select( :employee_id, all_customer_selector(), {include_blank: "Vendedor*"}, {class:'registration-input middle-input'}) %> <br>
 
-              <%=f.fields_for :account do |f|%>
-                <%= f.label :principal_direction, "Coordinador de cuenta*"%>
-                <%= f.select( :employee_id, all_account_manager_selector(), {include_blank: "Coordinador de cuenta*"}, {class:'registration-input middle-input'}) %> <br>
+                <%=f.fields_for :account do |f|%>
+                  <%= f.label :principal_direction, "Coordinador de cuenta*"%>
+                  <%= f.select( :employee_id, all_account_manager_selector(), {include_blank: "Coordinador de cuenta*"}, {class:'registration-input middle-input'}) %> <br>
+                <%end%>
               <%end%>
             </div>
           </div>
