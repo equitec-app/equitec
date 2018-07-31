@@ -4,17 +4,61 @@
       <%=image_tag 'icons/headquarter.png', class: 'profile-img' %>
     </div>
     <div class="headquarter-summary-container">
-      <h3 class="gris-claro-claro section-title"><strong><%=@headquarter.customer.username%> <br> <%=@headquarter.city%>, <%=@headquarter.direction%></strong></strong></h3>
-      <h5 class="gris-claro-claro"><strong> Código:</strong> <span class="gris-claro-claro"><%=@headquarter.code%></span> </h5>
-      <h5 class="gris-claro-claro"><strong> Administrador:</strong> <span class="gris-claro-claro"><%=@headquarter.admin%></span> </h5>
-      <h5 class="gris-claro-claro"><strong> Correo del dministrador:</strong> <span class="gris-claro-claro"><%=@headquarter.admin_email%></span> </h5>
-      <h5 class="gris-claro-claro"><strong> Teléfono del administrador:</strong> <span class="gris-claro-claro"><%=@headquarter.admin_phone%></span> </h5>
+      <h4 class="azul-oscuro section-title"><strong><%=@headquarter.customer.username%> <br> <%=@headquarter.city%>, <%=@headquarter.direction%></strong></strong></h4>
+      <h6 class="azul-oscuro"><strong> Código:</strong> <span class="azul-oscuro"><%=@headquarter.code%></span> </h6>
+      <h6 class="azul-oscuro"><strong> Administrador:</strong> <span class="azul-oscuro"><%=@headquarter.admin%></span> </h6>
+      <h6 class="azul-oscuro"><strong> Correo del dministrador:</strong> <span class="azul-oscuro"><%=@headquarter.admin_email%></span> </h6>
+      <h6 class="azul-oscuro"><strong> Teléfono del administrador:</strong> <span class="azul-oscuro"><%=@headquarter.admin_phone%></span> </h6>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <nav>
+
+  <h5 class="azul-oscuro section-title">Detalles de los equipos de <%=@headquarter.customer.username%> sede <%=@headquarter.city%>, <%=@headquarter.direction%>: </h5>
+
+  <%equipments = equipments(@headquarter)%>
+  <div class="equipments-wrapper-container">
+    <%equipments.each do |equipment|%>
+      <%if equipment.class == PowerPlant%>
+        <div class="equipment-container">
+          <div class="equipment-description">
+            <%=image_tag 'icons/power_plant.png', class: 'equipment-icon'%>
+            <div class="equipment-info">
+              <%=equipment.trademark%> <%=equipment.model%> <br>
+              <%= equipment.plate %> <br>
+              <%= equipment.capacity%> KVA <br>
+              Serial: <%= equipment.serial%> <br>
+            </div>
+          </div>
+          <div class="equipment-buttons">
+            <%= link_to "Visita de emergencia", customer_power_plant_path(equipment.customer.id, equipment.id), class: 'redirect-link'%>
+            <%= link_to "Ver más", customer_power_plant_path(equipment.customer.id, equipment.id), class: 'redirect-link'%>
+          </div>
+        </div>
+      <%elsif equipment.class == Up%>
+        <div class="equipment-container">
+          <div class="equipment-description">
+            <%=image_tag 'icons/ups.png', class: 'equipment-icon'%>
+            <div class="equipment-info">
+              <%=equipment.trademark%> <%=equipment.model%> <br>
+              <%= equipment.plate %> <br>
+              <%= equipment.power%> KVA <br>
+              Serial: <%= equipment.serial%> <br>
+            </div>
+          </div>
+          <div class="equipment-buttons">
+            <%= link_to "Visita de emergencia", customer_up_path(equipment.customer.id, equipment.id), class: 'redirect-link'%>
+            <%= link_to "Ver más", customer_up_path(equipment.customer.id, equipment.id), class: 'redirect-link'%>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+
+
+
+  <!-- <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Historial de visitas</a>
       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Plantas</a>
@@ -74,5 +118,5 @@
       <h5 class="azul-oscuro section-title">Editar: </h5>
 
     </div>
-  </div>
+  </div> -->
 </div>

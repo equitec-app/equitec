@@ -228,6 +228,19 @@ select.registration-input {
   overflow: scroll;
 }
 
+.redirect-link {
+  background-color: #162c5d;
+  color: white;
+  cursor: pointer;
+  padding: 0px 8px;
+  border-radius: 5px;
+}
+
+.redirect-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
 @media only screen and (max-width: 600px) {
 
   .login-container {

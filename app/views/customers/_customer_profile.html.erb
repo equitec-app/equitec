@@ -36,7 +36,7 @@
 
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <h4 class="azul-oscuro section-title">Sedes <%=link_to "Agregar sede", new_customer_headquarter_path(@customer), remote: true, class: 'function-link-table azul-oscuro'%></h4>
+      <h4 class="azul-oscuro section-title">Sedes <%if employee_signed_in?%><%=link_to "Agregar sede", new_customer_headquarter_path(@customer), remote: true, class: 'function-link-table azul-oscuro'%><%end%></h4>
       <div class="table-container">
 
         <table class="table table-hover">
@@ -72,7 +72,7 @@
 
 
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <h4 class="azul-oscuro section-title">Plantas <%=link_to "Agregar planta", new_customer_power_plant_path(@customer.id), remote: true, class: 'function-link-table azul-oscuro'%></h4>
+      <h4 class="azul-oscuro section-title">Plantas <%if employee_signed_in?%><%=link_to "Agregar planta", new_customer_power_plant_path(@customer.id), remote: true, class: 'function-link-table azul-oscuro'%><%end%></h4>
       <div class="table-container">
         <table class="table table-hover">
           <thead>
@@ -106,7 +106,7 @@
         </table>
       </div>
 
-      <h4 class="azul-oscuro section-title">UPS <%=link_to "Agregar UPS", new_customer_up_path(@customer.id), remote: true, class: 'function-link-table azul-oscuro'%></h4>
+      <h4 class="azul-oscuro section-title">UPS <%if employee_signed_in?%><%=link_to "Agregar UPS", new_customer_up_path(@customer.id), remote: true, class: 'function-link-table azul-oscuro'%><%end%></h4>
       <div class="table-container">
         <table class="table table-hover">
           <thead>
