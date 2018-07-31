@@ -1,1 +1,320 @@
-<h1>Detalles de la planta</h1>
+<div class="container customer-profile-container">
+  <div class="customer-info-panel">
+    <div class="customer-info-2">
+      <div>
+        <h2 class="azul-oscuro center"><strong><%=@power_plant.trademark%> <%=@power_plant.model%></strong> </h2>
+        <%=image_tag 'icons/power_plant.png', class: 'customer-profile-img'%>
+      </div>
+      <div class="customer-info">
+        <h6><span class="azul-oscuro"> <strong>Propietario:</strong></span> <%=@power_plant.customer.username%></h6>
+        <h6><span class="azul-oscuro"> <strong>Sede:</strong></span> <%=@power_plant.headquarter.city%>, <%=@power_plant.headquarter.direction%></h6>
+        <h6><span class="azul-oscuro"> <strong>Administrador:</strong></span> <%=@power_plant.headquarter.admin%></h6>
+        <h6><span class="azul-oscuro"> <strong>Teléfono administrador:</strong></span> <%=@power_plant.headquarter.admin_phone%></h6>
+
+        <h5 class="azul-oscuro section-title"><strong>Detalles del equipo:</strong></h5>
+        <h6><span class="azul-oscuro"> <strong>Placa:</strong></span> <%=@power_plant.plate%></h6>
+        <h6><span class="azul-oscuro"> <strong>Tanque de combustible:</strong></span> <%=@power_plant.fuel_tank_capacity%> L</h6>
+        <h6><span class="azul-oscuro"> <strong>Potencia:</strong></span> <%=@power_plant.capacity%> KVA</h6>
+        <h6><span class="azul-oscuro"> <strong>Serial:</strong></span> <%=@power_plant.serial%></h6> <br>
+
+        <h6><span class="azul-oscuro"> <strong>Marca motor:</strong></span> <%=@power_plant.engine_trademark%></h6>
+        <h6><span class="azul-oscuro"> <strong>Modelo motor:</strong></span> <%=@power_plant.engine_model%></h6>
+        <h6><span class="azul-oscuro"> <strong>Serial motor:</strong></span> <%=@power_plant.engine_serial%></h6> <br>
+
+        <h6><span class="azul-oscuro"> <strong>Marca generador:</strong></span> <%=@power_plant.generator_trademark%></h6>
+        <h6><span class="azul-oscuro"> <strong>Modelo generador:</strong></span> <%=@power_plant.generator_model%></h6>
+        <h6><span class="azul-oscuro"> <strong>Serial generador:</strong></span> <%=@power_plant.generator_serial%></h6>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container customer-main-profile-contain">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Hoja de vida</a>
+        <a class="nav-item nav-link" id="nav-logs-tab" data-toggle="tab" href="#nav-logs" role="tab" aria-controls="nav-home" aria-selected="true">Historicos</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Especificaciones</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">historial de visitas</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="false">Editar información</a>
+
+      </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <h4 class="section-title azul-oscuro"> Últimos mantenimientos preventivos</h4>
+
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="table-column-title azul-oscuro" scope="col">Fecha</th>
+                <th class="table-column-title azul-oscuro" scope="col">Descripción</th>
+                <th class="table-column-title azul-oscuro" scope="col">Horas del equipo</th>
+                <th class="table-column-title azul-oscuro" scope="col">Detalles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">11/11/11</th>
+                <td>Se le hizo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem reprehenderit, eos commodi aut praesentium quo, nostrum atqus.</td>
+                <td>10.432 horas</td>
+                <td>Ver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <h4 class="section-title azul-oscuro"> Últimos cambios de insumos (Mantenimiento tipo 2)</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="table-column-title azul-oscuro" scope="col">Insumo</th>
+                <th class="table-column-title azul-oscuro" scope="col">Última fecha de cambio</th>
+                <th class="table-column-title azul-oscuro" scope="col">Referencia</th>
+                <th class="table-column-title azul-oscuro" scope="col">Cantidad</th>
+                <th class="table-column-title azul-oscuro" scope="col">Horas de trabajo</th>
+                <th class="table-column-title azul-oscuro" scope="col">Comprobante de visita</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Aceite</th>
+                <td>7/11/17</td>
+                <td>20w-50</td>
+                <td>10 galones</td>
+                <td>300 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Filtro aceite</th>
+                <td>30/1/18</td>
+                <td>js9292</td>
+                <td>1 unidad</td>
+                <td>100 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Filtro gasolina</th>
+                <td>30/1/18</td>
+                <td>js9292</td>
+                <td>1 unidad</td>
+                <td>100 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Filtro aire</th>
+                <td>30/1/18</td>
+                <td>js9292</td>
+                <td>1 unidad</td>
+                <td>100 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Filtro agua</th>
+                <td>30/1/18</td>
+                <td>js9292</td>
+                <td>1 unidad</td>
+                <td>100 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Batería</th>
+                <td>22/09/16</td>
+                <td>Acme 12029</td>
+                <td>2 unidad</td>
+                <td>550 horas</td>
+                <td>Ver</td>
+              </tr>
+              <tr>
+                <th scope="row">Combustible</th>
+                <td>13/04/17</td>
+                <td>Corriente</td>
+                <td>20 galones</td>
+                <td>430 horas</td>
+                <td>Ver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Últimos mantenimientos correctivos</h4>
+
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="table-column-title azul-oscuro" scope="col">Fecha</th>
+                <th class="table-column-title azul-oscuro" scope="col">Descripción</th>
+                <th class="table-column-title azul-oscuro" scope="col">Horas del equipo</th>
+                <th class="table-column-title azul-oscuro" scope="col">Detalles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">11/11/11</th>
+                <td>Se le hizo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem reprehenderit, eos commodi aut praesentium quo, nostrum atqus.</td>
+                <td>10.432 horas</td>
+                <td>Ver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="nav-logs" role="tabpanel" aria-labelledby="nav-logs-tab">
+
+        <h4 class="section-title azul-oscuro"> Historial gasolina</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Historial cambio de aceite</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Historial cambio de filtro de aceite</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Historial cambio de filtro de aire</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Historial cambio de filtro de gasolina</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="section-title azul-oscuro"> Historial cambio de filtro de agua</h4>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="azul-oscuro" scope="col">Fecha</th>
+                <th class="azul-oscuro" scope="col">Referencia</th>
+                <th class="azul-oscuro" scope="col">Cantidad</th>
+                <th class="azul-oscuro" scope="col">Horas de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <h4 class="azul-oscuro section-title"><strong>Editar información</strong></h4>
+
+      </div>
+    </div>
+  </div>
+</div>

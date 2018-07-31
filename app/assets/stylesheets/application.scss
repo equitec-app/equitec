@@ -241,6 +241,11 @@ select.registration-input {
   color: white;
 }
 
+.table-column-title {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
 
   .login-container {

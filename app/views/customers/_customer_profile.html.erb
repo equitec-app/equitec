@@ -99,7 +99,7 @@
                 <%if employee_signed_in?%>
                   <td><%=link_to "Editar", edit_customer_power_plant_path(@customer.id, power_plant.id), remote:true%></td>
                 <%end%>
-                <td>Ver</td>
+                <td><%=link_to 'Ver', customer_power_plant_path(@customer.id, power_plant.id)%></td>
               </tr>
             <%end%>
           </tbody>
@@ -133,7 +133,7 @@
                 <%if employee_signed_in?%>
                   <td><%=link_to 'Editar', edit_customer_up_path(@customer.id,ups.id), remote: true%></td>
                 <%end%>
-                <td>Ver</td>
+                <td><%=link_to 'Ver', customer_up_path(@customer.id, ups.id)%></td>
               </tr>
             <%end%>
           </tbody>

@@ -4,6 +4,10 @@ class PowerPlantsController < ApplicationController
     @power_plant =PowerPlant.new()
   end
 
+  def show
+    @power_plant = PowerPlant.find(params[:id])    
+  end
+
   def create
     @customer = Customer.find(params[:customer_id])
     @power_plant = @customer.power_plants.create(power_plant_params)
