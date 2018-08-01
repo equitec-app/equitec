@@ -12,8 +12,8 @@
         <h6><span class="azul-oscuro"> <strong>Teléfono administrador:</strong></span> <%=@power_plant.headquarter.admin_phone%></h6>
 
         <h5 class="azul-oscuro section-title"><strong>Detalles del equipo:</strong></h5>
+        <h6><span class="azul-oscuro"> <strong>Horas de funcionamiento:</strong></span> 500 horas (11/09/18)</h6>
         <h6><span class="azul-oscuro"> <strong>Placa:</strong></span> <%=@power_plant.plate%></h6>
-        <h6><span class="azul-oscuro"> <strong>Tanque de combustible:</strong></span> <%=@power_plant.fuel_tank_capacity%> L</h6>
         <h6><span class="azul-oscuro"> <strong>Potencia:</strong></span> <%=@power_plant.capacity%> KVA</h6>
         <h6><span class="azul-oscuro"> <strong>Serial:</strong></span> <%=@power_plant.serial%></h6> <br>
 
@@ -304,7 +304,116 @@
       </div>
 
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="table-container">
+          <table class="table table-bordered">
+            <thead>
+              <tr class="azul-oscuro">
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Potencia (KVA)</th>
+                <th scope="col">Capacidad tanque de combustible</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Caterpilla</td>
+                <td>JS234</td>
+                <td>200 KVA</td>
+                <td>30 L</td>
+              </tr>
+            </tbody>
+          </table>
 
+          <table class="table table-bordered">
+            <thead>
+              <tr class="azul-oscuro table-column-title">
+                <th colspan="5">Motor y generador</th>
+              </tr>
+              <tr class="azul-oscuro">
+                <th scope="col">Marca motor</th>
+                <th scope="col">Modelo motor</th>
+                <th scope="col">Marca generador</th>
+                <th scope="col">Modelo generador</th>
+                <th scope="col">Potencia generador</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cummis</td>
+                <td>JW200</td>
+                <td>Cummis</td>
+                <td>KM900</td>
+                <td>200 KVA</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr class="azul-oscuro table-column-title">
+                <th colspan="5">Tablero de control</th>
+              </tr>
+              <tr class="azul-oscuro">
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td>
+                <td>S-324</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr class="azul-oscuro table-column-title">
+                <th colspan="5">Aceite</th>
+              </tr>
+              <tr class="azul-oscuro">
+                <th scope="col">Filtro 1</th>
+                <th scope="col">Filtro 2</th>
+                <th scope="col">Filtro 3</th>
+                <th scope="col">Tipo de aceite</th>
+                <th scope="col">Cantidad de aceite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AWS200</td>
+                <td>------</td>
+                <td>------</td>
+                <td>SAE 20W-50</td>
+                <td>10 L</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr class="azul-oscuro table-column-title">
+                <th colspan="5">Otros filtros</th>
+              </tr>
+              <tr class="azul-oscuro">
+                <th scope="col">Combustible 1</th>
+                <th scope="col">Combustible 2</th>
+                <th scope="col">Combustible 3</th>
+                <th scope="col">Aire 1</th>
+                <th scope="col">Aire 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>JM200</td>
+                <td>JM200</td>
+                <td>------</td>
+                <td>TY8700</td>
+                <td>------</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
