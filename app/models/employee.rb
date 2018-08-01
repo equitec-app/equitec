@@ -31,6 +31,8 @@ class Employee < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_writer :login
 
+  has_many :visits, through: :assignments
+
   validates :role, presence: true
   validates :username, uniqueness: true
   validates :username, uniqueness: { case_sensitive: false }
