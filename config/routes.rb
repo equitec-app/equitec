@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     collection do
       post :import
     end
+    resources :visits
     resources :agreements
     resources :headquarters
     resources :power_plants

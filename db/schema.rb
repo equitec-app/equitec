@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_202248) do
+ActiveRecord::Schema.define(version: 2018_08_01_195806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2018_07_26_202248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_agreements_on_customer_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "visit_id"
+    t.integer "maintenanse_voucher_id"
+    t.string "maintenanse_voucher_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visit_id"], name: "index_appointments_on_visit_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -141,13 +150,24 @@ ActiveRecord::Schema.define(version: 2018_07_26_202248) do
     t.index ["headquarter_id"], name: "index_ups_on_headquarter_id"
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.bigint "headquarter_id"
+    t.date "visit_day"
+    t.time "visit_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["headquarter_id"], name: "index_visits_on_headquarter_id"
+  end
+
   add_foreign_key "accounts", "customers"
   add_foreign_key "accounts", "employees"
   add_foreign_key "agreements", "customers", on_delete: :cascade
+  add_foreign_key "appointments", "visits", on_delete: :cascade
   add_foreign_key "customers", "employees"
   add_foreign_key "headquarters", "customers", on_delete: :cascade
   add_foreign_key "power_plants", "customers", on_delete: :cascade
   add_foreign_key "power_plants", "headquarters", on_delete: :cascade
   add_foreign_key "ups", "customers", on_delete: :cascade
   add_foreign_key "ups", "headquarters", on_delete: :cascade
+  add_foreign_key "visits", "headquarters"
 end

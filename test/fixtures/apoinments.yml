@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visit: one
+  maintenanse_voucher_id: 1
+  maintenanse_voucher_type: MyString
+
+two:
+  visit: two
+  maintenanse_voucher_id: 1
+  maintenanse_voucher_type: MyString
