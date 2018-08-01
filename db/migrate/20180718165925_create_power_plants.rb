@@ -7,8 +7,10 @@ class CreatePowerPlants < ActiveRecord::Migration[5.2]
       t.string :serial
       t.string :engine_trademark
       t.string :generator_trademark
+      t.string :control_panel_trademark
       t.string :engine_model
       t.string :generator_model
+      t.string :control_panel_model
       t.string :engine_serial
       t.string :generator_serial
       t.string :plate

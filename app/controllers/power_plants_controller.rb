@@ -5,7 +5,7 @@ class PowerPlantsController < ApplicationController
   end
 
   def show
-    @power_plant = PowerPlant.find(params[:id])    
+    @power_plant = PowerPlant.find(params[:id])
   end
 
   def create
@@ -30,6 +30,6 @@ class PowerPlantsController < ApplicationController
   private
 
   def power_plant_params
-    params.require(:power_plant).permit(:headquarter_id, :capacity, :engine_model, :engine_serial, :engine_trademark, :fuel_tank_capacity, :generator_model, :generator_serial, :generator_trademar, :model, :plate, :serial, :trademark)
+    params.require(:power_plant).permit(:headquarter_id, :capacity, :engine_model, :engine_serial, :engine_trademark, :control_panel_model, :control_panel_trademark, :fuel_tank_capacity, :generator_model, :generator_serial, :generator_trademar, :model, :plate, :serial, :trademark)
   end
 end
