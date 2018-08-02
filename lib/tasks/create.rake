@@ -43,27 +43,15 @@ namespace :create do
     end
   end
 
-end
+  desc "TODO"
+  task visits: :environment do
+    headquarters = Headquarter.all
+    v1 = Visit.create(visit_day: Date.today, visit_time: '11:11' , headquarter_id: headquarters[rand(0..(headquarters.size-1))].id)
+    puts v1.errors.full_messages
+    asign = v1.assignments.create(employee_id: Employee.all[3].id)
+    asign = v1.assignments.create(employee_id: Employee.all[4].id)
+    puts asign.errors.full_messages
+  end
 
-#  cost_center            :string
-#  current_sign_in_at     :datetime
-#  current_sign_in_ip     :inet
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  last_sign_in_at        :datetime
-#  last_sign_in_ip        :inet
-#  legal_agent            :string
-#  legal_agent_mail       :string
-#  legal_agent_phone      :string
-#  mainteance_agent       :string
-#  mainteance_phone       :string
-#  nit                    :string
-#  payments_mail          :string
-#  payments_manager       :string
-#  payments_phone         :string
-#  phone                  :string
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
-#  sign_in_count          :integer          default(0), not null
-#  username               :string
+end
+# Time.now.strftime!('%H:%M')

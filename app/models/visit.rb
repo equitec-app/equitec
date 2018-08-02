@@ -21,6 +21,7 @@
 class Visit < ApplicationRecord
   belongs_to :headquarter
   has_many :appointments, as: :maintenanse_voucher
+  has_many :assignments
   has_many :employees, through: :assignments
 
 end

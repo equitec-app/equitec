@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   post 'searchs/ups', to: 'searchs#ups', as: 'search_ups'
 
   devise_for :customers
+  resources :visits, only: [:index]
+
   resources :customers, except: :create do
     collection do
       post :import
     end
-    resources :visits
+    resources :visits, except: [:index]
     resources :agreements
     resources :headquarters
     resources :power_plants

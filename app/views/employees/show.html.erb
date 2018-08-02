@@ -13,127 +13,19 @@
 </div>
 
 <div class="container">
-  <h3 class="azul-oscuro section-title">Clientes existentes: <%=link_to "Ver más", customers_path, class: 'details-table azul-oscuro'%></h3>
+  <%if Employee.find(params[:id]).admin? && current_employee.admin?%>
+    <%= render 'employees/admin_profile'%>
+  <%elsif Employee.find(params[:id]).account_manager? && (current_employee.id == params[:id] || current_employee.admin?)%>
+    Coordinador de cuenta
+  <%elsif Employee.find(params[:id]).technician? && (current_employee.id == params[:id] || current_employee.account_manager? || current_employee.admin?)%>
+    <%= render 'employees/technician_profile'%>
 
-  <div class="summary-table">
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col"><span class="azul-oscuro">Nombre</span></th>
-          <th scope="col"><span class="azul-oscuro">Coordinador de cuenta</span></th>
-          <th scope="col"><span class="azul-oscuro">N sedes</span></th>
-          <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-          <th scope="col"><span class="azul-oscuro">Crear contrato</span></th>
-          <th scope="col"><span class="azul-oscuro">Correo</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@customers.each do |customer|%>
-          <tr>
-            <th scope="row"><%=link_to customer.username, customer_path(customer)%></th>
-            <td><%=Employee.find(customer.account.employee_id).username if !(customer.account).nil?%></td>
-            <td><%=customer.headquarters.size%></td>
-            <td><%=customer.power_plants.size + customer.ups.size%></td>
-            <td><%=link_to '+', new_customer_agreement_path(customer)%></td>
-            <td><%=customer.email%></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 class="azul-oscuro section-title">Visitas asignadas:</h3>
-
-  <div class="summary-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col"><span class="azul-oscuro">Fecha</span></th>
-          <th scope="col"><span class="azul-oscuro">Para</span></th>
-          <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
-          <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-          <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <%@customers.each do |customer|%>
-          <tr>
-            <th scope="row"><%=customer.username%></th>
-            <td><%=customer.id%></td>
-            <td><%=customer.id%></td>
-            <td><%=customer.phone%></td>
-            <td><%=customer.email%></td>
-          </tr>
-        <%end%> -->
-        <tr>
-          <th scope="row">12/09/18 08:00</th>
-          <td>Bancolombia sede Suba</td>
-          <td>Brayan Fernandez, Nicolás Maduro</td>
-          <td>3</td>
-          <td>Mantenimiento preventivo</td>
-        </tr>
-
-        <tr>
-          <th scope="row">16/09/18 08:00</th>
-          <td>Bodytech Boyacá</td>
-          <td>Pedro Picapiedra</td>
-          <td>1</td>
-          <td>Mantenimiento correctivo</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 class="azul-oscuro section-title">Empleados existentes:</h3>
-
-  <div class="summary-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Rol</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Correo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@employees.each do |employee|%>
-          <tr>
-            <th scope="row"><%=link_to employee.username, employee_path(employee)%></th>
-            <td><%=role_spanish_name(employee.role)%></td>
-            <td><%=employee.phone%></td>
-            <td><%=employee.email%></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 class="azul-oscuro section-title">Contratos existentes:</h3>
-
-  <div class="summary-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Empresa y sede</th>
-          <th scope="col">Periodo</th>
-          <th scope="col">N equipos</th>
-          <th scope="col">Detalles</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@agreements.each do |agreement|%>
-          <tr>
-            <td><%=agreement.customer.username%></td>
-            <td><%=agreement.beginning_date%> a <%=agreement.end_date%></td>
-            <td><%=agreement.id%></td>
-            <td><%=link_to 'Detalles', customer_agreement_path(agreement.customer.id, agreement.id)%></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-  </div>
+  <%elsif Employee.find(params[:id]).engineer? && (current_employee.id == params[:id] || current_employee.account_manager? || current_employee.admin?)%>
+    <%= render 'employees/engineer_profile'%>
+  <%elsif Employee.find(params[:id]).seller? && (current_employee.id == params[:id] || current_employee.admin?)%>
+  Vendedor
+  <%end%>
 
 
 </div>

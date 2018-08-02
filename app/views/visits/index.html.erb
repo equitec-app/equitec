@@ -1,0 +1,30 @@
+<div class="container">
+  <h4 class="section-title azul-oscuro">Todas las visitas</h4>
+
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><span class="azul-oscuro">Fecha</span></th>
+          <th scope="col"><span class="azul-oscuro">Hora</span></th>
+          <th scope="col"><span class="azul-oscuro">Para</span></th>
+          <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
+          <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+          <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@visits.each do |visit|%>
+          <tr>
+            <td><%=visit.visit_day%></td>
+            <td><%=visit.visit_time.strftime('%H:%M')%></td>
+            <td><%=visit.headquarter.customer.username%></td>
+            <td><%=technicians_of_a_visit(visit.employees)%></td>
+            <td><%=visit.appointments.size%></td>
+            <td><%=link_to "Ver más", customer_visit_path(visit.headquarter.customer.id, visit.id) %></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

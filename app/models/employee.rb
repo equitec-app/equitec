@@ -40,7 +40,7 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: {account_manager: 0, technician: 1, engineer: 2, seller: 3, admin: 4}
+  enum role: {account_manager: 0, technician: 1, engineer: 2, seller: 3, admin: 4, store: 5, treasury: 6}
 
   def login
     @login || self.email
