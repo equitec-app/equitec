@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_203904) do
+ActiveRecord::Schema.define(version: 2018_08_02_212237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,20 @@ ActiveRecord::Schema.define(version: 2018_08_01_203904) do
     t.index ["headquarter_id"], name: "index_ups_on_headquarter_id"
   end
 
+  create_table "visit_requests", force: :cascade do |t|
+    t.bigint "headquarter_id"
+    t.bigint "employee_id"
+    t.integer "money_state"
+    t.integer "supplie_state"
+    t.float "requested_money"
+    t.integer "concept"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_visit_requests_on_employee_id"
+    t.index ["headquarter_id"], name: "index_visit_requests_on_headquarter_id"
+  end
+
   create_table "visits", force: :cascade do |t|
     t.bigint "headquarter_id"
     t.date "visit_day"
@@ -180,5 +194,7 @@ ActiveRecord::Schema.define(version: 2018_08_01_203904) do
   add_foreign_key "power_plants", "headquarters", on_delete: :cascade
   add_foreign_key "ups", "customers", on_delete: :cascade
   add_foreign_key "ups", "headquarters", on_delete: :cascade
+  add_foreign_key "visit_requests", "employees"
+  add_foreign_key "visit_requests", "headquarters"
   add_foreign_key "visits", "headquarters"
 end

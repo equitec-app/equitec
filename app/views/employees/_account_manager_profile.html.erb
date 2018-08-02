@@ -9,7 +9,7 @@
         <th scope="col"><span class="azul-oscuro">Coordinador de cuenta</span></th>
         <th scope="col"><span class="azul-oscuro">N sedes</span></th>
         <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-        <th scope="col"><span class="azul-oscuro">Crear contrato</span></th>
+        <th scope="col"><span class="azul-oscuro">Solicitar visita</span></th>
         <th scope="col"><span class="azul-oscuro">Correo</span></th>
       </tr>
     </thead>
@@ -49,7 +49,7 @@
         <td>Bancolombia, sede Suba</td>
         <td>Pendiente</td>
         <td>Pendiente</td>
-        <td>Ver</td>
+        <td><%=link_to "Ver", customer_headquarter_visit_request_path(1,1,1), remote: true%></td>
         <td>Editar</td>
         <td>Asignar visita</td>
       </tr>
