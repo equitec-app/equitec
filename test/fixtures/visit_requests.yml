@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  headquarter: one
+  money_state: 1
+  supplie_state: 1
+  employee: one
+  requested_money: 1.5
+  concept: 1
+  comment: MyText
+
+two:
+  headquarter: two
+  money_state: 1
+  supplie_state: 1
+  employee: two
+  requested_money: 1.5
+  concept: 1
+  comment: MyText

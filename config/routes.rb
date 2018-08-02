@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :customers
   resources :visits, only: [:index]
+  resources :visit_requests, only: [:index]
+
 
   resources :customers, except: :create do
     collection do
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
     end
     resources :visits, except: [:index]
     resources :agreements
-    resources :headquarters
+    resources :headquarters do
+      resources :visit_requests, except: [:index]
+    end
     resources :power_plants
     resources :ups
   end
