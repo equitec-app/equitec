@@ -20,7 +20,7 @@
           <td><%=Employee.find(customer.account.employee_id).username if !(customer.account).nil?%></td>
           <td><%=customer.headquarters.size%></td>
           <td><%=customer.power_plants.size + customer.ups.size%></td>
-          <td><%=link_to '+', new_customer_agreement_path(customer)%></td>
+          <td><%=link_to 'Solicitar', choose_headquarter_path(customer), remote: true %></td>
           <td><%=customer.email%></td>
         </tr>
       <%end%>

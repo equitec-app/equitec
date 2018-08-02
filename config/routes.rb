@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   post 'create_employees' => 'employees#create', as: :create_employees
   post 'create_customers' => 'customers#create', as: :create_customers
 
+  get '/choose_headquarter/:customer_id' => 'headquarters#choose_headquarter', as: :choose_headquarter
+
+
   devise_scope :customer do
     authenticated :customer do
       root :to => 'customers#show'

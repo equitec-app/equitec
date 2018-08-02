@@ -1,4 +1,9 @@
 class HeadquartersController < ApplicationController
+
+  def choose_headquarter
+    @headquarters = Customer.find(params[:customer_id]).headquarters
+  end
+
   def new
     @customer = Customer.find(params[:customer_id])
     @headquarter = Headquarter.new
@@ -7,7 +12,7 @@ class HeadquartersController < ApplicationController
   def show
     @headquarter = Headquarter.find(params[:id])
   end
-  
+
   def create
     @customer = Customer.find(params[:customer_id])
     @headquarter = @customer.headquarters.create(headquarter_params)
