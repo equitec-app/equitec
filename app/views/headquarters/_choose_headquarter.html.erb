@@ -9,7 +9,7 @@
       </div>
         <div class="modal-body">
           <%@headquarters.each do |headquarter|%>
-          <%=headquarter.city%>, <%=headquarter.direction%> <br>
+            <%=link_to headquarter.city+', '+ headquarter.direction, new_customer_headquarter_visit_request_path(headquarter.customer.id,headquarter.id)%> <br>
 
           <%end%>
         </div>
