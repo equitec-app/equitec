@@ -30,6 +30,8 @@ class Up < ApplicationRecord
   belongs_to :customer
   belongs_to :headquarter
 
+  has_many :choosed_ups
+
   enum type_of_batteries: [ '5 aperios', ' 12 amperios', '15 amperios']
 
   validates :headquarter_id, presence: {message: "Sede no puede estar vacío"}

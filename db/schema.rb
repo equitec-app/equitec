@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_212237) do
+ActiveRecord::Schema.define(version: 2018_08_03_190119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,24 @@ ActiveRecord::Schema.define(version: 2018_08_02_212237) do
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_assignments_on_employee_id"
     t.index ["visit_id"], name: "index_assignments_on_visit_id"
+  end
+
+  create_table "choosed_power_plants", force: :cascade do |t|
+    t.bigint "visit_request_id"
+    t.bigint "power_plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["power_plant_id"], name: "index_choosed_power_plants_on_power_plant_id"
+    t.index ["visit_request_id"], name: "index_choosed_power_plants_on_visit_request_id"
+  end
+
+  create_table "choosed_ups", force: :cascade do |t|
+    t.bigint "visit_request_id"
+    t.bigint "up_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["up_id"], name: "index_choosed_ups_on_up_id"
+    t.index ["visit_request_id"], name: "index_choosed_ups_on_visit_request_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -188,6 +206,10 @@ ActiveRecord::Schema.define(version: 2018_08_02_212237) do
   add_foreign_key "appointments", "visits", on_delete: :cascade
   add_foreign_key "assignments", "employees", on_delete: :cascade
   add_foreign_key "assignments", "visits", on_delete: :cascade
+  add_foreign_key "choosed_power_plants", "power_plants"
+  add_foreign_key "choosed_power_plants", "visit_requests"
+  add_foreign_key "choosed_ups", "ups"
+  add_foreign_key "choosed_ups", "visit_requests"
   add_foreign_key "customers", "employees"
   add_foreign_key "headquarters", "customers", on_delete: :cascade
   add_foreign_key "power_plants", "customers", on_delete: :cascade

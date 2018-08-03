@@ -28,5 +28,10 @@ class VisitRequest < ApplicationRecord
   belongs_to :headquarter
   belongs_to :employee
 
+  has_many :choosed_ups
+  has_many :choosed_power_plants
+  has_many :power_plants, trougth: :choosed_power_plants
+  has_many :ups, trougth: :choosed_ups
+
   enum concept: ['Mantenimiento tipo1', 'Mantenimiento tipo2', 'Mantenimiento correctivo', 'Emergencia']
 end
