@@ -30,13 +30,58 @@
 
           </div>
 
-          <%= f.collection_check_boxes :power_plant_ids, @visit_request.headquarter.power_plants, :id, :trademark  do |c| %>
-            <div class="checkbox">
+
+          <table class="table table-borderless">
+            <thead>
+              <tr colspan="4" scope="col" class="azul-oscuro">
+                <th class="table-title">Plantas a visitar:</th>
+              </tr>
+              <tr class="azul-oscuro">
+                <th scope="col">Check</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+              </tr>
+            </thead>
+            <tbody>
+            <%= f.collection_check_boxes :power_plant_ids, @visit_request.headquarter.power_plants, :id, :trademark  do |c| %>
+              <tr>
+                <%= c.label do %>
+                  <th><%= c.check_box %></th>
+                  <td><%= c.object.plate %></td>
+                  <td><%= c.object.trademark %></td>
+                  <td><%= c.object.model %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <table class="table table-borderless">
+          <thead>
+            <tr colspan="4" scope="col" class="azul-oscuro">
+              <th class="table-title">UPS a visitar:</th>
+            </tr>
+            <tr class="azul-oscuro">
+              <th scope="col">Check</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%= f.collection_check_boxes :up_ids, @visit_request.headquarter.ups, :id, :trademark  do |c| %>
+            <tr>
               <%= c.label do %>
-                <%= c.check_box %> <%= c.object.plate %>, <%= c.object.trademark %> <%= c.object.model %>
+                <th><%= c.check_box %></th>
+                <td><%= c.object.plate %></td>
+                <td><%= c.object.trademark %></td>
+                <td><%= c.object.model %></td>
               <% end %>
-            </div>
+            </tr>
           <% end %>
+        </tbody>
+      </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
