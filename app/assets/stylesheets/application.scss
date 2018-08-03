@@ -223,6 +223,11 @@ select.registration-input {
   text-align: right;
 }
 
+.modal-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .table-container {
   max-width: 100%;
   overflow: scroll;
@@ -251,6 +256,11 @@ select.registration-input {
   .login-container {
     width: 90%;
     margin-top: 40px;
+  }
+
+  .modal-input-container {
+    justify-content: center;
+    flex-direction: column;
   }
 
 }

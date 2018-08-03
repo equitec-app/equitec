@@ -2,3 +2,9 @@ $('.modals').html("<%= escape_javascript render(:partial => 'visit_requests/new_
 $('#chooseHeadquarterModal').modal('hide')
 $('div.modal-backdrop').remove();
 $('#newVisitRequestModal').modal('show')
+
+$( "select" ).change(function () {
+  console.log("Detecto el cambio");
+  var value = $( "#visit_request_concept" ).val();
+  console.log(value);
+})
