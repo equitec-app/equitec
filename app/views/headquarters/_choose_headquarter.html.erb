@@ -8,10 +8,13 @@
         </button>
       </div>
         <div class="modal-body">
-          <%@headquarters.each do |headquarter|%>
-            <%=link_to headquarter.city+', '+ headquarter.direction, new_customer_headquarter_visit_request_path(headquarter.customer.id,headquarter.id)%> <br>
+          <div class="headquartes-link-selector">
+            <%@headquarters.each do |headquarter|%>
+              <!-- <%=link_to headquarter.city+', '+ headquarter.direction, new_customer_headquarter_visit_request_path(headquarter.customer.id,headquarter.id), class: 'headquarter-link-to-visit-request'%> <br> -->
+              <%=link_to headquarter.city+', '+ headquarter.direction, new_customer_headquarter_visit_request_path(headquarter.customer.id,headquarter.id), class: 'headquarter-link-to-visit-request', 'data-dismiss' => "modal", remote: true%> <br>
 
-          <%end%>
+            <%end%>
+          </div>
         </div>
     </div>
   </div>
