@@ -1,0 +1,4 @@
+$('.modals').html("<%= escape_javascript render(:partial => 'visit_requests/new_visit_request_form') %>");
+$('#chooseHeadquarterModal').modal('hide')
+$('div.modal-backdrop').remove();
+$('#newVisitRequestModal').modal('show')

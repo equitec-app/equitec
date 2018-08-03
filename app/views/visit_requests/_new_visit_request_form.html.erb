@@ -1,0 +1,40 @@
+<div class="modal fade" id="newVisitRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title azul-oscuro" id="exampleModalLabel">Solicitar visita</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%=form_for @visit_request, url: customer_headquarter_visit_requests_path(@visit_request.headquarter.customer.id, @visit_request.headquarter.id ), remote:true do |f|%>
+        <div class="modal-body">
+
+          <%if @visit_request.errors.any?%>
+            <div class="form-error-container">
+              <%@visit_request.errors.each do |attribute, message|%>
+                <p><%=message%></p>
+              <%end%>
+            </div>
+          <%end%>
+
+          <div class="modal-new-form">
+            <%=f.label 'Concepto*'%>
+            <%= f.select( :concept, VisitRequest.concepts.keys.to_a, {include_blank: "Seleccione el motivo"}, {class:'registration-input middle-input'}) %> <br>
+
+            <%= f.label :requested_money, "Dinero solicitado*"%>
+            <%= f.number_field :requested_money, autofocus: true, placeholder: "$ 100.000", class:'registration-input small-input' %> <br>
+
+            <%= f.label :comment, "Comentario*"%>
+            <%= f.text_area :comment, autofocus: true, placeholder: "Deja tus comentarios", class:'registration-input small-input' %> <br>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <%= f.submit "Solicitar visita", class: "sign-up-button" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
