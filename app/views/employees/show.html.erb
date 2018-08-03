@@ -12,12 +12,6 @@
   </div>
 </div>
 
-<%puts "Employee.find(params[:id]).admin? #{Employee.find(params[:id]).admin?}"%>
-<%puts "Employee.find(params[:id]).account_manager? #{Employee.find(params[:id]).account_manager?}"%>
-<%puts "Employee.find(params[:id]).technician? #{Employee.find(params[:id]).technician?}"%>
-<%puts "Employee.find(params[:id]).engineer? #{Employee.find(params[:id]).engineer?}"%>
-<%puts "Employee.find(params[:id]).seller? #{Employee.find(params[:id]).seller?}"%>
-
 <div class="container">
   <%if Employee.find(params[:id]).admin? && current_employee.admin?%>
     <%= render 'employees/admin_profile'%>

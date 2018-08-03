@@ -6,10 +6,14 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    params[:id] ? @employee = Employee.find(params[:id]) : @employee = Employee.find(current_employee.id)
-    @customers = Customer.all
-    @employees = Employee.all
-    @agreements = Agreement.all
+    if params[:id]
+      @employee = Employee.find(params[:id])
+      @customers = Customer.all
+      @employees = Employee.all
+      @agreements = Agreement.all
+    else
+      redirect_to employee_path(current_employee)
+    end
   end
 
   def create
