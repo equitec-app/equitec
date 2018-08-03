@@ -30,8 +30,8 @@ class VisitRequest < ApplicationRecord
 
   has_many :choosed_ups
   has_many :choosed_power_plants
-  has_many :power_plants, trougth: :choosed_power_plants
-  has_many :ups, trougth: :choosed_ups
+  has_many :power_plants, through: :choosed_power_plants
+  has_many :ups, through: :choosed_ups
 
   enum concept: ['Mantenimiento tipo1', 'Mantenimiento tipo2', 'Mantenimiento correctivo', 'Emergencia']
 end

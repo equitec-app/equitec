@@ -29,6 +29,14 @@
             <%= f.text_area :comment, autofocus: true, placeholder: "Deja tus comentarios", class:'registration-input small-input' %> <br>
 
           </div>
+
+          <%= f.collection_check_boxes :power_plant_ids, @visit_request.headquarter.power_plants, :id, :trademark  do |c| %>
+            <div class="checkbox">
+              <%= c.label do %>
+                <%= c.check_box %> <%= c.object.plate %>, <%= c.object.trademark %> <%= c.object.model %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
