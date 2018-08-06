@@ -1,0 +1,10 @@
+<%if @visit_request.errors.any?%>
+  console.log("Tiene errores");
+  $('#newVisitRequestModal').modal('hide')
+  $('div.modal-backdrop').remove();
+  $('.modals').html("<%= escape_javascript render(:partial => 'visit_requests/new_visit_request_form') %>");
+  $('#newVisitRequestModal').modal('show')
+<%else%>
+  console.log("todo en orden");
+  $('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
+<%end%>
