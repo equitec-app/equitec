@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_190119) do
     t.boolean "oil_filter"
     t.boolean "oil"
     t.boolean "air_filter"
+    t.boolean "fuel_filter"
     t.boolean "water_filter"
     t.boolean "coolant"
     t.boolean "battery"

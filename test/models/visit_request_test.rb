@@ -9,6 +9,7 @@
 #  concept         :integer
 #  coolant         :boolean
 #  fuel            :boolean
+#  fuel_filter     :boolean
 #  mechanical_fail :boolean
 #  money_state     :integer
 #  oil             :boolean

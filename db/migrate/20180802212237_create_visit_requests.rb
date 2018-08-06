@@ -11,6 +11,7 @@ class CreateVisitRequests < ActiveRecord::Migration[5.2]
       t.boolean :oil_filter
       t.boolean :oil
       t.boolean :air_filter
+      t.boolean :fuel_filter
       t.boolean :water_filter
       t.boolean :coolant
       t.boolean :battery
