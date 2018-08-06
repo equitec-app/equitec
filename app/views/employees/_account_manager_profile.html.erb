@@ -28,7 +28,12 @@
   </table>
 </div>
 
+
 <h3 class="azul-oscuro section-title">Solicitudes: <%=link_to "Ver más", visits_path(), class: 'details-table azul-oscuro'%></h3>
+
+<div class="visit-request-container">
+  <%= render 'visit_requests/visit_requests_table'%>
+</div>
 
 <div class="summary-table">
   <table class="table table-hover">

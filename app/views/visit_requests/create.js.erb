@@ -6,5 +6,6 @@
   $('#newVisitRequestModal').modal('show')
 <%else%>
   console.log("todo en orden");
-  $('.customer-profile-container').html("<%= escape_javascript render(:partial => 'customers/customer_profile') %>");
+  $('#newVisitRequestModal').modal('hide')
+  $('.visit-request-container').html("<%= escape_javascript render(:partial => 'visit_requests/visit_requests_table') %>");
 <%end%>

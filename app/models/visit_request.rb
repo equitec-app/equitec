@@ -35,7 +35,7 @@
 
 class VisitRequest < ApplicationRecord
   belongs_to :headquarter
-  belongs_to :employee
+  belongs_to :employee, optional: true
 
   has_many :choosed_ups
   has_many :choosed_power_plants

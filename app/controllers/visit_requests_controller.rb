@@ -5,6 +5,11 @@ class VisitRequestsController < ApplicationController
   end
 
   def create
+    # @employee = Employee.find(params[:id])
+    # @customers = Customer.all
+    # @employees = Employee.all
+    # @agreements = Agreement.all
+
     @visit_request = Headquarter.find(params[:headquarter_id]).visit_requests.create(visit_requests_params)
 
   end
