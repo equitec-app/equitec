@@ -11,6 +11,7 @@ class EmployeesController < ApplicationController
       @customers = Customer.all
       @employees = Employee.all
       @agreements = Agreement.all
+      @visit_requests = VisitRequest.all
     else
       redirect_to employee_path(current_employee)
     end

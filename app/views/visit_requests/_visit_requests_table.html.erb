@@ -12,25 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td >12/09/18 08:00</td>
-        <td>Bancolombia, sede Suba</td>
-        <td>Pendiente</td>
-        <td>Pendiente</td>
-        <td><%=link_to "Ver", customer_headquarter_visit_request_path(1,1,1), remote: true%></td>
-        <td>Editar</td>
-        <td>Asignar visita</td>
-      </tr>
-
-      <tr>
-        <td >19/04/18 08:00</td>
-        <td>Bodytech, sede Suba</td>
-        <td>Aprobado</td>
-        <td>Pendiente</td>
-        <td>Ver</td>
-        <td>Editar</td>
-        <td>Asignar visita</td>
-      </tr>
+      <%@visit_requests.each do |visit_request|%>
+        <tr>
+          <td ><%=visit_request.created_at%></td>
+          <td><%=visit_request.headquarter.customer.username%>, <%=visit_request.headquarter.city%> <%=visit_request.headquarter.direction%></td>
+          <td><%=visit_request.money_state%></td>
+          <td><%=visit_request.supplie_state%></td>
+          <td><%=link_to "Ver", customer_headquarter_visit_request_path(visit_request.headquarter.customer.id,visit_request.headquarter.id,visit_request.id), remote: true%></td>
+          <td>Editar</td>
+          <td>Asignar visita</td>
+        </tr>
+      <%end%>
     </tbody>
   </table>
 </div>
