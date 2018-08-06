@@ -8,6 +8,14 @@ class CreateVisitRequests < ActiveRecord::Migration[5.2]
       t.float :requested_money
       t.integer :concept
       t.text :comment
+      t.boolean :oil_filter
+      t.boolean :oil
+      t.boolean :air_filter
+      t.boolean :water_filter
+      t.boolean :coolant
+      t.boolean :battery
+      t.boolean :fuel
+      t.boolean :mechanical_fail
 
       t.timestamps
     end

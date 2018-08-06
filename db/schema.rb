@@ -185,6 +185,14 @@ ActiveRecord::Schema.define(version: 2018_08_03_190119) do
     t.float "requested_money"
     t.integer "concept"
     t.text "comment"
+    t.boolean "oil_filter"
+    t.boolean "oil"
+    t.boolean "air_filter"
+    t.boolean "water_filter"
+    t.boolean "coolant"
+    t.boolean "battery"
+    t.boolean "fuel"
+    t.boolean "mechanical_fail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_visit_requests_on_employee_id"
