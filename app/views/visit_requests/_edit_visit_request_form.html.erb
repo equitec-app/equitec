@@ -9,7 +9,7 @@
       </div>
       <div class="visit-request-form-container">
         <%if @visit_request.concept == 'Mantenimiento tipo2'%>
-          <%=render 'visit_requests/type2_maintenance_form.html.erb'%>
+          <%=render 'visit_requests/type2_maintenance_edit_form.html.erb'%>
         <%elsif @visit_request.concept == 'Emergencia'%>
           <%=render 'visit_requests/emergency_maintenance_form.html.erb'%>
         <%else%>
