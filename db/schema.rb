@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_190119) do
+ActiveRecord::Schema.define(version: 2018_08_08_205657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,12 +202,12 @@ ActiveRecord::Schema.define(version: 2018_08_03_190119) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.bigint "headquarter_id"
     t.date "visit_day"
     t.time "visit_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["headquarter_id"], name: "index_visits_on_headquarter_id"
+    t.bigint "visit_request_id"
+    t.index ["visit_request_id"], name: "index_visits_on_visit_request_id"
   end
 
   add_foreign_key "accounts", "customers"
@@ -228,5 +228,5 @@ ActiveRecord::Schema.define(version: 2018_08_03_190119) do
   add_foreign_key "ups", "headquarters", on_delete: :cascade
   add_foreign_key "visit_requests", "employees"
   add_foreign_key "visit_requests", "headquarters"
-  add_foreign_key "visits", "headquarters"
+  add_foreign_key "visits", "visit_requests"
 end
