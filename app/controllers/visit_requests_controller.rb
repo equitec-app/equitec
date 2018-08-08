@@ -4,6 +4,10 @@ class VisitRequestsController < ApplicationController
     @visit_request = Headquarter.find(params[:headquarter_id]).visit_requests.new()
   end
 
+  def edit
+    @visit_request = VisitRequest.find(params[:id])
+  end
+
   def create
     @visit_request = Headquarter.find(params[:headquarter_id]).visit_requests.create(visit_requests_params)
     @visit_requests = VisitRequest.all.order('created_at DESC')

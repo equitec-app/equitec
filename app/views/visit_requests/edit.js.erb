@@ -1,0 +1,28 @@
+$('.modals').html("<%= escape_javascript render(:partial => 'visit_requests/edit_visit_request_form') %>");
+$('#chooseHeadquarterModal').modal('hide')
+$('div.modal-backdrop').remove();
+$('#editVisitRequestModal').modal('show')
+
+detectSelectChange()
+
+function detectSelectChange() {
+  $( "select" ).change(function () {
+    // console.log("Detecto el cambio");
+    var value = $( "#visit_request_concept" ).val();
+
+    if (value == 'Mantenimiento tipo2') {
+      // console.log("Condicional mantenimiento tipo 2");
+      $('.visit-request-form-container form').remove();
+      $('.visit-request-form-container').html("<%= escape_javascript render(:partial => 'visit_requests/type2_maintenance_form' ) %>");
+      detectSelectChange()
+    } else if (value == 'Emergencia') {
+      // console.log("Condicional mantenimiento emergencia");
+      $('.visit-request-form-container form').remove();
+      $('.visit-request-form-container').html("<%= escape_javascript render(:partial => 'visit_requests/emergency_maintenance_form' ) %>");
+      detectSelectChange()
+    } else {
+      $('.type2_visit_request_checkbox').remove()
+      $('.emergency-visit-request-checkbox').remove()
+    }
+  })
+}

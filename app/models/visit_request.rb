@@ -46,15 +46,15 @@ class VisitRequest < ApplicationRecord
   has_many :ups, through: :choosed_ups
 
   enum concept: ['Mantenimiento tipo1', 'Mantenimiento tipo2', 'Mantenimiento correctivo', 'Emergencia']
-  enum money_state: ['Pendiente', 'Aprobado', 'N/A']
+  enum money_state: ['Dinero pendiente', 'Dinero aprobado', 'Sin solicitud']
   enum supplie_state: ['Insumos pendientes', 'Insumos aprobadoa', 'Sin solicitar']
 
   private
     def set_money_state
       if self.requested_money.nil?
-        self.money_state = 'N/A'
+        self.money_state = 'Sin solicitud'
       else
-        self.money_state = 'Pendiente'
+        self.money_state = 'Dinero pendiente'
       end
     end
 

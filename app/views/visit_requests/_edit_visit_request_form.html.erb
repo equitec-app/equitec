@@ -1,0 +1,21 @@
+<div class="modal fade" id="editVisitRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title azul-oscuro" id="exampleModalLabel">Solicitar visita</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="visit-request-form-container">
+        <%if @visit_request.concept == 'Mantenimiento tipo2'%>
+          <%=render 'visit_requests/type2_maintenance_form.html.erb'%>
+        <%elsif @visit_request.concept == 'Emergencia'%>
+          <%=render 'visit_requests/emergency_maintenance_form.html.erb'%>
+        <%else%>
+          <%=render 'visit_requests/default_maintenance_form.html.erb'%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

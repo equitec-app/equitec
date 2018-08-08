@@ -19,7 +19,7 @@
           <td><%=visit_request.money_state%></td>
           <td><%=visit_request.supplie_state%></td>
           <td><%=link_to "Ver", customer_headquarter_visit_request_path(visit_request.headquarter.customer.id,visit_request.headquarter.id,visit_request.id), remote: true%></td>
-          <td>Editar</td>
+          <td><%=link_to "Editar", edit_customer_headquarter_visit_request_path(visit_request.headquarter.customer.id,visit_request.headquarter.id,visit_request.id), remote: true%></td>
           <td>Asignar visita</td>
         </tr>
       <%end%>
