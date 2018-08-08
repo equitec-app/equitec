@@ -6,11 +6,11 @@ class VisitRequestsController < ApplicationController
 
   def create
     @visit_request = Headquarter.find(params[:headquarter_id]).visit_requests.create(visit_requests_params)
-    @visit_requests = VisitRequest.all
+    @visit_requests = VisitRequest.all.order('created_at DESC')
   end
 
   def show
-    # @visitrequest = VisitRequest.find(params[:id])
+    @visit_request = VisitRequest.find(params[:id])
   end
 
   private

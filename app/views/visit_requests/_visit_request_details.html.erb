@@ -10,15 +10,48 @@
 
         <div class="modal-body">
 
-          Detalles de la solicitud
+          <h5 class="azul-oscuro">Cliente: <span class="gris-oscuro"><%=@visit_request.headquarter.customer.username%></span></h5>
+          <h5 class="azul-oscuro">Fecha de la solicitud: <span class="gris-oscuro"><%=@visit_request.created_at%></span></h5>
+          <h5 class="azul-oscuro">Concepto: <span class="gris-oscuro"><%=@visit_request.concept%></span></h5>
+          <h5 class="azul-oscuro">Estado de insumos: <span class="gris-oscuro"><%=@visit_request.supplie_state%></span></h5>
+          <h5 class="azul-oscuro">Estado de dineros: <span class="gris-oscuro"><%=@visit_request.money_state%></span></h5>
+          <h5 class="azul-oscuro">Dinero solicitado: <span class="gris-oscuro"><%=@visit_request.requested_money%></span></h5>
+          <h5 class="azul-oscuro">Insumos solicitados: <span class="gris-oscuro"><%=@visit_request.requested_supplies%></span></h5>
+          <h5 class="azul-oscuro">Solicitante: <span class="gris-oscuro"><%=if !@visit_request.employee.nil? then @visit_request.employee.username end%></span></h5>
+          <h5 class="azul-oscuro">Equipos:</h5>
 
-          <div class="modal-new-form">
+          <table class="table table-striped">
+            <thead>
+              <tr class="azul-oscuro">
+                <th scope="col">Tipo</th>
+                <th scope="col">Marca </th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Potencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@visit_request.power_plants.each do |power_plant|%>
+                <tr>
+                  <th><%=power_plant%></th>
+                  <td><%=power_plant.trademark%></td>
+                  <td><%=power_plant.model%></td>
+                  <td><%=power_plant.capacity%></td>
+                </tr>
+              <%end%>
+              <%@visit_request.ups.each do |ups|%>
+                <tr>
+                  <th><%=ups%></th>
+                  <td><%=ups.trademark%></td>
+                  <td><%=ups.model%></td>
+                  <td><%=ups.power%></td>
+                </tr>
+              <%end%>
+            </tbody>
+          </table>
 
-          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="sign-up-button" data-dismiss="modal">Asignar visita</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
 
     </div>

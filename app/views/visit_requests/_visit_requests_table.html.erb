@@ -14,7 +14,7 @@
     <tbody>
       <%@visit_requests.each do |visit_request|%>
         <tr>
-          <td ><%=visit_request.created_at%></td>
+          <td ><%=visit_request.created_at.strftime("%m/%d/%Y")%></td>
           <td><%=visit_request.headquarter.customer.username%>, <%=visit_request.headquarter.city%> <%=visit_request.headquarter.direction%></td>
           <td><%=visit_request.money_state%></td>
           <td><%=visit_request.supplie_state%></td>
