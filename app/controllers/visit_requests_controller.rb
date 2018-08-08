@@ -6,7 +6,7 @@ class VisitRequestsController < ApplicationController
 
   def create
     @visit_request = Headquarter.find(params[:headquarter_id]).visit_requests.create(visit_requests_params)
-    @visit_requests = VisitRequest.all 
+    @visit_requests = VisitRequest.all
   end
 
   def show
@@ -18,6 +18,7 @@ class VisitRequestsController < ApplicationController
   def visit_requests_params
     params.require(:visit_request).permit(:air_filter, :battery, :comment, :concept,
       :coolant, :fuel, :fuel_filter, :mechanical_fail, :money_state, :oil,
-      :oil_filter, :requested_money, :supplie_state, :water_filter, :headquarter_id )
+      :oil_filter, :requested_money, :supplie_state, :water_filter, :requested_supplies,
+       :headquarter_id, power_plant_ids: [], up_ids: [] )
   end
 end

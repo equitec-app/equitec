@@ -6,6 +6,7 @@ class CreateVisitRequests < ActiveRecord::Migration[5.2]
       t.integer :money_state
       t.integer :supplie_state
       t.float :requested_money
+      t.text :requested_supplies
       t.integer :concept
       t.text :comment
       t.boolean :oil_filter

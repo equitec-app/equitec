@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_190119) do
     t.integer "money_state"
     t.integer "supplie_state"
     t.float "requested_money"
+    t.text "requested_supplies"
     t.integer "concept"
     t.text "comment"
     t.boolean "oil_filter"
