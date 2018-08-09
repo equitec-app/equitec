@@ -50,4 +50,8 @@ class SearchsController < ApplicationController
     @upss = @searched_upss + @upss
     puts @upss
   end
+
+  def employee_schedule
+    @search_employee = Employee.find(params[:employee_id])
+  end
 end

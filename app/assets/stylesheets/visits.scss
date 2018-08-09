@@ -4,12 +4,14 @@
 
 .visit-form-validator-wrapper {
   display: flex;
+  padding-top: 30px;
 }
 
  .next-week, .previous-week {
   font-size: 13px;
   float: right;
   margin: 0px 20px;
+  cursor: pointer;
 }
 
 .week-0 {

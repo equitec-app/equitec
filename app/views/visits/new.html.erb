@@ -40,6 +40,8 @@
 
   <div class="visit-form-validator-wrapper">
     <div class="visit-form-container">
+      <h4 class = "azul-oscuro">Programar visita:</h4>
+
       <%if @visit.errors.any?%>
         <div class="form-error-container">
           <%@visit.errors.each do |attribute, message|%>
@@ -73,9 +75,47 @@
           </div>
 
       <% end %>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td rowspan="2">Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="visit-validator-container">
+
+      <h4 class = "azul-oscuro">Verificar horarios:</h4>
+
+      <%= form_tag employee_schedule_path, method: :get, remote: true  do %>
+        <div class="form-group">
+          <%= select_tag :employee_id, options_from_collection_for_select(Employee.where(role: [2,1]), "id", "username"), class: 'registration-input small-input' %>
+        </div>
+      <% end %>
+
       <%(0..7).each do |week|%>
         <div class="table-container">
           <table class="table table-bordered week-<%=week.to_s%>">
@@ -94,26 +134,46 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <%@search_employee = Employee.last%>
+              <%max_number_of_visits_per_day(@search_employee, @date_today, week).times do |i|%>
+                <tr>
+                  <th></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              <%end%>
             </tbody>
           </table>
         </div>
       <%end%>
     </div>
 
+
+
   </div>
 </div>
 
 <script>
+  var current_week = 0
   $('.previous-week').on('click', function () {
     console.log("Semana anterior")
+    if (current_week > 0) {
+      $('.week-'+current_week).css("display", "none");
+      current_week = current_week - 1;
+      $('.week-'+current_week).css("display", "block");
+    };
+  })
+
+  $('.next-week').on('click', function () {
+    console.log("Siguiente semana")
+    if (current_week < 7) {
+      $('.week-'+current_week).css("display", "none");
+      current_week = current_week + 1;
+      $('.week-'+current_week).css("display", "block");
+    };
   })
 </script>
