@@ -15,10 +15,11 @@ Rails.application.routes.draw do
     collection do
       post :import
     end
-    resources :visits, except: [:index]
     resources :agreements
     resources :headquarters do
-      resources :visit_requests, except: [:index]
+      resources :visit_requests, except: [:index] do
+        resources :visits, except: [:index]
+      end
     end
     resources :power_plants
     resources :ups

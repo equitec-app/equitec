@@ -3,8 +3,8 @@
 # Table name: visits
 #
 #  id               :bigint(8)        not null, primary key
-#  visit_day        :date
-#  visit_time       :time
+#  visit_date_time  :datetime
+#  visit_end_time   :time
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  visit_request_id :bigint(8)

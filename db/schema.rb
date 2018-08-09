@@ -202,8 +202,8 @@ ActiveRecord::Schema.define(version: 2018_08_08_205657) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.date "visit_day"
-    t.time "visit_time"
+    t.datetime "visit_date_time"
+    t.time "visit_end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "visit_request_id"

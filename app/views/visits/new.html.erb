@@ -1,0 +1,119 @@
+<div class="container">
+
+  <h3 class="section-title azul-oscuro"><%=@visit_request.concept%></h3>
+  <h5 class="azul-oscuro"> Cliente: <span class="gris-oscuro"><%=@visit_request.headquarter.customer.username%></span> </h5>
+  <h5 class="azul-oscuro"> Sede: <span class="gris-oscuro"><%=@visit_request.headquarter.city%>, <%=@visit_request.headquarter.direction%></span> </h5>
+
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="azul-oscuro">
+          <th scope="col">Tipo</th>
+          <th scope="col">Placa</th>
+          <th scope="col">Marca </th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Potencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@visit_request.power_plants.each do |power_plant|%>
+          <tr>
+            <td><%=type_of_equipment(power_plant)%></td>
+            <td><%=power_plant.plate%></td>
+            <td><%=power_plant.trademark%></td>
+            <td><%=power_plant.model%></td>
+            <td><%=power_plant.capacity%></td>
+          </tr>
+        <%end%>
+        <%@visit_request.ups.each do |ups|%>
+          <tr>
+            <td><%=type_of_equipment(ups)%></td>
+            <td><%=ups.plate%></td>
+            <td><%=ups.trademark%></td>
+            <td><%=ups.model%></td>
+            <td><%=ups.power%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="visit-form-validator-wrapper">
+    <div class="visit-form-container">
+      <%if @visit.errors.any?%>
+        <div class="form-error-container">
+          <%@visit.errors.each do |attribute, message|%>
+            <p><%=message%></p>
+          <%end%>
+        </div>
+      <%end%>
+
+      <%= form_for @visit, url: customer_headquarter_visit_request_visits_path(params[:customer_id],params[:headquarter_id],params[:visit_request_id]) do |f| %>
+
+          <%= f.label 'Fecha de la visita', class: 'azul-oscuro' %><br>
+          <%=f.date_field :visit_date_time, value: Date.today, class: 'registration-input small-input'%>
+
+          <div>
+            <%= f.label 'Horario de la visita', class: 'azul-oscuro' %><br>
+            <%=f.time_field :visit_date_time, value: Time.now.strftime('%H:%M'), class: 'registration-input extra-small-input'%> -
+
+            <%=f.time_field :visit_end_time, value: (Time.now + 2.hour).strftime('%H:%M'), class: 'registration-input extra-small-input'%>
+          </div>
+
+          <%= f.label 'Selecciona los técnicos', class: 'azul-oscuro' %><br>
+          <%= f.collection_check_boxes :employee_ids, Employee.where(role: [2,1]), :id, :username  do |c| %>
+            <%= c.label do %>
+              <%= c.check_box %>
+              <%= c.object.username %>
+            <% end %> <br>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Crear cita", class: "sign-up-button" %>
+          </div>
+
+      <% end %>
+    </div>
+
+    <div class="visit-validator-container">
+      <%(0..7).each do |week|%>
+        <div class="table-container">
+          <table class="table table-bordered week-<%=week.to_s%>">
+            <thead>
+              <tr>
+                <th colspan="7"><%=(@date_today + 3.day + (week.to_i * 7).day).strftime('%B') %> <span class="next-week">Siguiente</span><span class="previous-week">Anterior</span></th>
+              </tr>
+              <tr>
+                <th scope="col">Lunes <%=(@date_today + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Martes <%=(@date_today + 1.day + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Miercoles <%=(@date_today + 2.day + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Jueves <%=(@date_today + 3.day + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Viernes <%=(@date_today + 4.day + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Sábado <%=(@date_today + 5.day + (week.to_i * 7)).strftime('%d')%></th>
+                <th scope="col">Domingo <%=(@date_today + 6.day + (week.to_i * 7)).strftime('%d')%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <%end%>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $('.previous-week').on('click', function () {
+    console.log("Semana anterior")
+  })
+</script>

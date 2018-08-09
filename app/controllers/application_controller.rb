@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def monday_of_the_week()
+    date = Date.today
+
+    while date.strftime("%A") != 'Monday'
+      date = date - 1.day
+    end
+    return date
+  end
+
   protected
 
   def devise_parameter_sanitizer
