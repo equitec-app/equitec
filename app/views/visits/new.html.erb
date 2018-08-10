@@ -105,16 +105,16 @@
               </tr>
             </thead>
             <tbody>
-              <%@search_employee = Employee.last%>
+              <%@search_employee = Employee.where(role: 'engineer').last%>
               <%max_number_of_visits_per_day(@search_employee, @date_today, week).times do |i|%>
                 <tr>
-                  <th></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 0, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 1, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 2, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 3, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 4, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 5, i)%></td>
+                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 6, i)%></td>
                 </tr>
               <%end%>
             </tbody>

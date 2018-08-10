@@ -75,4 +75,3 @@ namespace :create do
     puts asign.errors.full_messages
   end
 end
-# Time.now.strftime!('%H:%M')
