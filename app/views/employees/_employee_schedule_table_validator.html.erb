@@ -1,0 +1,33 @@
+<%(0..7).each do |week|%>
+  <div class="table-container">
+    <table class="table table-bordered week-<%=week.to_s%>">
+      <thead>
+        <tr>
+          <th colspan="7"><%=(@date_today + 3.day + (week.to_i * 7).day).strftime('%B') %> <span class="next-week">Siguiente</span><span class="previous-week">Anterior</span></th>
+        </tr>
+        <tr>
+          <th scope="col">Lunes <%=(@date_today + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Martes <%=(@date_today + 1.day + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Miercoles <%=(@date_today + 2.day + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Jueves <%=(@date_today + 3.day + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Viernes <%=(@date_today + 4.day + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Sábado <%=(@date_today + 5.day + (week.to_i * 7)).strftime('%d')%></th>
+          <th scope="col">Domingo <%=(@date_today + 6.day + (week.to_i * 7)).strftime('%d')%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%max_number_of_visits_per_day(@search_employee, @date_today, week).times do |i|%>
+          <tr>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 0, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 1, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 2, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 3, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 4, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 5, i)%></td>
+            <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 6, i)%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+<%end%>

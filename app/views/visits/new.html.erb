@@ -83,44 +83,16 @@
 
       <%= form_tag employee_schedule_path, method: :get, remote: true  do %>
         <div class="form-group">
-          <%= select_tag :employee_id, options_from_collection_for_select(Employee.where(role: [2,1]), "id", "username"), class: 'registration-input small-input' %>
+          <%= select_tag :employee_id, options_from_collection_for_select(Employee.where(role: [2,1]), "id", "username"),  class: 'registration-input small-input' %>
+          <%= submit_tag "buscar", class: 'search-button'%>
         </div>
       <% end %>
 
-      <%(0..7).each do |week|%>
-        <div class="table-container">
-          <table class="table table-bordered week-<%=week.to_s%>">
-            <thead>
-              <tr>
-                <th colspan="7"><%=(@date_today + 3.day + (week.to_i * 7).day).strftime('%B') %> <span class="next-week">Siguiente</span><span class="previous-week">Anterior</span></th>
-              </tr>
-              <tr>
-                <th scope="col">Lunes <%=(@date_today + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Martes <%=(@date_today + 1.day + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Miercoles <%=(@date_today + 2.day + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Jueves <%=(@date_today + 3.day + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Viernes <%=(@date_today + 4.day + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Sábado <%=(@date_today + 5.day + (week.to_i * 7)).strftime('%d')%></th>
-                <th scope="col">Domingo <%=(@date_today + 6.day + (week.to_i * 7)).strftime('%d')%></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%@search_employee = Employee.where(role: 'engineer').last%>
-              <%max_number_of_visits_per_day(@search_employee, @date_today, week).times do |i|%>
-                <tr>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 0, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 1, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 2, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 3, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 4, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 5, i)%></td>
-                  <td><%=employee_scheduler_per_day(@search_employee, (@date_today + (week.to_i * 7)) + 6, i)%></td>
-                </tr>
-              <%end%>
-            </tbody>
-          </table>
-        </div>
-      <%end%>
+      <div class="employee-schedule-validator">
+        <%= render 'employees/employee_schedule_table_validator'%>
+      </div>
+
+
     </div>
 
 
@@ -147,4 +119,15 @@
       $('.week-'+current_week).css("display", "block");
     };
   })
+
+  // $('#employee_id').on('change', function (e) {
+  //   console.log("Cambio de empleado")
+  //   // $('form').submit()
+  //   $('form').trigger('submit.rails');
+  //   // e.preventDefault();
+  //   // form = document.querySelector('form');
+  //   // Rails.fire(form, 'submit');
+  //   // form = document.querySelector('form');
+  //   // form.dispatchEvent(new Event('submit', {bubbles: true})); // you can specify more options in `Event()` for reliability across different browsers.
+  // })
 </script>

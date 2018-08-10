@@ -4,6 +4,8 @@ class VisitsController < ApplicationController
     @visit = Visit.new
     @visit_request = VisitRequest.find(params[:visit_request_id])
     @date_today = monday_of_the_week()
+    @search_employee = Employee.all.where(role: [2,1]).first
+
   end
 
   def create

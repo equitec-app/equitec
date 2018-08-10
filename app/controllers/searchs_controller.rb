@@ -53,5 +53,7 @@ class SearchsController < ApplicationController
 
   def employee_schedule
     @search_employee = Employee.find(params[:employee_id])
+    @date_today = monday_of_the_week()
+    puts "ENTRÓ A EMPLOYEE SCHEDULE"
   end
 end

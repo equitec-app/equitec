@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'searchs/customers', to: 'searchs#customers', as: 'search_customers'
   post 'searchs/power_plants', to: 'searchs#power_plants', as: 'search_power_plants'
   post 'searchs/ups', to: 'searchs#ups', as: 'search_ups'
-  post 'searchs/employees_schedule', to: 'searchs#employee_schedule', as: 'employee_schedule'
+  get 'searchs/employees_schedule', to: 'searchs#employee_schedule', as: 'employee_schedule'
 
   devise_for :customers
   resources :visits, only: [:index]
