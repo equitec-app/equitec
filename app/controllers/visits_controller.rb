@@ -22,6 +22,6 @@ class VisitsController < ApplicationController
   private
 
   def visit_params
-    params.require(:visit).permit(:visit_date_time, :visit_end_time, employee_ids: [])
+    params.require(:visit).permit(:visit_date, :visit_start_time, :visit_end_time, employee_ids: [])
   end
 end

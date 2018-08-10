@@ -53,11 +53,11 @@
       <%= form_for @visit, url: customer_headquarter_visit_request_visits_path(params[:customer_id],params[:headquarter_id],params[:visit_request_id]) do |f| %>
 
           <%= f.label 'Fecha de la visita', class: 'azul-oscuro' %><br>
-          <%=f.date_field :visit_date_time, value: Date.today, class: 'registration-input small-input'%>
+          <%=f.date_field :visit_date, value: Date.today, class: 'registration-input small-input'%>
 
           <div>
             <%= f.label 'Horario de la visita', class: 'azul-oscuro' %><br>
-            <%=f.time_field :visit_date_time, value: Time.now.strftime('%H:%M'), class: 'registration-input extra-small-input'%> -
+            <%=f.time_field :visit_start_time, value: Time.now.strftime('%H:%M'), class: 'registration-input extra-small-input'%> -
 
             <%=f.time_field :visit_end_time, value: (Time.now + 2.hour).strftime('%H:%M'), class: 'registration-input extra-small-input'%>
           </div>

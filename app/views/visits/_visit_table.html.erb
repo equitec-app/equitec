@@ -13,8 +13,8 @@
     <tbody>
       <%@visits.each do |visit|%>
         <tr>
-          <th><%=visit.visit_date_time.strftime('%Y/%m/%d')%></th>
-          <td><%=visit.visit_date_time.strftime('%H:%M')%> - <%=visit.visit_end_time.strftime('%H:%M')%></td>
+          <th><%=visit.visit_date.strftime('%Y/%m/%d')%></th>
+          <td><%=visit.visit_start_time.strftime('%H:%M')%> - <%=visit.visit_end_time.strftime('%H:%M')%></td>
           <td><%=visit.visit_request.headquarter.customer.username%>, <%=visit.visit_request.headquarter.city%> <%=visit.visit_request.headquarter.direction%></td>
           <td><%=technicians_of_a_visit(visit.employees)%></td>
           <td><%=visit.visit_request.ups.size + visit.visit_request.power_plants.size%></td>
