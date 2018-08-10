@@ -37,36 +37,7 @@
 
 <h3 class="azul-oscuro section-title">Visitas asignadas: <%=link_to "Ver más", visits_path(), class: 'details-table azul-oscuro'%></h3>
 
-<div class="summary-table">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col"><span class="azul-oscuro">Fecha</span></th>
-        <th scope="col"><span class="azul-oscuro">Para</span></th>
-        <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
-        <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">12/09/18 08:00</th>
-        <td>Bancolombia sede Suba</td>
-        <td>Brayan Fernandez, Nicolás Maduro</td>
-        <td>3</td>
-        <td>Mantenimiento preventivo</td>
-      </tr>
-
-      <tr>
-        <th scope="row">16/09/18 08:00</th>
-        <td>Bodytech Boyacá</td>
-        <td>Pedro Picapiedra</td>
-        <td>1</td>
-        <td>Mantenimiento correctivo</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<%= render 'visits/visit_table'%>
 
 <h3 class="azul-oscuro section-title">Técnicos e ingenieros:</h3>
 

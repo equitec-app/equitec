@@ -11,7 +11,8 @@ class EmployeesController < ApplicationController
       @customers = Customer.all
       @employees = Employee.all
       @agreements = Agreement.all
-      @visit_requests = VisitRequest.all.order('created_at DESC')
+      @visit_requests = VisitRequest.includes(:visit).where( visits: {visit_request_id: nil})
+      @visits = Visit.all.order('created_at DESC')
     else
       redirect_to employee_path(current_employee)
     end

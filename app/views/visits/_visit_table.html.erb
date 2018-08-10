@@ -1,0 +1,26 @@
+<div class="summary-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><span class="azul-oscuro">Fecha</span></th>
+        <th scope="col"><span class="azul-oscuro">Horario</span></th>
+        <th scope="col"><span class="azul-oscuro">Para</span></th>
+        <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
+        <th scope="col"><span class="azul-oscuro">N equipos</span></th>
+        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@visits.each do |visit|%>
+        <tr>
+          <th><%=visit.visit_date_time.strftime('%Y/%m/%d')%></th>
+          <td><%=visit.visit_date_time.strftime('%H:%M')%> - <%=visit.visit_end_time.strftime('%H:%M')%></td>
+          <td><%=visit.visit_request.headquarter.customer.username%>, <%=visit.visit_request.headquarter.city%> <%=visit.visit_request.headquarter.direction%></td>
+          <td><%=technicians_of_a_visit(visit.employees)%></td>
+          <td><%=visit.visit_request.ups.size + visit.visit_request.power_plants.size%></td>
+          <td>Ver</td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
