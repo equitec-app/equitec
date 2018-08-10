@@ -9,7 +9,7 @@
         <th scope="col"><span class="azul-oscuro">Coordinador de cuenta</span></th>
         <th scope="col"><span class="azul-oscuro">N sedes</span></th>
         <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-        <th scope="col"><span class="azul-oscuro">Crear contrato</span></th>
+        <th scope="col"><span class="azul-oscuro">Solicitar visita</span></th>
         <th scope="col"><span class="azul-oscuro">Correo</span></th>
       </tr>
     </thead>
@@ -20,7 +20,7 @@
           <td><%=Employee.find(customer.account.employee_id).username if !(customer.account).nil?%></td>
           <td><%=customer.headquarters.size%></td>
           <td><%=customer.power_plants.size + customer.ups.size%></td>
-          <td><%=link_to '+', new_customer_agreement_path(customer)%></td>
+          <td><%=link_to 'Solicitar', choose_headquarter_path(customer), remote: true %></td>
           <td><%=customer.email%></td>
         </tr>
       <%end%>
@@ -28,38 +28,16 @@
   </table>
 </div>
 
+
+<h3 class="azul-oscuro section-title">Solicitudes: <%=link_to "Ver más", visits_path(), class: 'details-table azul-oscuro'%></h3>
+
+<div class="visit-request-container">
+  <%= render 'visit_requests/visit_requests_table'%>
+</div>
+
 <h3 class="azul-oscuro section-title">Visitas asignadas: <%=link_to "Ver más", visits_path(), class: 'details-table azul-oscuro'%></h3>
 
-<div class="summary-table">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col"><span class="azul-oscuro">Fecha</span></th>
-        <th scope="col"><span class="azul-oscuro">Para</span></th>
-        <th scope="col"><span class="azul-oscuro">Técnicos</span></th>
-        <th scope="col"><span class="azul-oscuro">N equipos</span></th>
-        <th scope="col"><span class="azul-oscuro">Detalles</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">12/09/18 08:00</th>
-        <td>Bancolombia sede Suba</td>
-        <td>Brayan Fernandez, Nicolás Maduro</td>
-        <td>3</td>
-        <td>Mantenimiento preventivo</td>
-      </tr>
-
-      <tr>
-        <th scope="row">16/09/18 08:00</th>
-        <td>Bodytech Boyacá</td>
-        <td>Pedro Picapiedra</td>
-        <td>1</td>
-        <td>Mantenimiento correctivo</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<%= render 'visits/visit_table'%>
 
 <h3 class="azul-oscuro section-title">Empleados existentes:</h3>
 
