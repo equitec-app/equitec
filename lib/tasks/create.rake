@@ -44,6 +44,28 @@ namespace :create do
   end
 
   desc "TODO"
+  task visit_requests: :environment do
+    Headquarter.all.each do |headquarter|
+      h = headquarter.visit_requests.create(
+        requested_money: nil,
+        requested_supplies: "",
+        concept: "Mantenimiento tipo1",
+        comment: "",
+        oil_filter: nil,
+        oil: nil,
+        air_filter: nil,
+        fuel_filter: nil,
+        water_filter: nil,
+        coolant: nil,
+        battery: nil,
+        fuel: nil,
+        mechanical_fail: nil,
+        up_ids: [Up.last.id, Up.first.id],
+        power_plant_ids: [PowerPlant.last.id, PowerPlant.first.id])
+      puts h
+    end
+  end
+
   task visits: :environment do
     headquarters = Headquarter.all
     v1 = Visit.create(visit_day: Date.today, visit_time: '11:11' , headquarter_id: headquarters[rand(0..(headquarters.size-1))].id)
@@ -52,6 +74,5 @@ namespace :create do
     asign = v1.assignments.create(employee_id: Employee.all[4].id)
     puts asign.errors.full_messages
   end
-
 end
 # Time.now.strftime!('%H:%M')
